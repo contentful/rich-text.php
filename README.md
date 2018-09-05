@@ -1,0 +1,1 @@
+# structured-text-renderer.php
