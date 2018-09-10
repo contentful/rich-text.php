@@ -21,6 +21,17 @@ use function GuzzleHttp\json_decode as guzzle_json_decode;
 class TestCase extends BaseTestCase
 {
     /**
+     * Creates an empty assertion (true == true).
+     * This is done to mark tests that are expected to simply work (i.e. not throw exceptions).
+     * As PHPUnit does not provide convenience methods for marking a test as passed,
+     * we define one.
+     */
+    protected function markTestAsPassed()
+    {
+        $this->assertTrue(\true, 'Test case did not throw an exception and passed.');
+    }
+
+    /**
      * @param string $file
      * @param object $object
      * @param string $message

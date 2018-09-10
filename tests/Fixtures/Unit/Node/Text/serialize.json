@@ -1,0 +1,26 @@
+{
+    "nodeType": "text",
+    "value": "Some text",
+    "marks": [
+        {
+            "object": "mark",
+            "type": "mark"
+        },
+        {
+            "object": "mark",
+            "type": "mark"
+        },
+        {
+            "object": "mark",
+            "type": "mark"
+        },
+        {
+            "object": "mark",
+            "type": "mark"
+        },
+        {
+            "object": "mark",
+            "type": "mark"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "nodeType": "asset-hyperlink",
+    "data": {
+      "title": "Asset link",
+      "target": {
+        "sys": {
+          "type": "Link",
+          "id": "resourceId",
+          "linkType": "Asset"
+        }
+      }
+    }
+}

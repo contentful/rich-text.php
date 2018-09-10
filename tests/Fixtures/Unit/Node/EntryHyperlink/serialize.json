@@ -1,0 +1,13 @@
+{
+    "nodeType": "entry-hyperlink",
+    "data": {
+        "title": "Entry link",
+        "target": {
+            "sys": {
+                "type": "Link",
+                "id": "resourceId",
+                "linkType": "Entry"
+            }
+        }
+    }
+}
