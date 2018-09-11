@@ -1,0 +1,13 @@
+{
+    "nodeType": "embedded-entry-block",
+    "data": {
+        "target": {
+            "sys": {
+                "type": "Link",
+                "id": "resourceId",
+                "linkType": "Entry"
+            }
+        }
+    },
+    "content": []
+}
