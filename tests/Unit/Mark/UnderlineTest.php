@@ -21,8 +21,6 @@ class UnderlineTest extends TestCase
         $this->assertSame('underline', Underline::getType());
 
         $mark = new Underline();
-        $this->assertSame('<u>Some text</u>', $mark->render('Some text'));
-
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $mark);
     }
 }

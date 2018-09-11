@@ -24,14 +24,6 @@ class Code implements MarkInterface
     /**
      * {@inheritdoc}
      */
-    public function render(string $text): string
-    {
-        return '<code>'.$text.'</code>';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

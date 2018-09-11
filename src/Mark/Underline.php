@@ -24,14 +24,6 @@ class Underline implements MarkInterface
     /**
      * {@inheritdoc}
      */
-    public function render(string $text): string
-    {
-        return '<u>'.$text.'</u>';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

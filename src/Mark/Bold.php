@@ -24,14 +24,6 @@ class Bold implements MarkInterface
     /**
      * {@inheritdoc}
      */
-    public function render(string $text): string
-    {
-        return '<strong>'.$text.'</strong>';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

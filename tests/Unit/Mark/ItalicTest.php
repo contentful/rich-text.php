@@ -21,8 +21,6 @@ class ItalicTest extends TestCase
         $this->assertSame('italic', Italic::getType());
 
         $mark = new Italic();
-        $this->assertSame('<em>Some text</em>', $mark->render('Some text'));
-
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $mark);
     }
 }

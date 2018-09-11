@@ -24,14 +24,6 @@ class Italic implements MarkInterface
     /**
      * {@inheritdoc}
      */
-    public function render(string $text): string
-    {
-        return '<em>'.$text.'</em>';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

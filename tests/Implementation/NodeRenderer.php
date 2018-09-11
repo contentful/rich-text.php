@@ -33,6 +33,10 @@ class NodeRenderer implements NodeRendererInterface
      */
     public function render(RendererInterface $renderer, NodeInterface $node, array $context = []): string
     {
+        if ($node instanceof Node) {
+            return $node->getValue();
+        }
+
         return 'hello';
     }
 }

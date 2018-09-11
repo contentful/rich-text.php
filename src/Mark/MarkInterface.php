@@ -25,13 +25,4 @@ interface MarkInterface extends \JsonSerializable
      * @return string
      */
     public static function getType(): string;
-
-    /**
-     * Applies the current mark to the given text.
-     *
-     * @param string $text The text which will receive the current mark
-     *
-     * @return string
-     */
-    public function render(string $text): string;
 }

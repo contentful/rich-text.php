@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Contentful\StructuredText\NodeMapper;
 
 use Contentful\Core\Api\LinkResolverInterface;
-use Contentful\StructuredText\Node\Paragraph as NodeClass;
 use Contentful\StructuredText\Node\NodeInterface;
+use Contentful\StructuredText\Node\Paragraph as NodeClass;
 use Contentful\StructuredText\ParserInterface;
 
 class Paragraph implements NodeMapperInterface
