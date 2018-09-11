@@ -30,4 +30,13 @@ interface ParserInterface
      * @return NodeInterface
      */
     public function parse(array $data): NodeInterface;
+
+    /**
+     * Transforms an array of structured text into node objects.
+     *
+     * @param array $data
+     *
+     * @return NodeInterface[]
+     */
+    public function parseCollection(array $data): array;
 }

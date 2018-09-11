@@ -1,0 +1,10 @@
+{
+  "nodeType": "text",
+  "value": "Some text",
+  "marks": [
+    {
+      "object": "mark",
+      "type": "invalid-mark"
+    }
+  ]
+}

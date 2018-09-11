@@ -1,0 +1,22 @@
+{
+    "nodeType": "text",
+    "value": "Some text",
+    "marks": [
+        {
+            "object": "mark",
+            "type": "bold"
+        },
+        {
+            "object": "mark",
+            "type": "code"
+        },
+        {
+            "object": "mark",
+            "type": "italic"
+        },
+        {
+            "object": "mark",
+            "type": "underline"
+        }
+    ]
+}
