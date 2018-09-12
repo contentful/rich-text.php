@@ -82,7 +82,7 @@ class TestCase extends BaseTestCase
      *
      * @return string
      */
-    private function convertClassToFixturePath(string $class)
+    protected function convertClassToFixturePath(string $class)
     {
         $class = \str_replace(__NAMESPACE__.'\\', '', $class);
         $class = \str_replace('\\', '/', $class);
