@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Contentful\StructuredText\NodeMapper;
 
 use Contentful\Core\Api\LinkResolverInterface;
-use Contentful\StructuredText\Node\Quote as NodeClass;
 use Contentful\StructuredText\Node\NodeInterface;
 use Contentful\StructuredText\Node\Paragraph;
+use Contentful\StructuredText\Node\Quote as NodeClass;
 use Contentful\StructuredText\ParserInterface;
 
 class Quote implements NodeMapperInterface

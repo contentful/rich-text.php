@@ -21,8 +21,6 @@ class CodeTest extends TestCase
         $this->assertSame('code', Code::getType());
 
         $mark = new Code();
-        $this->assertSame('<code>Some text</code>', $mark->render('Some text'));
-
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $mark);
     }
 }

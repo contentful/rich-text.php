@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Contentful\StructuredText\NodeMapper;
 
-use Contentful\StructuredText\Mark;
 use Contentful\Core\Api\LinkResolverInterface;
+use Contentful\StructuredText\Mark;
 use Contentful\StructuredText\Mark\MarkInterface;
-use Contentful\StructuredText\Node\Text as NodeClass;
 use Contentful\StructuredText\Node\NodeInterface;
+use Contentful\StructuredText\Node\Text as NodeClass;
 use Contentful\StructuredText\ParserInterface;
 
 class Text implements NodeMapperInterface

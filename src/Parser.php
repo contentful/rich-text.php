@@ -11,9 +11,7 @@ declare(strict_types=1);
 
 namespace Contentful\StructuredText;
 
-use Contentful\Core\Api\Link;
 use Contentful\Core\Api\LinkResolverInterface;
-use Contentful\StructuredText\Mark\MarkInterface;
 use Contentful\StructuredText\Node\NodeInterface;
 use Contentful\StructuredText\NodeMapper\NodeMapperInterface;
 

@@ -21,8 +21,6 @@ class BoldTest extends TestCase
         $this->assertSame('bold', Bold::getType());
 
         $mark = new Bold();
-        $this->assertSame('<strong>Some text</strong>', $mark->render('Some text'));
-
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $mark);
     }
 }

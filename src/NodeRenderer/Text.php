@@ -41,7 +41,27 @@ class Text implements NodeRendererInterface
         }
 
         return \array_reduce($node->getMarks(), function (string $value, MarkInterface $mark) {
-            return $mark->render($value);
+            $tag = $this->getHtmlTagForMark($mark);
+
+            return \sprintf('<%s>%s</%s>', $tag, $value, $tag);
         }, $node->getValue());
+    }
+
+    /**
+     * @param MarkInterface $mark
+     *
+     * @return string
+     */
+    private function getHtmlTagForMark(MarkInterface $mark): string
+    {
+        $type = $mark->getType();
+        $tags = [
+            'bold' => 'strong',
+            'code' => 'code',
+            'italic' => 'em',
+            'underline' => 'u',
+        ];
+
+        return $tags[$type] ?? 'span';
     }
 }
