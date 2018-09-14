@@ -220,6 +220,17 @@ Template:
 
 For an example implementation of a Plates-based rendering process, check the [test node renderer](https://github.com/contentful/structured-text-renderer.php/blob/master/tests/Implementation/PlatesNodeRenderer.php) and the [complete integration test](https://github.com/contentful/structured-text-renderer.php/blob/master/tests/Integration/PlatesNodeRendererTest.php).
 
+## Avoid having the main renderer throw an exception
+
+The default renderer behavior when it does not find an appropriate node renderer is to throw an exception. To avoid this, you must set it up to use a special catch-all no renderer:
+
+``` php
+$renderer = new Contentful\StructuredText\Renderer();
+$renderer->appendNodeRenderer(new Contentful\StructuredText\NodeRenderer\CatchAll());
+```
+
+The special `Contentful\StructuredText\NodeRenderer\CatchAll` node renderer will return an empty string regardless of the node type. It's important to use the `appendNodeRenderer` instead of the usual `pushNodeRenderer` method to make this special node renderer have the lowest priority, therefore avoiding it intercepting regular node renderers.
+
 ## Glossary
 
 | Name | Interface | Description |

@@ -79,6 +79,21 @@ class Renderer implements RendererInterface
     }
 
     /**
+     * Adds a custom node renderer to the current stack.
+     * The renderer will be added to the end of the list.
+     *
+     * @param NodeRendererInterface $renderer
+     *
+     * @return $this
+     */
+    public function appendNodeRenderer(NodeRendererInterface $renderer)
+    {
+        $this->nodeRenderers[] = $renderer;
+
+        return $this;
+    }
+
+    /**
      * @return NodeRendererInterface[]
      */
     public function getNodeRenderers(): array
