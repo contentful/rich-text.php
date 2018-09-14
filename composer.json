@@ -34,5 +34,9 @@
         "branch-alias": {
             "dev-master": "1.0.0-dev"
         }
+    },
+    "suggest": {
+        "twig/twig": "For integration with the Twig templating engine",
+        "league/plates": "For integration with the Plates templating engine"
     }
 }

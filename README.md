@@ -199,7 +199,7 @@ Setup:
 ``` php
 $renderer = new \Contentful\StructuredText\Renderer();
 
-// Register the Twig extension, which will provide functions
+// Register the Plates extension, which will provide functions
 // $this->structuredTextRender() and $this->structuredTextRenderCollection()
 // in a Plates template
 $extension = new \Contentful\StructuredText\Bridge\PlatesExtension($renderer);
@@ -227,7 +227,7 @@ For an example implementation of a Plates-based rendering process, check the [te
 | Node | `Contentful\StructuredText\Node\NodeInterface` | The PHP representation of a structured text node |
 | Renderer | `Contentful\StructuredText\RendererInterface` | A class which accepts all sorts of nodes, and then delegates rendering to the appropriate node renderer |
 | Node renderer | `Contentful\StructuredText\NodeRenderer\NodeRendererInterface` | A class whose purpose is to be able to render a specific type of node |
-| Parser | `Contentful\StructuredText\ParserInterface` | A class who's responsible for turning an array of unserialized JSON data into a tree of node objects |
+| Parser | `Contentful\StructuredText\ParserInterface` | A class that's responsible for turning an array of unserialized JSON data into a tree of node objects |
 
 ## License
 
