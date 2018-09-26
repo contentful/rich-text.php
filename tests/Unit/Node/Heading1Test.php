@@ -22,6 +22,8 @@ class Heading1Test extends TestCase
         $nodes = $this->createNodes(5);
         $node = new Heading1($nodes);
 
+        $this->assertSame('block', $node->getNodeClass());
+
         $this->assertSame($nodes, $node->getContent());
 
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $node);

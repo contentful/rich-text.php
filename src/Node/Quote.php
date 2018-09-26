@@ -11,31 +11,8 @@ declare(strict_types=1);
 
 namespace Contentful\StructuredText\Node;
 
-class Quote implements NodeInterface
+class Quote extends BlockNode
 {
-    /**
-     * @var Paragraph[]
-     */
-    private $content = [];
-
-    /**
-     * Quote constructor.
-     *
-     * @param Paragraph[] $content
-     */
-    public function __construct(array $content)
-    {
-        $this->content = $content;
-    }
-
-    /**
-     * @return Paragraph[]
-     */
-    public function getContent(): array
-    {
-        return $this->content;
-    }
-
     /**
      * {@inheritdoc}
      */

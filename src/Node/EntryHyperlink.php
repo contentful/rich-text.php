@@ -13,7 +13,7 @@ namespace Contentful\StructuredText\Node;
 
 use Contentful\Core\Resource\ResourceInterface;
 
-class EntryHyperlink implements NodeInterface
+class EntryHyperlink extends InlineNode
 {
     /**
      * @var string

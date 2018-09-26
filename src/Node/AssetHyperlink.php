@@ -13,17 +13,17 @@ namespace Contentful\StructuredText\Node;
 
 use Contentful\Core\Resource\ResourceInterface;
 
-class AssetHyperlink implements NodeInterface
+class AssetHyperlink extends InlineNode
 {
     /**
      * @var string
      */
-    private $title;
+    protected $title;
 
     /**
      * @var ResourceInterface
      */
-    private $resource;
+    protected $resource;
 
     /**
      * AssetHyperlink constructor.

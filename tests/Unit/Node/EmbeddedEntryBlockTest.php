@@ -25,6 +25,8 @@ class EmbeddedEntryBlockTest extends TestCase
         $resource = new Resource('resourceId', 'Entry');
         $node = new EmbeddedEntryBlock($nodes, $resource);
 
+        $this->assertSame('block', $node->getNodeClass());
+
         $this->assertSame($nodes, $node->getContent());
         $this->assertSame($resource, $node->getResource());
 

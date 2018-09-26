@@ -11,31 +11,8 @@ declare(strict_types=1);
 
 namespace Contentful\StructuredText\Node;
 
-class Heading3 implements NodeInterface
+class Heading3 extends BlockNode
 {
-    /**
-     * @var NodeInterface[]
-     */
-    private $content = [];
-
-    /**
-     * Heading3 constructor.
-     *
-     * @param NodeInterface[] $content
-     */
-    public function __construct(array $content)
-    {
-        $this->content = $content;
-    }
-
-    /**
-     * @return NodeInterface[]
-     */
-    public function getContent(): array
-    {
-        return $this->content;
-    }
-
     /**
      * {@inheritdoc}
      */

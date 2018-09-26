@@ -11,31 +11,8 @@ declare(strict_types=1);
 
 namespace Contentful\StructuredText\Node;
 
-class ListItem implements NodeInterface
+class ListItem extends BlockNode
 {
-    /**
-     * @var NodeInterface[]
-     */
-    private $content = [];
-
-    /**
-     * ListItem constructor.
-     *
-     * @param NodeInterface[] $content
-     */
-    public function __construct(array $content)
-    {
-        $this->content = $content;
-    }
-
-    /**
-     * @return NodeInterface[]
-     */
-    public function getContent(): array
-    {
-        return $this->content;
-    }
-
     /**
      * {@inheritdoc}
      */

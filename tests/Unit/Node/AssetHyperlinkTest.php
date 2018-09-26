@@ -24,6 +24,8 @@ class AssetHyperlinkTest extends TestCase
         $resource = new Resource('resourceId', 'Asset');
         $node = new AssetHyperlink('Asset link', $resource);
 
+        $this->assertSame('inline', $node->getNodeClass());
+
         $this->assertSame('Asset link', $node->getTitle());
         $this->assertSame($resource, $node->getResource());
 

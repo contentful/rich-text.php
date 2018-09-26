@@ -44,6 +44,11 @@ class Node implements NodeInterface
         return 'node';
     }
 
+    public function getNodeClass(): string
+    {
+        return 'block';
+    }
+
     /**
      * {@inheritdoc}
      */

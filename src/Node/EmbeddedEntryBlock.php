@@ -13,17 +13,12 @@ namespace Contentful\StructuredText\Node;
 
 use Contentful\Core\Resource\ResourceInterface;
 
-class EmbeddedEntryBlock implements NodeInterface
+class EmbeddedEntryBlock extends BlockNode
 {
-    /**
-     * @var NodeInterface[]
-     */
-    private $content = [];
-
     /**
      * @var ResourceInterface
      */
-    private $resource;
+    protected $resource;
 
     /**
      * EmbeddedEntryBlock constructor.
@@ -33,16 +28,8 @@ class EmbeddedEntryBlock implements NodeInterface
      */
     public function __construct(array $content, ResourceInterface $resource)
     {
-        $this->content = $content;
+        parent::__construct($content);
         $this->resource = $resource;
-    }
-
-    /**
-     * @return NodeInterface[]
-     */
-    public function getContent(): array
-    {
-        return $this->content;
     }
 
     /**

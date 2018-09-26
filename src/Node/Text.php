@@ -13,7 +13,7 @@ namespace Contentful\StructuredText\Node;
 
 use Contentful\StructuredText\Mark\MarkInterface;
 
-class Text implements NodeInterface
+class Text extends InlineNode
 {
     /**
      * @var string
