@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/contentful-core.php/compare/1.0.0-beta1...HEAD)
+## [1.0.0-beta2](https://github.com/contentful/contentful-core.php/tree/1.0.0-beta2) (2018-09-26)
 
 ### Added
 
@@ -13,7 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   $renderer->appendNodeRenderer(new Contentful\StructuredText\NodeRenderer\CatchAll());
   ```
   It's important to use the `appendNodeRenderer` method to make the main renderer use it as last resort, otherwise, it will intercept all calls to other nodes.
-    
+* `NodeInterface` now includes method `getNodeClass`, for exposing whether a node is of type `block` or `inline`.    
 
 ## [1.0.0-beta1](https://github.com/contentful/contentful-core.php/tree/1.0.0-beta1) (2018-09-13)
 
