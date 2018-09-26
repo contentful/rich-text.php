@@ -11,8 +11,16 @@ declare(strict_types=1);
 
 namespace Contentful\StructuredText\Node;
 
-class Hr implements NodeInterface
+class Hr extends BlockNode
 {
+    /**
+     * Hr constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct([]);
+    }
+
     /**
      * {@inheritdoc}
      */

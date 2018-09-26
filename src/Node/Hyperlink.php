@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Contentful\StructuredText\Node;
 
-class Hyperlink implements NodeInterface
+class Hyperlink extends InlineNode
 {
     /**
      * @var string

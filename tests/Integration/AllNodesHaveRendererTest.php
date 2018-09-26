@@ -61,10 +61,17 @@ class AllNodesHaveRendererTest extends TestCase
      *
      * @param string $class
      */
-    public function testAllNodesHaveRenderer($class)
+    public function testAllNodesHaveRenderer(string $class)
     {
         $nodeClass = '\\Contentful\\StructuredText\\Node\\'.$class;
         $nodeRendererClass = '\\Contentful\\StructuredText\\NodeRenderer\\'.$class;
+
+        $reflection = new \ReflectionClass($nodeClass);
+        if ($reflection->isAbstract() || $reflection->isInterface()) {
+            $this->markTestAsPassed();
+
+            return;
+        }
 
         if (!\class_exists($nodeRendererClass)) {
             $this->fail(\sprintf(
@@ -98,6 +105,13 @@ class AllNodesHaveRendererTest extends TestCase
     public function testMainRendererCreatesAllNodeRenderers(string $class)
     {
         $nodeClass = '\\Contentful\\StructuredText\\Node\\'.$class;
+
+        $reflection = new \ReflectionClass($nodeClass);
+        if ($reflection->isAbstract() || $reflection->isInterface()) {
+            $this->markTestAsPassed();
+
+            return;
+        }
 
         $hydrator = new ObjectHydrator();
         /** @var NodeInterface $node */

@@ -11,31 +11,8 @@ declare(strict_types=1);
 
 namespace Contentful\StructuredText\Node;
 
-class OrderedList implements NodeInterface
+class OrderedList extends BlockNode
 {
-    /**
-     * @var ListItem[]
-     */
-    private $content = [];
-
-    /**
-     * OrderedList constructor.
-     *
-     * @param ListItem[] $content
-     */
-    public function __construct(array $content)
-    {
-        $this->content = $content;
-    }
-
-    /**
-     * @return ListItem[]
-     */
-    public function getContent(): array
-    {
-        return $this->content;
-    }
-
     /**
      * {@inheritdoc}
      */

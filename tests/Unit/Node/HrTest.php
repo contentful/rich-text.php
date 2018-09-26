@@ -21,6 +21,8 @@ class HrTest extends TestCase
         $this->assertSame('hr', Hr::getType());
         $node = new Hr();
 
+        $this->assertSame('block', $node->getNodeClass());
+
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $node);
     }
 }
