@@ -14,6 +14,38 @@ namespace Contentful\StructuredText\Node;
 abstract class InlineNode implements NodeInterface
 {
     /**
+     * @var NodeInterface[]
+     */
+    protected $content;
+
+    /**
+     * BlockNode constructor.
+     *
+     * @param NodeInterface[] $content
+     */
+    public function __construct(array $content)
+    {
+        foreach ($content as $node) {
+            if ($node instanceof BlockNode) {
+                throw new \InvalidArgumentException(\sprintf(
+                    'Node of class "%s" can not be set as child of class "%s", as it can not contain block nodes.',
+                    \get_class($node),
+                    \get_class($this)
+                ));
+            }
+        }
+        $this->content = $content;
+    }
+
+    /**
+     * @return NodeInterface[]
+     */
+    public function getContent(): array
+    {
+        return $this->content;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getNodeClass(): string

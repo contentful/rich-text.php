@@ -24,12 +24,13 @@ class EntryHyperlinkTest extends TestCase
     {
         $renderer = new Renderer();
         $nodeRenderer = new EntryHyperlink();
-        $node = new NodeClass('Entry title', new Resource('resourceId', 'Entry'));
+        $nodes = $this->createNodes(1);
+        $node = new NodeClass($nodes, new Resource('resourceId', 'Entry'), 'Entry title');
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));
 
-        $this->assertSame('<a href="#Entry-resourceId">Entry title</a>', $nodeRenderer->render($renderer, $node));
+        $this->assertRegExp('/\<a href\=\"\#Entry-resourceId\" title\=\"Entry title\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
     /**

@@ -18,31 +18,25 @@ class EntryHyperlink extends InlineNode
     /**
      * @var string
      */
-    private $title;
+    protected $title;
 
     /**
      * @var ResourceInterface
      */
-    private $resource;
+    protected $resource;
 
     /**
-     * EntryHyperlink constructor.
+     * AssetHyperlink constructor.
      *
-     * @param string            $title
+     * @param NodeInterface[]   $content
      * @param ResourceInterface $resource
+     * @param string            $title
      */
-    public function __construct(string $title, ResourceInterface $resource)
+    public function __construct(array $content, ResourceInterface $resource, string $title)
     {
-        $this->title = $title;
+        parent::__construct($content);
         $this->resource = $resource;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle(): string
-    {
-        return $this->title;
+        $this->title = $title;
     }
 
     /**
@@ -51,6 +45,14 @@ class EntryHyperlink extends InlineNode
     public function getResource(): ResourceInterface
     {
         return $this->resource;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
     }
 
     /**
@@ -72,6 +74,7 @@ class EntryHyperlink extends InlineNode
                 'title' => $this->title,
                 'target' => $this->resource->asLink(),
             ],
+            'content' => $this->content,
         ];
     }
 }

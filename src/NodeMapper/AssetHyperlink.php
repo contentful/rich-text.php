@@ -27,10 +27,11 @@ class AssetHyperlink implements NodeMapperInterface
         $linkData = $data['data']['target']['sys'];
 
         return new NodeClass(
-            $data['data']['title'],
+            $parser->parseCollection($data['content']),
             $linkResolver->resolveLink(
                 new Link($linkData['id'], $linkData['linkType'])
-            )
+            ),
+            $data['data']['title'] ?? ''
         );
     }
 }

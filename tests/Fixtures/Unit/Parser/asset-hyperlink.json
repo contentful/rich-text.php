@@ -9,5 +9,21 @@
                 "linkType": "Asset"
             }
         }
-    }
+    },
+    "content": [
+        {
+            "nodeType": "asset-hyperlink",
+            "data": {
+                "title": "Asset title",
+                "target": {
+                    "sys": {
+                        "type": "Link",
+                        "id": "resourceId",
+                        "linkType": "Asset"
+                    }
+                }
+            },
+            "content": []
+        }
+    ]
 }

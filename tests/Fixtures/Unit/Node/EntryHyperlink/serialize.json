@@ -9,5 +9,10 @@
                 "linkType": "Entry"
             }
         }
-    }
+    },
+    "content": [
+        {
+            "nodeType": "node"
+        }
+    ]
 }

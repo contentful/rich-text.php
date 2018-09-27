@@ -33,6 +33,7 @@ class Text extends InlineNode
      */
     public function __construct(string $value, array $marks = [])
     {
+        parent::__construct([]);
         $this->value = $value;
         $this->marks = $marks;
     }
@@ -70,6 +71,7 @@ class Text extends InlineNode
             'nodeType' => self::getType(),
             'value' => $this->value,
             'marks' => $this->marks,
+            'content' => $this->content,
         ];
     }
 }

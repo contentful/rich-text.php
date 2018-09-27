@@ -26,11 +26,13 @@ class Hyperlink extends InlineNode
     /**
      * Hyperlink constructor.
      *
-     * @param string $uri
-     * @param string $title
+     * @param NodeInterface[] $content
+     * @param string          $uri
+     * @param string          $title
      */
-    public function __construct(string $uri, string $title)
+    public function __construct(array $content, string $uri, string $title)
     {
+        parent::__construct($content);
         $this->uri = $uri;
         $this->title = $title;
     }
@@ -70,6 +72,7 @@ class Hyperlink extends InlineNode
                 'uri' => $this->uri,
                 'title' => $this->title,
             ],
+            'content' => $this->content,
         ];
     }
 }
