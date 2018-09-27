@@ -21,13 +21,15 @@ class EntryHyperlinkTest extends TestCase
     {
         $this->assertSame('entry-hyperlink', EntryHyperlink::getType());
 
+        $nodes = $this->createNodes(1);
         $resource = new Resource('resourceId', 'Entry');
-        $node = new EntryHyperlink('Entry link', $resource);
+        $node = new EntryHyperlink($nodes, $resource, 'Entry link');
 
         $this->assertSame('inline', $node->getNodeClass());
 
-        $this->assertSame('Entry link', $node->getTitle());
+        $this->assertSame($nodes, $node->getContent());
         $this->assertSame($resource, $node->getResource());
+        $this->assertSame('Entry link', $node->getTitle());
 
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $node);
     }

@@ -23,12 +23,13 @@ class HyperlinkTest extends TestCase
     {
         $renderer = new Renderer();
         $nodeRenderer = new Hyperlink();
-        $node = new NodeClass('https://www.contentful.com', 'Contentful');
+        $nodes = $this->createNodes(1);
+        $node = new NodeClass($nodes, 'https://www.contentful.com', 'Contentful');
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));
 
-        $this->assertSame('<a href="https://www.contentful.com">Contentful</a>', $nodeRenderer->render($renderer, $node));
+        $this->assertRegExp('/\<a href\=\"https\:\/\/www\.contentful\.com\" title\=\"Contentful\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
     /**

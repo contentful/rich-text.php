@@ -9,5 +9,21 @@
                 "linkType": "Entry"
             }
         }
-    }
+    },
+    "content": [
+        {
+            "nodeType": "entry-hyperlink",
+            "data": {
+                "title": "Entry title",
+                "target": {
+                    "sys": {
+                        "type": "Link",
+                        "id": "resourceId",
+                        "linkType": "Entry"
+                    }
+                }
+            },
+            "content": []
+        }
+    ]
 }

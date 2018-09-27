@@ -40,9 +40,10 @@ class Hyperlink implements NodeRendererInterface
         }
 
         return \sprintf(
-            '<a href="%s">%s</a>',
+            '<a href="%s" title="%s">%s</a>',
             $node->getUri(),
-            $node->getTitle()
+            $node->getTitle(),
+            $renderer->renderCollection($node->getContent())
         );
     }
 }

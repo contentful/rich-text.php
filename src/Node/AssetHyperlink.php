@@ -28,21 +28,15 @@ class AssetHyperlink extends InlineNode
     /**
      * AssetHyperlink constructor.
      *
-     * @param string            $title
+     * @param NodeInterface[]   $content
      * @param ResourceInterface $resource
+     * @param string            $title
      */
-    public function __construct(string $title, ResourceInterface $resource)
+    public function __construct(array $content, ResourceInterface $resource, string $title)
     {
-        $this->title = $title;
+        parent::__construct($content);
         $this->resource = $resource;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle(): string
-    {
-        return $this->title;
+        $this->title = $title;
     }
 
     /**
@@ -51,6 +45,14 @@ class AssetHyperlink extends InlineNode
     public function getResource(): ResourceInterface
     {
         return $this->resource;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
     }
 
     /**
@@ -72,6 +74,7 @@ class AssetHyperlink extends InlineNode
                 'title' => $this->title,
                 'target' => $this->resource->asLink(),
             ],
+            'content' => $this->content,
         ];
     }
 }

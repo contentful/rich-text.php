@@ -24,8 +24,9 @@ class Hyperlink implements NodeMapperInterface
     public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface
     {
         return new NodeClass(
+            $parser->parseCollection($data['content']),
             $data['data']['uri'],
-            $data['data']['title']
+            $data['data']['title'] ?? ''
         );
     }
 }

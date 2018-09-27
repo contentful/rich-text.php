@@ -18,11 +18,13 @@ class HyperlinkTest extends TestCase
 {
     public function testAll()
     {
+        $nodes = $this->createNodes(1);
         $this->assertSame('hyperlink', Hyperlink::getType());
-        $node = new Hyperlink('https://www.contentful.com', 'Contentful');
+        $node = new Hyperlink($nodes, 'https://www.contentful.com', 'Contentful');
 
         $this->assertSame('inline', $node->getNodeClass());
 
+        $this->assertSame($nodes, $node->getContent());
         $this->assertSame('https://www.contentful.com', $node->getUri());
         $this->assertSame('Contentful', $node->getTitle());
 

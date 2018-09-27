@@ -24,12 +24,13 @@ class AssetHyperlinkTest extends TestCase
     {
         $renderer = new Renderer();
         $nodeRenderer = new AssetHyperlink();
-        $node = new NodeClass('Asset title', new Resource('resourceId', 'Asset'));
+        $nodes = $this->createNodes(1);
+        $node = new NodeClass($nodes, new Resource('resourceId', 'Asset'), 'Asset title');
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));
 
-        $this->assertSame('<a href="#Asset-resourceId">Asset title</a>', $nodeRenderer->render($renderer, $node));
+        $this->assertRegExp('/\<a href\=\"\#Asset-resourceId\" title\=\"Asset title\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
     /**

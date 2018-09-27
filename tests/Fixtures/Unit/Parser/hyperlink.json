@@ -3,5 +3,15 @@
     "data": {
         "uri": "https://www.contentful.com",
         "title": "Contentful"
-    }
+    },
+    "content": [
+        {
+            "nodeType": "hyperlink",
+            "data": {
+                "uri": "https://www.contentful.com",
+                "title": "Contentful"
+            },
+            "content": []
+        }
+    ]
 }
