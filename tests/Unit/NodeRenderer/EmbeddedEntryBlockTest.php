@@ -29,7 +29,7 @@ class EmbeddedEntryBlockTest extends TestCase
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));
 
-        $this->assertSame('Entry#resourceId', $nodeRenderer->render($renderer, $node));
+        $this->assertSame('<div>Entry#resourceId</div>', $nodeRenderer->render($renderer, $node));
     }
 
     /**
