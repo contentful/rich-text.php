@@ -41,7 +41,7 @@ class Hyperlink implements NodeRendererInterface
 
         return \sprintf(
             '<a href="%s">%s</a>',
-            $node->getUrl(),
+            $node->getUri(),
             $node->getTitle()
         );
     }
