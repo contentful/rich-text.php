@@ -41,6 +41,6 @@ class EmbeddedEntryBlock implements NodeRendererInterface
 
         $resource = $node->getResource();
 
-        return $resource->getType().'#'.$resource->getId();
+        return '<div>'.$resource->getType().'#'.$resource->getId().'</div>';
     }
 }
