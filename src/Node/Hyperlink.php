@@ -16,7 +16,7 @@ class Hyperlink extends InlineNode
     /**
      * @var string
      */
-    private $url;
+    private $uri;
 
     /**
      * @var string
@@ -26,21 +26,21 @@ class Hyperlink extends InlineNode
     /**
      * Hyperlink constructor.
      *
-     * @param string $url
+     * @param string $uri
      * @param string $title
      */
-    public function __construct(string $url, string $title)
+    public function __construct(string $uri, string $title)
     {
-        $this->url = $url;
+        $this->uri = $uri;
         $this->title = $title;
     }
 
     /**
      * @return string
      */
-    public function getUrl(): string
+    public function getUri(): string
     {
-        return $this->url;
+        return $this->uri;
     }
 
     /**
@@ -67,7 +67,7 @@ class Hyperlink extends InlineNode
         return [
             'nodeType' => self::getType(),
             'data' => [
-                'url' => $this->url,
+                'uri' => $this->uri,
                 'title' => $this->title,
             ],
         ];

@@ -23,7 +23,7 @@ class HyperlinkTest extends TestCase
 
         $this->assertSame('inline', $node->getNodeClass());
 
-        $this->assertSame('https://www.contentful.com', $node->getUrl());
+        $this->assertSame('https://www.contentful.com', $node->getUri());
         $this->assertSame('Contentful', $node->getTitle());
 
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $node);
