@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText;
+namespace Contentful\Tests\RichText;
 
-use Contentful\StructuredText\Mark\MarkInterface;
-use Contentful\StructuredText\Node\NodeInterface;
-use Contentful\Tests\StructuredText\Implementation\Mark;
-use Contentful\Tests\StructuredText\Implementation\Node;
+use Contentful\RichText\Mark\MarkInterface;
+use Contentful\RichText\Node\NodeInterface;
+use Contentful\Tests\RichText\Implementation\Mark;
+use Contentful\Tests\RichText\Implementation\Node;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use function GuzzleHttp\json_decode as guzzle_json_decode;
 

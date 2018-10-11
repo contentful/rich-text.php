@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,17 +9,17 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Integration;
+namespace Contentful\Tests\RichText\Integration;
 
-use Contentful\StructuredText\Node\Heading1;
-use Contentful\StructuredText\Node\Hyperlink;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Node\Heading1;
+use Contentful\RichText\Node\Hyperlink;
+use Contentful\Tests\RichText\TestCase;
 
 class NoBlockNodeChildOfInlineTest extends TestCase
 {
     /**
      * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Node of class "Contentful\StructuredText\Node\Heading1" can not be set as child of class "Contentful\StructuredText\Node\Hyperlink", as it can not contain block nodes.
+     * @expectedExceptionMessage Node of class "Contentful\RichText\Node\Heading1" can not be set as child of class "Contentful\RichText\Node\Hyperlink", as it can not contain block nodes.
      */
     public function testInlineNodesCanNotHaveBlockAsChildren()
     {

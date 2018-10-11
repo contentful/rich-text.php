@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Integration;
+namespace Contentful\Tests\RichText\Integration;
 
-use Contentful\StructuredText\NodeMapper\NodeMapperInterface;
-use Contentful\StructuredText\Parser;
-use Contentful\Tests\StructuredText\Implementation\LinkResolver;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\NodeMapper\NodeMapperInterface;
+use Contentful\RichText\Parser;
+use Contentful\Tests\RichText\Implementation\LinkResolver;
+use Contentful\Tests\RichText\TestCase;
 use Symfony\Component\Finder\Finder;
 
 class AllNodesHaveParserTest extends TestCase
@@ -43,8 +43,8 @@ class AllNodesHaveParserTest extends TestCase
     public function testAllNodesHaveParser(string $file)
     {
         $file = \str_replace('.php', '', $file);
-        $nodeClass = '\\Contentful\\StructuredText\\Node\\'.$file;
-        $nodeMapperClass = '\\Contentful\\StructuredText\\NodeMapper\\'.$file;
+        $nodeClass = '\\Contentful\\RichText\\Node\\'.$file;
+        $nodeMapperClass = '\\Contentful\\RichText\\NodeMapper\\'.$file;
 
         $reflection = new \ReflectionClass($nodeClass);
         if ($reflection->isAbstract() || $reflection->isInterface()) {

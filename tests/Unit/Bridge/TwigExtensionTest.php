@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Unit\Bridge;
+namespace Contentful\Tests\RichText\Unit\Bridge;
 
-use Contentful\StructuredText\Bridge\TwigExtension;
-use Contentful\Tests\StructuredText\Implementation\Renderer;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Bridge\TwigExtension;
+use Contentful\Tests\RichText\Implementation\Renderer;
+use Contentful\Tests\RichText\TestCase;
 use Twig\Node\Node;
 use Twig\TwigFunction;
 
@@ -32,7 +32,7 @@ class TwigExtensionTest extends TestCase
 
         /** @var TwigFunction $function */
         $function = $functions[0];
-        $this->assertSame('structured_text_render', $function->getName());
+        $this->assertSame('rich_text_render', $function->getName());
         $callable = $function->getCallable();
         $this->assertInternalType('array', $callable);
         $this->assertSame($renderer, $callable[0]);
@@ -41,7 +41,7 @@ class TwigExtensionTest extends TestCase
 
         /** @var TwigFunction $function */
         $function = $functions[1];
-        $this->assertSame('structured_text_render_collection', $function->getName());
+        $this->assertSame('rich_text_render_collection', $function->getName());
         $callable = $function->getCallable();
         $this->assertInternalType('array', $callable);
         $this->assertSame($renderer, $callable[0]);

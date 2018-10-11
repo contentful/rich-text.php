@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Contentful\StructuredText;
+namespace Contentful\RichText;
 
 use Contentful\Core\Api\LinkResolverInterface;
-use Contentful\StructuredText\Node\NodeInterface;
-use Contentful\StructuredText\NodeMapper\NodeMapperInterface;
+use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\NodeMapper\NodeMapperInterface;
 
 /**
  * Parser class.
@@ -50,7 +50,7 @@ class Parser implements ParserInterface
         $nodeType = $data['nodeType'];
         if (!isset($this->mappers[$nodeType])) {
             throw new \InvalidArgumentException(\sprintf(
-                'Unrecognized node type "%s" when trying to parse structured text.',
+                'Unrecognized node type "%s" when trying to parse rich text.',
                 $data['nodeType']
             ));
         }

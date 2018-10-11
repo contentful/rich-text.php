@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,14 +9,14 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Integration;
+namespace Contentful\Tests\RichText\Integration;
 
-use Contentful\StructuredText\Bridge\TwigExtension;
-use Contentful\StructuredText\Renderer;
-use Contentful\Tests\StructuredText\Implementation\Node;
-use Contentful\Tests\StructuredText\Implementation\NodeRenderer;
-use Contentful\Tests\StructuredText\Implementation\TwigNodeRenderer;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Bridge\TwigExtension;
+use Contentful\RichText\Renderer;
+use Contentful\Tests\RichText\Implementation\Node;
+use Contentful\Tests\RichText\Implementation\NodeRenderer;
+use Contentful\Tests\RichText\Implementation\TwigNodeRenderer;
+use Contentful\Tests\RichText\TestCase;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 
@@ -50,14 +50,14 @@ class TwigNodeRendererTest extends TestCase
         $extension = new TwigExtension($renderer);
         $twig->addExtension($extension);
 
-        $template = $twig->createTemplate('The output is "{{ structured_text_render(node) }}"');
+        $template = $twig->createTemplate('The output is "{{ rich_text_render(node) }}"');
         $rendered = $template->render([
             'node' => new Node('Some text'),
         ]);
 
         $this->assertSame('The output is "Some text"', $rendered);
 
-        $template = $twig->createTemplate('The output is "{{ structured_text_render_collection(nodes) }}"');
+        $template = $twig->createTemplate('The output is "{{ rich_text_render_collection(nodes) }}"');
         $rendered = $template->render([
             'nodes' => [
                 new Node('First text -'),

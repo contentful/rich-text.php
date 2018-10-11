@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,14 +9,14 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Unit\NodeRenderer;
+namespace Contentful\Tests\RichText\Unit\NodeRenderer;
 
-use Contentful\StructuredText\Node\AssetHyperlink as NodeClass;
-use Contentful\StructuredText\NodeRenderer\AssetHyperlink;
-use Contentful\Tests\StructuredText\Implementation\Node;
-use Contentful\Tests\StructuredText\Implementation\Renderer;
-use Contentful\Tests\StructuredText\Implementation\Resource;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Node\AssetHyperlink as NodeClass;
+use Contentful\RichText\NodeRenderer\AssetHyperlink;
+use Contentful\Tests\RichText\Implementation\Node;
+use Contentful\Tests\RichText\Implementation\Renderer;
+use Contentful\Tests\RichText\Implementation\Resource;
+use Contentful\Tests\RichText\TestCase;
 
 class AssetHyperlinkTest extends TestCase
 {
@@ -35,7 +35,7 @@ class AssetHyperlinkTest extends TestCase
 
     /**
      * @expectedException        \LogicException
-     * @expectedExceptionMessage Trying to use node renderer "Contentful\StructuredText\NodeRenderer\AssetHyperlink" to render unsupported node of class "Contentful\Tests\StructuredText\Implementation\Node".
+     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\AssetHyperlink" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
      */
     public function testInvalidNodeRendered()
     {

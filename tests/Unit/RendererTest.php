@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,15 +9,15 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Unit;
+namespace Contentful\Tests\RichText\Unit;
 
-use Contentful\StructuredText\Node\Paragraph;
-use Contentful\StructuredText\Node\Text;
-use Contentful\StructuredText\NodeRenderer as NodeRendererNamespace;
-use Contentful\StructuredText\Renderer;
-use Contentful\Tests\StructuredText\Implementation\Node;
-use Contentful\Tests\StructuredText\Implementation\NodeRenderer;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Node\Paragraph;
+use Contentful\RichText\Node\Text;
+use Contentful\RichText\NodeRenderer as NodeRendererNamespace;
+use Contentful\RichText\Renderer;
+use Contentful\Tests\RichText\Implementation\Node;
+use Contentful\Tests\RichText\Implementation\NodeRenderer;
+use Contentful\Tests\RichText\TestCase;
 
 class RendererTest extends TestCase
 {
@@ -91,7 +91,7 @@ class RendererTest extends TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Structured text renderer could not find NodeRenderer instance which supports node of class "Contentful\Tests\StructuredText\Implementation\Node".
+     * @expectedExceptionMessage Structured text renderer could not find NodeRenderer instance which supports node of class "Contentful\Tests\RichText\Implementation\Node".
      */
     public function testUnsupportedNode()
     {

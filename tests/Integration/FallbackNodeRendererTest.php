@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Integration;
+namespace Contentful\Tests\RichText\Integration;
 
-use Contentful\StructuredText\NodeRenderer\CatchAll;
-use Contentful\StructuredText\Renderer;
-use Contentful\Tests\StructuredText\Implementation\Node;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\NodeRenderer\CatchAll;
+use Contentful\RichText\Renderer;
+use Contentful\Tests\RichText\Implementation\Node;
+use Contentful\Tests\RichText\TestCase;
 
 class FallbackNodeRendererTest extends TestCase
 {

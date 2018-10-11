@@ -1,6 +1,6 @@
 {
-    "name": "contentful/structured-text-renderer",
-    "description": "Renderer for the Contentful structured text",
+    "name": "contentful/rich-text",
+    "description": "Utilities for the Contentful Rich Text",
     "type": "library",
     "license": "MIT",
     "require": {
@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Contentful\\StructuredText\\": "src/"
+            "Contentful\\RichText\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Contentful\\Tests\\StructuredText\\": "tests"
+            "Contentful\\Tests\\RichText\\": "tests"
         }
     },
     "scripts": {
