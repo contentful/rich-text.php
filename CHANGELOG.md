@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/1.0.0-beta3...HEAD)
+## [1.0.0-beta4](https://github.com/contentful/rich-text.php/tree/1.0.0-beta4) (2018-10-11)
 
 ## Changed
 
