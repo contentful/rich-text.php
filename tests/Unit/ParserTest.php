@@ -54,6 +54,7 @@ class ParserTest extends TestCase
     {
         return [
             ['asset-hyperlink', NodeClass\AssetHyperlink::class],
+            ['blockquote', NodeClass\Blockquote::class],
             ['document', NodeClass\Document::class],
             ['embedded-entry-block', NodeClass\EmbeddedEntryBlock::class],
             ['entry-hyperlink', NodeClass\EntryHyperlink::class],
@@ -68,7 +69,6 @@ class ParserTest extends TestCase
             ['list-item', NodeClass\ListItem::class],
             ['ordered-list', NodeClass\OrderedList::class],
             ['paragraph', NodeClass\Paragraph::class],
-            ['quote', NodeClass\Quote::class],
             ['text', NodeClass\Text::class],
             ['unordered-list', NodeClass\UnorderedList::class],
         ];

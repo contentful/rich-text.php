@@ -11,14 +11,14 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\Node;
 
-class Quote extends BlockNode
+class Blockquote extends BlockNode
 {
     /**
      * {@inheritdoc}
      */
     public static function getType(): string
     {
-        return 'quote';
+        return 'blockquote';
     }
 
     /**

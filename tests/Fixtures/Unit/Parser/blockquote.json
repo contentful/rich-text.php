@@ -1,8 +1,8 @@
 {
-    "nodeType": "quote",
+    "nodeType": "blockquote",
     "content": [
         {
-            "nodeType": "quote",
+            "nodeType": "blockquote",
             "content": []
         }
     ]
