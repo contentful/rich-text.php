@@ -75,6 +75,7 @@ class Parser implements ParserInterface
     {
         return [
             Node\AssetHyperlink::getType() => new NodeMapper\AssetHyperlink(),
+            Node\Blockquote::getType() => new NodeMapper\Blockquote(),
             Node\Document::getType() => new NodeMapper\Document(),
             Node\EmbeddedEntryBlock::getType() => new NodeMapper\EmbeddedEntryBlock(),
             Node\EntryHyperlink::getType() => new NodeMapper\EntryHyperlink(),
@@ -89,7 +90,6 @@ class Parser implements ParserInterface
             Node\ListItem::getType() => new NodeMapper\ListItem(),
             Node\OrderedList::getType() => new NodeMapper\OrderedList(),
             Node\Paragraph::getType() => new NodeMapper\Paragraph(),
-            Node\Quote::getType() => new NodeMapper\Quote(),
             Node\Text::getType() => new NodeMapper\Text(),
             Node\UnorderedList::getType() => new NodeMapper\UnorderedList(),
         ];

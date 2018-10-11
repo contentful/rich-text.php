@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/contentful/rich-text.php/compare/1.0.0-beta3...HEAD)
 
+## Changed
+
+* Node `Quote` was renamed `Blockquote`. **[BREAKING]**
+
 ## [1.0.0-beta3](https://github.com/contentful/rich-text.php/tree/1.0.0-beta3) (2018-10-11)
 
 ## Changed

@@ -11,16 +11,16 @@ declare(strict_types=1);
 
 namespace Contentful\Tests\RichText\Unit\Node;
 
-use Contentful\RichText\Node\Quote;
+use Contentful\RichText\Node\Blockquote;
 use Contentful\Tests\RichText\TestCase;
 
-class QuoteTest extends TestCase
+class BlockquoteTest extends TestCase
 {
     public function testAll()
     {
-        $this->assertSame('quote', Quote::getType());
+        $this->assertSame('blockquote', Blockquote::getType());
         $nodes = $this->createNodes(5);
-        $node = new Quote($nodes);
+        $node = new Blockquote($nodes);
 
         $this->assertSame('block', $node->getNodeClass());
 

@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\NodeRenderer;
 
+use Contentful\RichText\Node\Blockquote as NodeClass;
 use Contentful\RichText\Node\NodeInterface;
-use Contentful\RichText\Node\Quote as NodeClass;
 use Contentful\RichText\RendererInterface;
 
-class Quote implements NodeRendererInterface
+class Blockquote implements NodeRendererInterface
 {
     /**
      * {@inheritdoc}

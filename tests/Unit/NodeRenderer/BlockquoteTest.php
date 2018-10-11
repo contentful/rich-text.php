@@ -11,18 +11,18 @@ declare(strict_types=1);
 
 namespace Contentful\Tests\RichText\Unit\NodeRenderer;
 
-use Contentful\RichText\Node\Quote as NodeClass;
-use Contentful\RichText\NodeRenderer\Quote;
+use Contentful\RichText\Node\Blockquote as NodeClass;
+use Contentful\RichText\NodeRenderer\Blockquote;
 use Contentful\Tests\RichText\Implementation\Node;
 use Contentful\Tests\RichText\Implementation\Renderer;
 use Contentful\Tests\RichText\TestCase;
 
-class QuoteTest extends TestCase
+class BlockquoteTest extends TestCase
 {
     public function testRendering()
     {
         $renderer = new Renderer();
-        $nodeRenderer = new Quote();
+        $nodeRenderer = new Blockquote();
         $node = new NodeClass([new Node('Some text')]);
 
         $this->assertTrue($nodeRenderer->supports($node));
@@ -33,12 +33,12 @@ class QuoteTest extends TestCase
 
     /**
      * @expectedException        \LogicException
-     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\Quote" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
+     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\Blockquote" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
      */
     public function testInvalidNodeRendered()
     {
         $renderer = new Renderer();
-        $nodeRenderer = new Quote();
+        $nodeRenderer = new Blockquote();
 
         $nodeRenderer->render($renderer, new Node('Some value'));
     }

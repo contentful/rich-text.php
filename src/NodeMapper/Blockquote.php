@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Contentful\RichText\NodeMapper;
 
 use Contentful\Core\Api\LinkResolverInterface;
+use Contentful\RichText\Node\Blockquote as NodeClass;
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\Node\Paragraph;
-use Contentful\RichText\Node\Quote as NodeClass;
 use Contentful\RichText\ParserInterface;
 
-class Quote implements NodeMapperInterface
+class Blockquote implements NodeMapperInterface
 {
     /**
      * {@inheritdoc}

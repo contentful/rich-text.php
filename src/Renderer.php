@@ -110,6 +110,7 @@ class Renderer implements RendererInterface
     {
         return [
             new NodeRenderer\AssetHyperlink(),
+            new NodeRenderer\Blockquote(),
             new NodeRenderer\Document(),
             new NodeRenderer\EmbeddedEntryBlock(),
             new NodeRenderer\EntryHyperlink(),
@@ -124,7 +125,6 @@ class Renderer implements RendererInterface
             new NodeRenderer\ListItem(),
             new NodeRenderer\OrderedList(),
             new NodeRenderer\Paragraph(),
-            new NodeRenderer\Quote(),
             new NodeRenderer\Text(),
             new NodeRenderer\UnorderedList(),
         ];
