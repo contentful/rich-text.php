@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,14 +9,14 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Unit;
+namespace Contentful\Tests\RichText\Unit;
 
-use Contentful\StructuredText\Node as NodeClass;
-use Contentful\StructuredText\Parser;
-use Contentful\Tests\StructuredText\Implementation\LinkResolver;
-use Contentful\Tests\StructuredText\Implementation\Node;
-use Contentful\Tests\StructuredText\Implementation\NodeMapper;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Node as NodeClass;
+use Contentful\RichText\Parser;
+use Contentful\Tests\RichText\Implementation\LinkResolver;
+use Contentful\Tests\RichText\Implementation\Node;
+use Contentful\Tests\RichText\Implementation\NodeMapper;
+use Contentful\Tests\RichText\TestCase;
 
 class ParserTest extends TestCase
 {
@@ -76,7 +76,7 @@ class ParserTest extends TestCase
 
     /**
      * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Unrecognized node type "invalid-node" when trying to parse structured text
+     * @expectedExceptionMessage Unrecognized node type "invalid-node" when trying to parse rich text
      */
     public function testInvalidNode()
     {
@@ -87,7 +87,7 @@ class ParserTest extends TestCase
 
     /**
      * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Unrecognized mark type "invalid-mark" when trying to parse structured text
+     * @expectedExceptionMessage Unrecognized mark type "invalid-mark" when trying to parse rich text
      */
     public function testInvalidMark()
     {

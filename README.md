@@ -1,10 +1,10 @@
-# structured-text-renderer.php
+# rich-text.php
 
-[![Packagist](https://img.shields.io/packagist/v/contentful/structured-text-renderer.svg?style=for-the-badge)](https://packagist.org/packages/contentful/contentful-management)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/contentful/structured-text-renderer.svg?style=for-the-badge)](https://packagist.org/packages/contentful/contentful-management)
-[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/contentful/structured-text-renderer.php.svg?style=for-the-badge)](https://circleci.com/gh/contentful/structured-text-renderer.php)
-[![Packagist](https://img.shields.io/github/license/contentful/structured-text-renderer.php.svg?style=for-the-badge)](https://packagist.org/packages/contentful/contentful-management.php)
-[![Codecov](https://img.shields.io/codecov/c/github/contentful/structured-text-renderer.php.svg?style=for-the-badge)](https://codecov.io/gh/contentful/contentful-management.php)
+[![Packagist](https://img.shields.io/packagist/v/contentful/rich-text.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/contentful/rich-text.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text)
+[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/contentful/rich-text.php.svg?style=for-the-badge)](https://circleci.com/gh/contentful/rich-text.php)
+[![Packagist](https://img.shields.io/github/license/contentful/rich-text.php.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text.php)
+[![Codecov](https://img.shields.io/codecov/c/github/contentful/rich-text.php.svg?style=for-the-badge)](https://codecov.io/gh/contentful/rich-text.php)
 
 [Contentful](https://www.contentful.com) is a content management platform for web applications, mobile apps and connected devices. It allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful offers tools for managing editorial teams and enabling cooperation between organizations.
 
@@ -15,7 +15,7 @@ The library requires at least PHP 7.0.
 To add this package to your `composer.json` and install it execute the following command:
 
 ``` bash
-composer require contentful/structured-text-renderer
+composer require contentful/rich-text
 ```
 
 Then, if not already done, include the Composer autoloader:
@@ -24,22 +24,22 @@ Then, if not already done, include the Composer autoloader:
 require_once 'vendor/autoload.php';
 ```
 
-This library is built to help with the parsing and rendering of the [structured text](https://www.contentful.com/developers/docs/tutorials/general/structured-text-field-type-alpha/) type in Contentful.
+This library is built to help with the parsing and rendering of the [rich text](https://www.contentful.com/developers/docs/tutorials/general/structured-text-field-type-alpha/) type in Contentful.
 
 ### Parsing
 
-The method `Contentful\StructuredText\Parser::parse(array $data)` accept a valid, unserialized structured text array, and returns an object which implements `Contentful\StructuredText\Node\NodeInterface`.
+The method `Contentful\StructuredText\Parser::parse(array $data)` accept a valid, unserialized rich text array, and returns an object which implements `Contentful\RichText\Node\NodeInterface`.
 
 ``` php
-$parser = new Contentful\StructuredText\Parser();
+$parser = new Contentful\RichText\Parser();
 
 // Fetch some data from an entry field from Contentful
 
-/** @var Contentful\StructuredText\Node\NodeInterface $node */
+/** @var Contentful\RichText\Node\NodeInterface $node */
 $node = $parser->parse($data);
 ```
 
-Depending of which type of node it actually is, the hierarchy can be navigated using getter methods. Please refer to the [full list of available nodes](https://github.com/contentful/structured-text-renderer.php/tree/master/src/Node) for a complete reference.
+Depending of which type of node it actually is, the hierarchy can be navigated using getter methods. Please refer to the [full list of available nodes](https://github.com/contentful/rich-text.php/tree/master/src/Node) for a complete reference.
 
 ### Rendering
 
@@ -173,7 +173,7 @@ Setup:
 $renderer = new \Contentful\StructuredText\Renderer();
 
 // Register the Twig extension, which will provide functions
-// structured_text_render() and structured_text_render_collection()
+// rich_text_render() and rich_text_render_collection()
 // in a Twig template
 $extension = new \Contentful\StructuredText\Bridge\TwigExtension($renderer);
 /** @var Twig\Environment $twig */
@@ -187,22 +187,22 @@ $renderer->pushNodeRenderer($customTwigHeading1NodeRenderer);
 Template:
 
 ``` twig
-<h1 class="my-custom-class">{{ structured_text_render_collection(node.content) }}</h1>  
+<h1 class="my-custom-class">{{ rich_text_render_collection(node.content) }}</h1>  
 ```
 
-For an example implementation of a Twig-based rendering process, check the [test node renderer](https://github.com/contentful/structured-text-renderer.php/blob/master/tests/Implementation/TwigNodeRenderer.php) and the [complete integration test](https://github.com/contentful/structured-text-renderer.php/blob/master/tests/Integration/TwigNodeRendererTest.php).
+For an example implementation of a Twig-based rendering process, check the [test node renderer](https://github.com/contentful/rich-text.php/blob/master/tests/Implementation/TwigNodeRenderer.php) and the [complete integration test](https://github.com/contentful/rich-text.php/blob/master/tests/Integration/TwigNodeRendererTest.php).
 
 ### Plates integration
 
 Setup:
 
 ``` php
-$renderer = new \Contentful\StructuredText\Renderer();
+$renderer = new \Contentful\RichText\Renderer();
 
 // Register the Plates extension, which will provide functions
-// $this->structuredTextRender() and $this->structuredTextRenderCollection()
+// $this->richTextRender() and $this->richTextRenderCollection()
 // in a Plates template
-$extension = new \Contentful\StructuredText\Bridge\PlatesExtension($renderer);
+$extension = new \Contentful\RichText\Bridge\PlatesExtension($renderer);
 /** @var League\Plates\Engine $plates */
 $plates->loadExtension($extension);
 
@@ -215,30 +215,30 @@ Template:
 
 ``` php
 // The function will output HTML, so remember *not* to escape it using $this->e()
-<?= $this->structuredTextRenderCollection($node->getContent()) ?>
+<?= $this->richTextRenderCollection($node->getContent()) ?>
 ```
 
-For an example implementation of a Plates-based rendering process, check the [test node renderer](https://github.com/contentful/structured-text-renderer.php/blob/master/tests/Implementation/PlatesNodeRenderer.php) and the [complete integration test](https://github.com/contentful/structured-text-renderer.php/blob/master/tests/Integration/PlatesNodeRendererTest.php).
+For an example implementation of a Plates-based rendering process, check the [test node renderer](https://github.com/contentful/rich-text.php/blob/master/tests/Implementation/PlatesNodeRenderer.php) and the [complete integration test](https://github.com/contentful/rich-text.php/blob/master/tests/Integration/PlatesNodeRendererTest.php).
 
 ## Avoid having the main renderer throw an exception
 
 The default renderer behavior when it does not find an appropriate node renderer is to throw an exception. To avoid this, you must set it up to use a special catch-all no renderer:
 
 ``` php
-$renderer = new Contentful\StructuredText\Renderer();
-$renderer->appendNodeRenderer(new Contentful\StructuredText\NodeRenderer\CatchAll());
+$renderer = new Contentful\RichText\Renderer();
+$renderer->appendNodeRenderer(new Contentful\RichText\NodeRenderer\CatchAll());
 ```
 
-The special `Contentful\StructuredText\NodeRenderer\CatchAll` node renderer will return an empty string regardless of the node type. It's important to use the `appendNodeRenderer` instead of the usual `pushNodeRenderer` method to make this special node renderer have the lowest priority, therefore avoiding it intercepting regular node renderers.
+The special `Contentful\RichText\NodeRenderer\CatchAll` node renderer will return an empty string regardless of the node type. It's important to use the `appendNodeRenderer` instead of the usual `pushNodeRenderer` method to make this special node renderer have the lowest priority, therefore avoiding it intercepting regular node renderers.
 
 ## Glossary
 
 | Name | Interface | Description |
 |---|---|---|
-| Node | `Contentful\StructuredText\Node\NodeInterface` | The PHP representation of a structured text node |
-| Renderer | `Contentful\StructuredText\RendererInterface` | A class which accepts all sorts of nodes, and then delegates rendering to the appropriate node renderer |
-| Node renderer | `Contentful\StructuredText\NodeRenderer\NodeRendererInterface` | A class whose purpose is to be able to render a specific type of node |
-| Parser | `Contentful\StructuredText\ParserInterface` | A class that's responsible for turning an array of unserialized JSON data into a tree of node objects |
+| Node | `Contentful\RichText\Node\NodeInterface` | The PHP representation of a rich text node |
+| Renderer | `Contentful\RichText\RendererInterface` | A class which accepts all sorts of nodes, and then delegates rendering to the appropriate node renderer |
+| Node renderer | `Contentful\RichText\NodeRenderer\NodeRendererInterface` | A class whose purpose is to be able to render a specific type of node |
+| Parser | `Contentful\RichText\ParserInterface` | A class that's responsible for turning an array of unserialized JSON data into a tree of node objects |
 
 ## License
 

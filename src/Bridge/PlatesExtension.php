@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Contentful\StructuredText\Bridge;
+namespace Contentful\RichText\Bridge;
 
-use Contentful\StructuredText\Renderer;
-use Contentful\StructuredText\RendererInterface;
+use Contentful\RichText\Renderer;
+use Contentful\RichText\RendererInterface;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 
@@ -47,10 +47,10 @@ class PlatesExtension implements ExtensionInterface
 
         /** @var \League\Plates\callback $callback */
         $callback = [$this->renderer, 'render'];
-        $engine->registerFunction('structuredTextRender', $callback);
+        $engine->registerFunction('richTextRender', $callback);
 
         /** @var \League\Plates\callback $callback */
         $callback = [$this->renderer, 'renderCollection'];
-        $engine->registerFunction('structuredTextRenderCollection', $callback);
+        $engine->registerFunction('richTextRenderCollection', $callback);
     }
 }

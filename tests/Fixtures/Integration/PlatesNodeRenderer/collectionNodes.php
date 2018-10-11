@@ -1,1 +1,1 @@
-The output is "<?php echo $this->structuredTextRenderCollection($nodes); ?>"
+The output is "<?php echo $this->richTextRenderCollection($nodes); ?>"

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Contentful\StructuredText\NodeRenderer;
+namespace Contentful\RichText\NodeRenderer;
 
-use Contentful\StructuredText\Node\Document as NodeClass;
-use Contentful\StructuredText\Node\NodeInterface;
-use Contentful\StructuredText\RendererInterface;
+use Contentful\RichText\Node\Document as NodeClass;
+use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\RendererInterface;
 
 class Document implements NodeRendererInterface
 {

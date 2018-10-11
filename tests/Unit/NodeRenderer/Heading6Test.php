@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,13 +9,13 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Unit\NodeRenderer;
+namespace Contentful\Tests\RichText\Unit\NodeRenderer;
 
-use Contentful\StructuredText\Node\Heading6 as NodeClass;
-use Contentful\StructuredText\NodeRenderer\Heading6;
-use Contentful\Tests\StructuredText\Implementation\Node;
-use Contentful\Tests\StructuredText\Implementation\Renderer;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Node\Heading6 as NodeClass;
+use Contentful\RichText\NodeRenderer\Heading6;
+use Contentful\Tests\RichText\Implementation\Node;
+use Contentful\Tests\RichText\Implementation\Renderer;
+use Contentful\Tests\RichText\TestCase;
 
 class Heading6Test extends TestCase
 {
@@ -33,7 +33,7 @@ class Heading6Test extends TestCase
 
     /**
      * @expectedException        \LogicException
-     * @expectedExceptionMessage Trying to use node renderer "Contentful\StructuredText\NodeRenderer\Heading6" to render unsupported node of class "Contentful\Tests\StructuredText\Implementation\Node".
+     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\Heading6" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
      */
     public function testInvalidNodeRendered()
     {

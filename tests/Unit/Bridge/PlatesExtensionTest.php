@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Unit\Bridge;
+namespace Contentful\Tests\RichText\Unit\Bridge;
 
-use Contentful\StructuredText\Bridge\PlatesExtension;
-use Contentful\StructuredText\RendererInterface;
-use Contentful\Tests\StructuredText\Implementation\Renderer;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Bridge\PlatesExtension;
+use Contentful\RichText\RendererInterface;
+use Contentful\Tests\RichText\Implementation\Renderer;
+use Contentful\Tests\RichText\TestCase;
 use League\Plates\Engine;
 
 class PlatesExtensionTest extends TestCase
@@ -30,12 +30,12 @@ class PlatesExtensionTest extends TestCase
         $engine->method('registerFunction')
             ->willReturnCallback(function (string $name, callable $callback) {
                 switch ($name) {
-                    case 'structuredTextRender':
+                    case 'richTextRender':
                         $this->assertInternalType('array', $callback);
                         $this->assertInstanceOf(RendererInterface::class, $callback[0]);
                         $this->assertSame('render', $callback[1]);
                         break;
-                    case 'structuredTextRenderCollection':
+                    case 'richTextRenderCollection':
                         $this->assertInternalType('array', $callback);
                         $this->assertInstanceOf(RendererInterface::class, $callback[0]);
                         $this->assertSame('renderCollection', $callback[1]);

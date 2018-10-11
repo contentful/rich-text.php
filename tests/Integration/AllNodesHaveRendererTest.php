@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the contentful/structured-text-renderer package.
+ * This file is part of the contentful/rich-text package.
  *
  * @copyright 2015-2018 Contentful GmbH
  * @license   MIT
@@ -9,14 +9,14 @@
 
 declare(strict_types=1);
 
-namespace Contentful\Tests\StructuredText\Integration;
+namespace Contentful\Tests\RichText\Integration;
 
 use Contentful\Core\ResourceBuilder\ObjectHydrator;
-use Contentful\StructuredText\Node\NodeInterface;
-use Contentful\StructuredText\NodeRenderer\NodeRendererInterface;
-use Contentful\StructuredText\Renderer;
-use Contentful\Tests\StructuredText\Implementation\Node;
-use Contentful\Tests\StructuredText\TestCase;
+use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\NodeRenderer\NodeRendererInterface;
+use Contentful\RichText\Renderer;
+use Contentful\Tests\RichText\Implementation\Node;
+use Contentful\Tests\RichText\TestCase;
 use Symfony\Component\Finder\Finder;
 
 class AllNodesHaveRendererTest extends TestCase
@@ -46,7 +46,7 @@ class AllNodesHaveRendererTest extends TestCase
             }
 
             $nodeRendererClass = \str_replace('.php', '', $file->getRelativePathname());
-            $fqcn = '\\Contentful\\StructuredText\\NodeRenderer\\'.$nodeRendererClass;
+            $fqcn = '\\Contentful\\RichText\\NodeRenderer\\'.$nodeRendererClass;
 
             $this->allNodeRenderers[$nodeRendererClass] = new $fqcn();
         }
@@ -63,8 +63,8 @@ class AllNodesHaveRendererTest extends TestCase
      */
     public function testAllNodesHaveRenderer(string $class)
     {
-        $nodeClass = '\\Contentful\\StructuredText\\Node\\'.$class;
-        $nodeRendererClass = '\\Contentful\\StructuredText\\NodeRenderer\\'.$class;
+        $nodeClass = '\\Contentful\\RichText\\Node\\'.$class;
+        $nodeRendererClass = '\\Contentful\\RichText\\NodeRenderer\\'.$class;
 
         $reflection = new \ReflectionClass($nodeClass);
         if ($reflection->isAbstract() || $reflection->isInterface()) {
@@ -104,7 +104,7 @@ class AllNodesHaveRendererTest extends TestCase
      */
     public function testMainRendererCreatesAllNodeRenderers(string $class)
     {
-        $nodeClass = '\\Contentful\\StructuredText\\Node\\'.$class;
+        $nodeClass = '\\Contentful\\RichText\\Node\\'.$class;
 
         $reflection = new \ReflectionClass($nodeClass);
         if ($reflection->isAbstract() || $reflection->isInterface()) {
