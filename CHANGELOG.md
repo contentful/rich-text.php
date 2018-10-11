@@ -3,9 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/contentful-core.php/compare/1.0.0-beta2...HEAD)
+## [1.0.0-beta3](https://github.com/contentful/rich-text.php/tree/1.0.0-beta3) (2018-10-11)
 
-## [1.0.0-beta2](https://github.com/contentful/contentful-core.php/tree/1.0.0-beta2) (2018-09-26)
+## Changed
+
+* The package was renamed from `contentful/structured-text-renderer` to `contentful/rich-text`. **[BREAKING]**
+
+## [1.0.0-beta2](https://github.com/contentful/rich-text.php/tree/1.0.0-beta2) (2018-09-26)
 
 ### Added
 
@@ -17,7 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   It's important to use the `appendNodeRenderer` method to make the main renderer use it as last resort, otherwise, it will intercept all calls to other nodes.
 * `NodeInterface` now includes method `getNodeClass`, for exposing whether a node is of type `block` or `inline`.    
 
-## [1.0.0-beta1](https://github.com/contentful/contentful-core.php/tree/1.0.0-beta1) (2018-09-13)
+## [1.0.0-beta1](https://github.com/contentful/rich-text.php/tree/1.0.0-beta1) (2018-09-13)
 
 ### Added
 
