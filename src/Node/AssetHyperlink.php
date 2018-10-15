@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\Node;
 
-use Contentful\Core\Resource\ResourceInterface;
+use Contentful\Core\Resource\AssetInterface;
 
 class AssetHyperlink extends InlineNode
 {
@@ -21,30 +21,30 @@ class AssetHyperlink extends InlineNode
     protected $title;
 
     /**
-     * @var ResourceInterface
+     * @var AssetInterface
      */
-    protected $resource;
+    protected $asset;
 
     /**
      * AssetHyperlink constructor.
      *
-     * @param NodeInterface[]   $content
-     * @param ResourceInterface $resource
-     * @param string            $title
+     * @param NodeInterface[] $content
+     * @param AssetInterface  $asset
+     * @param string          $title
      */
-    public function __construct(array $content, ResourceInterface $resource, string $title)
+    public function __construct(array $content, AssetInterface $asset, string $title)
     {
         parent::__construct($content);
-        $this->resource = $resource;
+        $this->asset = $asset;
         $this->title = $title;
     }
 
     /**
-     * @return ResourceInterface
+     * @return AssetInterface
      */
-    public function getResource(): ResourceInterface
+    public function getAsset(): AssetInterface
     {
-        return $this->resource;
+        return $this->asset;
     }
 
     /**
@@ -72,7 +72,7 @@ class AssetHyperlink extends InlineNode
             'nodeType' => self::getType(),
             'data' => [
                 'title' => $this->title,
-                'target' => $this->resource->asLink(),
+                'target' => $this->asset->asLink(),
             ],
             'content' => $this->content,
         ];

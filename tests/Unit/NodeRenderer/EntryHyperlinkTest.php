@@ -13,9 +13,9 @@ namespace Contentful\Tests\RichText\Unit\NodeRenderer;
 
 use Contentful\RichText\Node\EntryHyperlink as NodeClass;
 use Contentful\RichText\NodeRenderer\EntryHyperlink;
+use Contentful\Tests\RichText\Implementation\Entry;
 use Contentful\Tests\RichText\Implementation\Node;
 use Contentful\Tests\RichText\Implementation\Renderer;
-use Contentful\Tests\RichText\Implementation\Resource;
 use Contentful\Tests\RichText\TestCase;
 
 class EntryHyperlinkTest extends TestCase
@@ -25,12 +25,12 @@ class EntryHyperlinkTest extends TestCase
         $renderer = new Renderer();
         $nodeRenderer = new EntryHyperlink();
         $nodes = $this->createNodes(1);
-        $node = new NodeClass($nodes, new Resource('resourceId', 'Entry'), 'Entry title');
+        $node = new NodeClass($nodes, new Entry('entryId'), 'Entry title');
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));
 
-        $this->assertRegExp('/\<a href\=\"\#Entry-resourceId\" title\=\"Entry title\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
+        $this->assertRegExp('/\<a href\=\"\#Entry-entryId\" title\=\"Entry title\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
     /**

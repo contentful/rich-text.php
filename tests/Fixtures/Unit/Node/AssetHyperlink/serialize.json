@@ -5,7 +5,7 @@
         "target": {
             "sys": {
                 "type": "Link",
-                "id": "resourceId",
+                "id": "assetId",
                 "linkType": "Asset"
             }
         }

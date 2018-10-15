@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Contentful\Tests\RichText\Unit\Node;
 
 use Contentful\RichText\Node\EmbeddedEntryBlock;
-use Contentful\Tests\RichText\Implementation\Resource;
+use Contentful\Tests\RichText\Implementation\Entry;
 use Contentful\Tests\RichText\TestCase;
 
 class EmbeddedEntryBlockTest extends TestCase
@@ -22,13 +22,13 @@ class EmbeddedEntryBlockTest extends TestCase
         $this->assertSame('embedded-entry-block', EmbeddedEntryBlock::getType());
 
         $nodes = $this->createNodes(5);
-        $resource = new Resource('resourceId', 'Entry');
-        $node = new EmbeddedEntryBlock($nodes, $resource);
+        $entry = new Entry('entryId');
+        $node = new EmbeddedEntryBlock($nodes, $entry);
 
         $this->assertSame('block', $node->getNodeClass());
 
         $this->assertSame($nodes, $node->getContent());
-        $this->assertSame($resource, $node->getResource());
+        $this->assertSame($entry, $node->getEntry());
 
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $node);
     }
