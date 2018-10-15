@@ -11,33 +11,33 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\Node;
 
-use Contentful\Core\Resource\ResourceInterface;
+use Contentful\Core\Resource\EntryInterface;
 
 class EmbeddedEntryBlock extends BlockNode
 {
     /**
-     * @var ResourceInterface
+     * @var EntryInterface
      */
-    protected $resource;
+    protected $entry;
 
     /**
      * EmbeddedEntryBlock constructor.
      *
-     * @param NodeInterface[]   $content
-     * @param ResourceInterface $resource
+     * @param NodeInterface[] $content
+     * @param EntryInterface  $entry
      */
-    public function __construct(array $content, ResourceInterface $resource)
+    public function __construct(array $content, EntryInterface $entry)
     {
         parent::__construct($content);
-        $this->resource = $resource;
+        $this->entry = $entry;
     }
 
     /**
-     * @return ResourceInterface
+     * @return EntryInterface
      */
-    public function getResource(): ResourceInterface
+    public function getEntry(): EntryInterface
     {
-        return $this->resource;
+        return $this->entry;
     }
 
     /**
@@ -56,7 +56,7 @@ class EmbeddedEntryBlock extends BlockNode
         return [
             'nodeType' => self::getType(),
             'data' => [
-                'target' => $this->resource->asLink(),
+                'target' => $this->entry->asLink(),
             ],
             'content' => $this->content,
         ];

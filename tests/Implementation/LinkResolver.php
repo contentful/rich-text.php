@@ -25,6 +25,13 @@ class LinkResolver implements LinkResolverInterface
      */
     public function resolveLink(Link $link, array $parameters = []): ResourceInterface
     {
-        return new Resource($link->getId(), $link->getLinkType());
+        switch ($link->getLinkType()) {
+            case 'Asset':
+                return new Asset($link->getId());
+            case 'Entry':
+                return new Entry($link->getId());
+            default:
+                return new Resource($link->getId(), $link->getLinkType());
+        }
     }
 }

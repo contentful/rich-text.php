@@ -4,7 +4,7 @@
         "target": {
             "sys": {
                 "type": "Link",
-                "id": "resourceId",
+                "id": "entryId",
                 "linkType": "Entry"
             }
         }
