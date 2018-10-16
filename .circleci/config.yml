@@ -44,10 +44,22 @@ jobs:
       - run: { name: "Test suite", command: "composer test-quick-fail" }
 
   test72:
-    docker:
+      environment:
+          CC_TEST_REPORTER_ID: 8feb70b07f601a8af99f8d07d8a3531350ffcf3d73fb448d7d8e593bc53c9771
+      docker:
       - image: circleci/php:7.2-cli
-    steps:
+      steps:
       - checkout
+      - run:
+            name: Set up Code Climate test-reporter
+            command: |
+                curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+                chmod +x ./cc-test-reporter
       - run: { name: "Install dependencies", command: "sudo composer self-update && composer install -n --prefer-dist" }
-      - run: { name: "Test suite", command: "composer test-quick-fail" }
-      - run: { name: "Upload code coverage", command: "bash <(curl -s https://codecov.io/bash) -f build/logs/clover.xml" }
+      - run:
+            name: Test suite
+            command: |
+                sudo docker-php-ext-enable xdebug
+                ./cc-test-reporter before-build
+                composer test-quick-fail
+                ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?

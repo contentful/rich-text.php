@@ -35,12 +35,4 @@ abstract class BlockNode implements NodeInterface
     {
         return $this->content;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getNodeClass(): string
-    {
-        return 'block';
-    }
 }

@@ -5,15 +5,24 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/contentful/rich-text.php/compare/1.0.0-beta4...HEAD)
 
+### Changed
+
+* Node `AssetHyperlink` now expects an object implementing `AssetInterface` instead of `ResourceInterface`. **[BREAKING]**
+* Nodes `EmbeddedEntryBlock` and `EntryHyperlink` now expects an object implementing `EntryInterface` instead of `ResourceInterface`. **[BREAKING]**
+
+### Removed
+
+* Method `getNodeClass` was removed from `NodeInterface`. **[BREAKING]**
+
 ## [1.0.0-beta4](https://github.com/contentful/rich-text.php/tree/1.0.0-beta4) (2018-10-11)
 
-## Changed
+### Changed
 
 * Node `Quote` was renamed `Blockquote`. **[BREAKING]**
 
 ## [1.0.0-beta3](https://github.com/contentful/rich-text.php/tree/1.0.0-beta3) (2018-10-11)
 
-## Changed
+### Changed
 
 * The package was renamed from `contentful/structured-text-renderer` to `contentful/rich-text`. **[BREAKING]**
 

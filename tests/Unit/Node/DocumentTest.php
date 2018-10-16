@@ -22,8 +22,6 @@ class DocumentTest extends TestCase
         $nodes = $this->createNodes(5);
         $node = new Document($nodes);
 
-        $this->assertSame('block', $node->getNodeClass());
-
         $this->assertSame($nodes, $node->getContent());
 
         $this->assertJsonFixtureEqualsJsonObject('serialize.json', $node);

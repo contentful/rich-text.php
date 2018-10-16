@@ -22,8 +22,6 @@ class TextTest extends TestCase
         $marks = $this->createMarks(5);
         $node = new Text('Some text', $marks);
 
-        $this->assertSame('inline', $node->getNodeClass());
-
         $this->assertSame('Some text', $node->getValue());
         $this->assertSame($marks, $node->getMarks());
 
