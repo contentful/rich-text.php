@@ -25,8 +25,6 @@ class EmbeddedEntryBlockTest extends TestCase
         $entry = new Entry('entryId');
         $node = new EmbeddedEntryBlock($nodes, $entry);
 
-        $this->assertSame('block', $node->getNodeClass());
-
         $this->assertSame($nodes, $node->getContent());
         $this->assertSame($entry, $node->getEntry());
 

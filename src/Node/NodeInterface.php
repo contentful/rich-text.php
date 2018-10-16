@@ -26,11 +26,4 @@ interface NodeInterface extends \JsonSerializable
      * @return string
      */
     public static function getType(): string;
-
-    /**
-     * Returns whether the node is of class block or inline.
-     *
-     * @return string
-     */
-    public function getNodeClass(): string;
 }

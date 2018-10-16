@@ -34,6 +34,7 @@ abstract class InlineNode implements NodeInterface
                 ));
             }
         }
+
         $this->content = $content;
     }
 
@@ -43,13 +44,5 @@ abstract class InlineNode implements NodeInterface
     public function getContent(): array
     {
         return $this->content;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getNodeClass(): string
-    {
-        return 'inline';
     }
 }

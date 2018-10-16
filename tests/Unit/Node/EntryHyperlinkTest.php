@@ -25,8 +25,6 @@ class EntryHyperlinkTest extends TestCase
         $entry = new Entry('entryId');
         $node = new EntryHyperlink($nodes, $entry, 'Entry link');
 
-        $this->assertSame('inline', $node->getNodeClass());
-
         $this->assertSame($nodes, $node->getContent());
         $this->assertSame($entry, $node->getEntry());
         $this->assertSame('Entry link', $node->getTitle());
