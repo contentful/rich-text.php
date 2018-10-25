@@ -1,0 +1,13 @@
+{
+    "nodeType": "embedded-asset-block",
+    "data": {
+        "target": {
+            "sys": {
+                "type": "Link",
+                "id": "resourceId",
+                "linkType": "Asset"
+            }
+        }
+    },
+    "content": []
+}

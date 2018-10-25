@@ -112,6 +112,7 @@ class Renderer implements RendererInterface
             new NodeRenderer\AssetHyperlink(),
             new NodeRenderer\Blockquote(),
             new NodeRenderer\Document(),
+            new NodeRenderer\EmbeddedAssetBlock(),
             new NodeRenderer\EmbeddedEntryBlock(),
             new NodeRenderer\EntryHyperlink(),
             new NodeRenderer\Heading1(),
