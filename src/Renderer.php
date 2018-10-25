@@ -124,6 +124,7 @@ class Renderer implements RendererInterface
             new NodeRenderer\Hr(),
             new NodeRenderer\Hyperlink(),
             new NodeRenderer\ListItem(),
+            new NodeRenderer\Nothing(),
             new NodeRenderer\OrderedList(),
             new NodeRenderer\Paragraph(),
             new NodeRenderer\Text(),
