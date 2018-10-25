@@ -24,11 +24,11 @@ Then, if not already done, include the Composer autoloader:
 require_once 'vendor/autoload.php';
 ```
 
-This library is built to help with the parsing and rendering of the [rich text](https://www.contentful.com/developers/docs/tutorials/general/structured-text-field-type-alpha/) type in Contentful.
+This library is built to help with the parsing and rendering of the [rich text](https://www.contentful.com/developers/docs/concepts/rich-text/) type in Contentful.
 
 ### Parsing
 
-The method `Contentful\StructuredText\Parser::parse(array $data)` accept a valid, unserialized rich text array, and returns an object which implements `Contentful\RichText\Node\NodeInterface`.
+The method `Contentful\RichText\Parser::parse(array $data)` accept a valid, unserialized rich text array, and returns an object which implements `Contentful\RichText\Node\NodeInterface`.
 
 ``` php
 $parser = new Contentful\RichText\Parser();
@@ -46,7 +46,7 @@ Depending of which type of node it actually is, the hierarchy can be navigated u
 The main purpose of this library is to provide an automated way of rendering nodes. The simplest setup involves just creating an instance of the `Renderer` class:
 
 ``` php
-$renderer = new Contentful\StructuredText\Renderer();
+$renderer = new Contentful\RichText\Renderer();
 
 $output = $renderer->render($node);
 ```
@@ -54,10 +54,10 @@ $output = $renderer->render($node);
 The library provides defaults for all types of supported nodes. However, it is likely that you will need to override some of these defaults, in order to customize the output. In order to do this, you have to create `NodeRenderer` classes, which implement the `Contentful\StructuredText\NodeRenderer` interface:
 
 ``` php
-namespace Contentful\StructuredText\NodeRenderer;
+namespace Contentful\RichText\NodeRenderer;
 
-use Contentful\StructuredText\Node\NodeInterface;
-use Contentful\StructuredText\RendererInterface;
+use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\RendererInterface;
 
 /**
  * NodeRendererInterface.
@@ -103,10 +103,10 @@ interface NodeRendererInterface
 For instance, if you want to add a class to all `h1` tags, you will have something similar to this:
 
 ``` php
-use Contentful\StructuredText\NodeRenderer\NodeRendererInterface;
-use Contentful\StructuredText\Node\NodeInterface;
-use Contentful\StructuredText\Node\Heading1;
-use Contentful\StructuredText\RendererInterface;
+use Contentful\RichText\NodeRenderer\NodeRendererInterface;
+use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\Node\Heading1;
+use Contentful\RichText\RendererInterface;
 
 class CustomHeading1 implements NodeRendererInterface
 {
@@ -132,10 +132,10 @@ Now all instances of `Heading1` node will be rendered using the custom node rend
 
 ``` php
 use Twig\Environment;
-use Contentful\StructuredText\NodeRenderer\NodeRendererInterface;
-use Contentful\StructuredText\Node\NodeInterface;
-use Contentful\StructuredText\Node\Heading1;
-use Contentful\StructuredText\RendererInterface;
+use Contentful\RichText\NodeRenderer\NodeRendererInterface;
+use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\Node\Heading1;
+use Contentful\RichText\RendererInterface;
 
 class TwigCustomHeading1 implements NodeRendererInterface
 {
@@ -170,12 +170,12 @@ This library provides out-of-the-box support for Twig and Plates, which allow yo
 Setup:
 
 ``` php
-$renderer = new \Contentful\StructuredText\Renderer();
+$renderer = new \Contentful\RichText\Renderer();
 
 // Register the Twig extension, which will provide functions
 // rich_text_render() and rich_text_render_collection()
 // in a Twig template
-$extension = new \Contentful\StructuredText\Bridge\TwigExtension($renderer);
+$extension = new \Contentful\RichText\Bridge\TwigExtension($renderer);
 /** @var Twig\Environment $twig */
 $twig->addExtension($extension);
 

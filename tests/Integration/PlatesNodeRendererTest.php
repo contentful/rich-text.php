@@ -23,7 +23,7 @@ class PlatesNodeRendererTest extends TestCase
 {
     public function testPlatesNodeRenderer()
     {
-        $path = $this->convertClassToFixturePath(static::class);
+        $path = $this->getClassFixturePath(static::class);
         // Create a Plates engine
         $engine = new Engine($path);
 
@@ -40,7 +40,7 @@ class PlatesNodeRendererTest extends TestCase
 
     public function testPlatesExtension()
     {
-        $path = $this->convertClassToFixturePath(static::class);
+        $path = $this->getClassFixturePath(static::class);
         // Create a Plates engine
         $engine = new Engine($path);
 

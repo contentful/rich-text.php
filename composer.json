@@ -22,7 +22,8 @@
     "autoload-dev": {
         "psr-4": {
             "Contentful\\Tests\\RichText\\": "tests"
-        }
+        },
+        "files": ["vendor/contentful/core/scripts/TestCase.php"]
     },
     "scripts": {
         "test": "vendor/bin/phpunit",

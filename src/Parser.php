@@ -38,7 +38,7 @@ class Parser implements ParserInterface
      */
     public function __construct(LinkResolverInterface $linkResolver, array $mappers = [])
     {
-        $this->linkResolver = $linkResolver;
+        $this->linkResolver = new SafeLinkResolver($linkResolver);
         $this->mappers = \array_merge($this->createMappers(), $mappers);
     }
 

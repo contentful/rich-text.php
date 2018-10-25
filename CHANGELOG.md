@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/contentful/rich-text.php/compare/1.0.0-beta5...HEAD)
 
+### Added
+
+* Node `EmbeddedAssetBlock` has been implemented.
+
+### Changed
+
+* The given `LinkResolverInterface` is now wrapped through a `SafeLinkResolver`, which makes sure an object implementing `EntryInterface` or `AssetInterface` is always returned.
+
 ## [1.0.0-beta5](https://github.com/contentful/rich-text.php/tree/1.0.0-beta5) (2018-10-16)
 
 ### Changed
