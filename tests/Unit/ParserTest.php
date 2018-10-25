@@ -56,6 +56,7 @@ class ParserTest extends TestCase
             ['asset-hyperlink', NodeClass\AssetHyperlink::class],
             ['blockquote', NodeClass\Blockquote::class],
             ['document', NodeClass\Document::class],
+            ['embedded-asset-block', NodeClass\EmbeddedAssetBlock::class],
             ['embedded-entry-block', NodeClass\EmbeddedEntryBlock::class],
             ['entry-hyperlink', NodeClass\EntryHyperlink::class],
             ['heading-1', NodeClass\Heading1::class],

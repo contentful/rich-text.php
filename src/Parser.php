@@ -77,6 +77,7 @@ class Parser implements ParserInterface
             Node\AssetHyperlink::getType() => new NodeMapper\AssetHyperlink(),
             Node\Blockquote::getType() => new NodeMapper\Blockquote(),
             Node\Document::getType() => new NodeMapper\Document(),
+            Node\EmbeddedAssetBlock::getType() => new NodeMapper\EmbeddedAssetBlock(),
             Node\EmbeddedEntryBlock::getType() => new NodeMapper\EmbeddedEntryBlock(),
             Node\EntryHyperlink::getType() => new NodeMapper\EntryHyperlink(),
             Node\Heading1::getType() => new NodeMapper\Heading1(),
