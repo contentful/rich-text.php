@@ -13,6 +13,7 @@ namespace Contentful\Tests\RichText\Unit;
 
 use Contentful\RichText\Node as NodeClass;
 use Contentful\RichText\Parser;
+use Contentful\Tests\RichText\Implementation\FailingLinkResolver;
 use Contentful\Tests\RichText\Implementation\LinkResolver;
 use Contentful\Tests\RichText\Implementation\Node;
 use Contentful\Tests\RichText\Implementation\NodeMapper;
@@ -95,5 +96,31 @@ class ParserTest extends TestCase
         $parser = new Parser(new LinkResolver());
 
         $parser->parse($this->getParsedFixture('invalid-mark.json'));
+    }
+
+    /**
+     * @dataProvider provideInvalidLinkNodes
+     *
+     * @param string $file
+     */
+    public function testMapperException(string $file)
+    {
+        $parser = new Parser(new FailingLinkResolver());
+
+        $node = $parser->parse($this->getParsedFixture($file.'.json'));
+
+        $this->assertInstanceOf(NodeClass\Nothing::class, $node);
+
+        $this->assertJsonFixtureEqualsJsonObject($file.'.json', $node);
+    }
+
+    public function provideInvalidLinkNodes(): array
+    {
+        return [
+            ['asset-hyperlink'],
+            ['embedded-asset-block'],
+            ['embedded-entry-block'],
+            ['entry-hyperlink'],
+        ];
     }
 }

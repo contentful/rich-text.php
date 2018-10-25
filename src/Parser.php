@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Contentful\RichText;
 
 use Contentful\Core\Api\LinkResolverInterface;
+use Contentful\RichText\Exception\MapperException;
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\NodeMapper\NodeMapperInterface;
 
@@ -20,6 +21,11 @@ use Contentful\RichText\NodeMapper\NodeMapperInterface;
  */
 class Parser implements ParserInterface
 {
+    /**
+     * @var string
+     */
+    const NOTHING_NODE_TYPE = 'nothing';
+
     /**
      * @var LinkResolverInterface
      */
@@ -57,7 +63,17 @@ class Parser implements ParserInterface
 
         $mapper = $this->mappers[$nodeType];
 
-        return $mapper->map($this, $this->linkResolver, $data);
+        try {
+            $node = $mapper->map($this, $this->linkResolver, $data);
+        } catch (MapperException $exception) {
+            $node = $this->mappers[self::NOTHING_NODE_TYPE]->map(
+                $this,
+                $this->linkResolver,
+                $exception->getData()
+            );
+        }
+
+        return $node;
     }
 
     /**
@@ -89,6 +105,7 @@ class Parser implements ParserInterface
             Node\Hr::getType() => new NodeMapper\Hr(),
             Node\Hyperlink::getType() => new NodeMapper\Hyperlink(),
             Node\ListItem::getType() => new NodeMapper\ListItem(),
+            Node\Nothing::getType() => new NodeMapper\Nothing(),
             Node\OrderedList::getType() => new NodeMapper\OrderedList(),
             Node\Paragraph::getType() => new NodeMapper\Paragraph(),
             Node\Text::getType() => new NodeMapper\Text(),
