@@ -123,4 +123,17 @@ class ParserTest extends TestCase
             ['entry-hyperlink'],
         ];
     }
+
+    public function testCustomMapper()
+    {
+        $parser = new Parser(new LinkResolver());
+
+        $parser->setNodeMapper('custom-node', new NodeMapper());
+
+        /** @var Node $node */
+        $node = $parser->parse($this->getParsedFixture('custom-node.json'));
+
+        $this->assertInstanceOf(Node::class, $node);
+        $this->assertSame('Node value', $node->getValue());
+    }
 }
