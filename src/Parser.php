@@ -112,4 +112,15 @@ class Parser implements ParserInterface
             Node\UnorderedList::getType() => new NodeMapper\UnorderedList(),
         ];
     }
+
+    /**
+     * Add a custom mapper or replace a default one.
+     *
+     * @param string              $nodeType
+     * @param NodeMapperInterface $nodeMapper
+     */
+    public function setNodeMapper(string $nodeType, NodeMapperInterface $nodeMapper)
+    {
+        $this->mappers[$nodeType] = $nodeMapper;
+    }
 }

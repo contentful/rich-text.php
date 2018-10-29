@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/contentful/rich-text.php/compare/1.0.0...HEAD)
 
+### Added
+
+* Method `Parser::setNodeMapper(string $nodeType, NodeMapperInterface $nodeMapper)` was added, now it's possible to define custom mappers after the parser's creation.
+
 ## [1.0.0](https://github.com/contentful/rich-text.php/tree/1.0.0) (2018-10-25)
 
 ### Added
