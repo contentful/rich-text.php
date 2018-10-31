@@ -1,0 +1,13 @@
+{
+    "nodeType": "embedded-asset-inline",
+    "data": {
+        "target": {
+            "sys": {
+                "type": "Link",
+                "id": "resourceId",
+                "linkType": "Asset"
+            }
+        }
+    },
+    "content": []
+}
