@@ -58,7 +58,9 @@ class ParserTest extends TestCase
             ['blockquote', NodeClass\Blockquote::class],
             ['document', NodeClass\Document::class],
             ['embedded-asset-block', NodeClass\EmbeddedAssetBlock::class],
+            ['embedded-asset-inline', NodeClass\EmbeddedAssetInline::class],
             ['embedded-entry-block', NodeClass\EmbeddedEntryBlock::class],
+            ['embedded-entry-inline', NodeClass\EmbeddedEntryInline::class],
             ['entry-hyperlink', NodeClass\EntryHyperlink::class],
             ['heading-1', NodeClass\Heading1::class],
             ['heading-2', NodeClass\Heading2::class],
@@ -119,7 +121,9 @@ class ParserTest extends TestCase
         return [
             ['asset-hyperlink'],
             ['embedded-asset-block'],
+            ['embedded-asset-inline'],
             ['embedded-entry-block'],
+            ['embedded-entry-inline'],
             ['entry-hyperlink'],
         ];
     }
