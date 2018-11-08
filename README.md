@@ -1,34 +1,29 @@
 # rich-text.php
 
 [![Packagist](https://img.shields.io/packagist/v/contentful/rich-text.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/contentful/rich-text.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text)
-[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/contentful/rich-text.php.svg?style=for-the-badge)](https://circleci.com/gh/contentful/rich-text.php)
-[![Packagist](https://img.shields.io/github/license/contentful/rich-text.php.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text.php)
-[![Codecov](https://img.shields.io/codecov/c/github/contentful/rich-text.php.svg?style=for-the-badge)](https://codecov.io/gh/contentful/rich-text.php)
+[![PHP minimum version](https://img.shields.io/packagist/php-v/contentful/rich-text.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text)
+[![CircleCI](https://img.shields.io/circleci/project/github/contentful/rich-text.php/master.svg?style=for-the-badge)](https://circleci.com/gh/contentful/rich-text.php)
+[![License](https://img.shields.io/github/license/contentful/rich-text.php.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text.php)
 
-[Contentful](https://www.contentful.com) is a content management platform for web applications, mobile apps and connected devices. It allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful offers tools for managing editorial teams and enabling cooperation between organizations.
-
-The library requires at least PHP 7.0.
+> This library is built to help you with the parsing and rendering of the [rich text](https://www.contentful.com/developers/docs/concepts/rich-text/) field type in Contentful. It requires at least PHP 7.0.
 
 ## Setup
 
-To add this package to your `composer.json` and install it execute the following command:
+Add this package to your application by using [Composer](https://getcomposer.org/) and executing the following command:
 
 ``` bash
 composer require contentful/rich-text
 ```
 
-Then, if not already done, include the Composer autoloader:
+Then, if you haven't already, include the Composer autoloader:
 
 ``` php
 require_once 'vendor/autoload.php';
 ```
 
-This library is built to help with the parsing and rendering of the [rich text](https://www.contentful.com/developers/docs/concepts/rich-text/) type in Contentful.
-
 ### Parsing
 
-The method `Contentful\RichText\Parser::parse(array $data)` accept a valid, unserialized rich text array, and returns an object which implements `Contentful\RichText\Node\NodeInterface`.
+The method `Contentful\RichText\Parser::parse(array $data)` accepts a valid, unserialized rich text data structure, and returns an object which implements `Contentful\RichText\Node\NodeInterface`.
 
 ``` php
 $parser = new Contentful\RichText\Parser();
@@ -43,7 +38,7 @@ Depending of which type of node it actually is, the hierarchy can be navigated u
 
 ### Rendering
 
-The main purpose of this library is to provide an automated way of rendering nodes. The simplest setup involves just creating an instance of the `Renderer` class:
+The main purpose of this library is to provide an automated way of rendering nodes. The simplest setup involves just creating an instance of the `Contentful\RichText\Renderer` class:
 
 ``` php
 $renderer = new Contentful\RichText\Renderer();
@@ -51,7 +46,7 @@ $renderer = new Contentful\RichText\Renderer();
 $output = $renderer->render($node);
 ```
 
-The library provides defaults for all types of supported nodes. However, it is likely that you will need to override some of these defaults, in order to customize the output. In order to do this, you have to create `NodeRenderer` classes, which implement the `Contentful\StructuredText\NodeRenderer` interface:
+The library provides defaults for all types of supported nodes. However, it is likely that you will need to override some of these defaults, in order to customize the output. To do this, you will create `NodeRenderer` classes, which implement the `Contentful\RichText\NodeRenderer\NodeRendererInterface` interface:
 
 ``` php
 namespace Contentful\RichText\NodeRenderer;
@@ -163,19 +158,20 @@ class TwigCustomHeading1 implements NodeRendererInterface
 }
 ```
 
-This library provides out-of-the-box support for Twig and Plates, which allow you to call `RenderInterface::render()` and `RenderInterface::renderCollection()` methods from a template. To enable the appropriate extension, just let the Twig environment or Plates engine know about it:
+This library provides out-of-the-box support for Twig and Plates, which allow you to call `RenderInterface::render()` and `RenderInterface::renderCollection()` methods from a template. To enable the appropriate extension, just let the Twig environment or Plates engine know about it as described below.
 
 ### Twig integration
 
 Setup:
 
 ``` php
-$renderer = new \Contentful\RichText\Renderer();
+$renderer = new Contentful\RichText\Renderer();
 
 // Register the Twig extension, which will provide functions
 // rich_text_render() and rich_text_render_collection()
 // in a Twig template
-$extension = new \Contentful\RichText\Bridge\TwigExtension($renderer);
+$extension = new Contentful\RichText\Bridge\TwigExtension($renderer);
+
 /** @var Twig\Environment $twig */
 $twig->addExtension($extension);
 
@@ -203,6 +199,7 @@ $renderer = new \Contentful\RichText\Renderer();
 // $this->richTextRender() and $this->richTextRenderCollection()
 // in a Plates template
 $extension = new \Contentful\RichText\Bridge\PlatesExtension($renderer);
+
 /** @var League\Plates\Engine $plates */
 $plates->loadExtension($extension);
 
@@ -220,9 +217,9 @@ Template:
 
 For an example implementation of a Plates-based rendering process, check the [test node renderer](https://github.com/contentful/rich-text.php/blob/master/tests/Implementation/PlatesNodeRenderer.php) and the [complete integration test](https://github.com/contentful/rich-text.php/blob/master/tests/Integration/PlatesNodeRendererTest.php).
 
-## Avoid having the main renderer throw an exception
+## How to avoid having the main renderer throw an exception on unknown nodes
 
-The default renderer behavior when it does not find an appropriate node renderer is to throw an exception. To avoid this, you must set it up to use a special catch-all no renderer:
+The default renderer behavior for when it does not find an appropriate node renderer is to throw an exception. To avoid this, you must set it up to use a special catch-all node renderer:
 
 ``` php
 $renderer = new Contentful\RichText\Renderer();
@@ -239,6 +236,10 @@ The special `Contentful\RichText\NodeRenderer\CatchAll` node renderer will retur
 | Renderer | `Contentful\RichText\RendererInterface` | A class which accepts all sorts of nodes, and then delegates rendering to the appropriate node renderer |
 | Node renderer | `Contentful\RichText\NodeRenderer\NodeRendererInterface` | A class whose purpose is to be able to render a specific type of node |
 | Parser | `Contentful\RichText\ParserInterface` | A class that's responsible for turning an array of unserialized JSON data into a tree of node objects |
+
+## About Contentful
+
+[Contentful](https://www.contentful.com) is a content management platform for web applications, mobile apps and connected devices. It allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful offers tools for managing editorial teams and enabling cooperation between organizations.
 
 ## License
 

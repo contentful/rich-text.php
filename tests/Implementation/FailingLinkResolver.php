@@ -27,4 +27,12 @@ class FailingLinkResolver implements LinkResolverInterface
     {
         throw new \Exception();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function resolveLinkCollection(array $links, array $parameters = []): array
+    {
+        throw new \Exception();
+    }
 }
