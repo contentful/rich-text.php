@@ -34,4 +34,14 @@ class LinkResolver implements LinkResolverInterface
                 return new Resource($link->getId(), $link->getLinkType());
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function resolveLinkCollection(array $links, array $parameters = []): array
+    {
+        return \array_map(function (Link $link) use ($parameters): ResourceInterface {
+            return $this->resolveLink($link, $parameters);
+        }, $links);
+    }
 }
