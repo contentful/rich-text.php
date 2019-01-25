@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2018 Contentful GmbH
+ * @copyright 2015-2019 Contentful GmbH
  * @license   MIT
  */
 
@@ -23,7 +23,7 @@ class PlatesNodeRendererTest extends TestCase
 {
     public function testPlatesNodeRenderer()
     {
-        $path = $this->convertClassToFixturePath(static::class);
+        $path = $this->getTestFixturesPath();
         // Create a Plates engine
         $engine = new Engine($path);
 

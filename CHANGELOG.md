@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/contentful/rich-text.php/compare/1.2.0...HEAD)
 
+<!-- PENDING-CHANGES -->
+> No meaningful changes since last release.
+<!-- /PENDING-CHANGES -->
+
 ## [1.2.0](https://github.com/contentful/rich-text.php/tree/1.2.0) (2018-10-31)
 
 ### Added
