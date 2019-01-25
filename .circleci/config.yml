@@ -8,6 +8,7 @@ workflows:
       - test70
       - test71
       - test72
+      - test73
 
 jobs:
   lint:
@@ -63,3 +64,11 @@ jobs:
                 ./cc-test-reporter before-build
                 composer test-quick-fail
                 ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
+
+  test73:
+      docker:
+          - image: circleci/php:7.3-cli
+      steps:
+          - checkout
+          - run: { name: "Install dependencies", command: "sudo composer self-update && composer install -n --prefer-dist" }
+          - run: { name: "Test suite", command: "composer test-quick-fail" }
