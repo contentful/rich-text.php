@@ -21,7 +21,7 @@ class CatchAll implements NodeRendererInterface
      */
     public function supports(NodeInterface $node): bool
     {
-        return \true;
+        return true;
     }
 
     /**

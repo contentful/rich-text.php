@@ -30,7 +30,7 @@ class AllNodesHaveParserTest extends TestCase
 
         $object = new \ReflectionObject($parser);
         $property = $object->getProperty('mappers');
-        $property->setAccessible(\true);
+        $property->setAccessible(true);
 
         $this->mappers = $property->getValue($parser);
     }
