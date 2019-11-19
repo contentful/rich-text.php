@@ -40,7 +40,7 @@ class Text implements NodeRendererInterface
             $tag = $this->getHtmlTagForMark($mark);
 
             return \sprintf('<%s>%s</%s>', $tag, $value, $tag);
-        }, $node->getValue());
+        }, \htmlentities($node->getValue()));
     }
 
     private function getHtmlTagForMark(MarkInterface $mark): string

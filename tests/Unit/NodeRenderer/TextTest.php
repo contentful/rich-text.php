@@ -37,6 +37,16 @@ class TextTest extends TestCase
         $this->assertSame('<u><em><code><strong>Some text</strong></code></em></u>', $nodeRenderer->render($renderer, $node));
     }
 
+    public function testEscapingHtml() {
+        $renderer = new Renderer();
+        $nodeRenderer = new Text();
+        $node = new NodeClass('Some test with <table><tr><td>TEST</td></tr></table> HTML', [
+            new Mark\Bold(),
+        ]);
+
+        $this->assertSame('<strong>Some test with &lt;table&gt;&lt;tr&gt;&lt;td&gt;TEST&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; HTML</strong>', $nodeRenderer->render($renderer, $node));
+    }
+
     /**
      * @expectedException        \LogicException
      * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\Text" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
