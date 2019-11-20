@@ -112,7 +112,7 @@ class CustomHeading1 implements NodeRendererInterface
 
     public function render(RendererInterface $renderer, NodeInterface $node, array $context = []): string
     {
-        return '<h1 class="my-custom-class">'.$renderer->renderNodeCollection($node->getContent()).'</h1>';
+        return '<h1 class="my-custom-class">'.$renderer->renderCollection($node->getContent()).'</h1>';
     }
 }
 ```
