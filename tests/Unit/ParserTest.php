@@ -36,9 +36,6 @@ class ParserTest extends TestCase
 
     /**
      * @dataProvider provideNodes
-     *
-     * @param string $file
-     * @param string $class
      */
     public function testParseNode(string $file, string $class)
     {
@@ -102,8 +99,6 @@ class ParserTest extends TestCase
 
     /**
      * @dataProvider provideInvalidLinkNodes
-     *
-     * @param string $file
      */
     public function testMapperException(string $file)
     {

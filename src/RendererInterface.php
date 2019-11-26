@@ -29,8 +29,6 @@ interface RendererInterface
      *
      * @param NodeInterface $node    The node that will be rendered
      * @param array         $context Optionally, extra context variables which will be passed down to the node renderer
-     *
-     * @return string
      */
     public function render(NodeInterface $node, array $context = []): string;
 
@@ -39,8 +37,6 @@ interface RendererInterface
      *
      * @param NodeInterface[] $nodes   The collection of nodes that will be rendered
      * @param array           $context Optionally, extra context variables which will be passed down to the node renderer
-     *
-     * @return string
      */
     public function renderCollection(array $nodes, array $context = []): string;
 }
