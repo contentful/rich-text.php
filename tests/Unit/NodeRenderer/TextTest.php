@@ -37,7 +37,8 @@ class TextTest extends TestCase
         $this->assertSame('<u><em><code><strong>Some text</strong></code></em></u>', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testEscapingHtml() {
+    public function testEscapingHtml()
+    {
         $renderer = new Renderer();
         $nodeRenderer = new Text();
         $node = new NodeClass('Some test with <table><tr><td>TEST</td></tr></table> HTML', [
