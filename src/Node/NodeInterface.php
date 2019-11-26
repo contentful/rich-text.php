@@ -22,8 +22,6 @@ interface NodeInterface extends \JsonSerializable
 {
     /**
      * Returns the internal type of a node object.
-     *
-     * @return string
      */
     public static function getType(): string;
 }

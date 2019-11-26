@@ -37,8 +37,6 @@ class AllNodesHaveParserTest extends TestCase
 
     /**
      * @dataProvider classFileProvider
-     *
-     * @param string $file
      */
     public function testAllNodesHaveParser(string $file)
     {

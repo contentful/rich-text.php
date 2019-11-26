@@ -26,15 +26,11 @@ interface ParserInterface
      * Transforms an array of rich text into node objects.
      *
      * @param array $data The unserialized JSON rich text
-     *
-     * @return NodeInterface
      */
     public function parse(array $data): NodeInterface;
 
     /**
      * Transforms an array of rich text into node objects.
-     *
-     * @param array $data
      *
      * @return NodeInterface[]
      */

@@ -24,7 +24,6 @@ class EmbeddedEntryInline extends InlineNode
      * EmbeddedEntryInline constructor.
      *
      * @param NodeInterface[] $content
-     * @param EntryInterface  $entry
      */
     public function __construct(array $content, EntryInterface $entry)
     {
@@ -32,9 +31,6 @@ class EmbeddedEntryInline extends InlineNode
         $this->entry = $entry;
     }
 
-    /**
-     * @return EntryInterface
-     */
     public function getEntry(): EntryInterface
     {
         return $this->entry;

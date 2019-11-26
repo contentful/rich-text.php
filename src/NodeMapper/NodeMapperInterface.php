@@ -19,13 +19,7 @@ use Contentful\RichText\ParserInterface;
 interface NodeMapperInterface
 {
     /**
-     * @param ParserInterface       $parser
-     * @param LinkResolverInterface $linkResolver
-     * @param array                 $data
-     *
      * @throws MapperException
-     *
-     * @return NodeInterface
      */
     public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface;
 }

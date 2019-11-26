@@ -21,8 +21,6 @@ interface MarkInterface extends \JsonSerializable
 {
     /**
      * Returns the internal type of a mark object.
-     *
-     * @return string
      */
     public static function getType(): string;
 }

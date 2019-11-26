@@ -33,11 +33,7 @@ class Text implements NodeRendererInterface
     {
         /* @var NodeClass $node */
         if (!$node instanceof NodeClass) {
-            throw new \LogicException(\sprintf(
-                'Trying to use node renderer "%s" to render unsupported node of class "%s".',
-                \get_class($this),
-                \get_class($node)
-            ));
+            throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', \get_class($this), \get_class($node)));
         }
 
         return \array_reduce($node->getMarks(), function (string $value, MarkInterface $mark) {
@@ -47,11 +43,6 @@ class Text implements NodeRendererInterface
         }, $node->getValue());
     }
 
-    /**
-     * @param MarkInterface $mark
-     *
-     * @return string
-     */
     private function getHtmlTagForMark(MarkInterface $mark): string
     {
         $type = $mark->getType();

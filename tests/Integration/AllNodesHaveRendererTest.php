@@ -58,8 +58,6 @@ class AllNodesHaveRendererTest extends TestCase
 
     /**
      * @dataProvider classFileProvider
-     *
-     * @param string $class
      */
     public function testAllNodesHaveRenderer(string $class)
     {
@@ -99,8 +97,6 @@ class AllNodesHaveRendererTest extends TestCase
 
     /**
      * @dataProvider classFileProvider
-     *
-     * @param string $class
      */
     public function testMainRendererCreatesAllNodeRenderers(string $class)
     {

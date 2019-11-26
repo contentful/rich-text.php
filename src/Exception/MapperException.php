@@ -20,11 +20,6 @@ class MapperException extends \Exception
 
     /**
      * MapperException constructor.
-     *
-     * @param array           $data
-     * @param string          $message
-     * @param int             $code
-     * @param \Throwable|null $previous
      */
     public function __construct(array $data, string $message = '', int $code = 0, \Throwable $previous = null)
     {
@@ -33,9 +28,6 @@ class MapperException extends \Exception
         $this->data = $data;
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         return $this->data;

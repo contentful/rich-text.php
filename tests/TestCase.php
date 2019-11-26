@@ -20,8 +20,6 @@ use Contentful\Tests\TestCase as BaseTestCase;
 class TestCase extends BaseTestCase
 {
     /**
-     * @param int $amount
-     *
      * @return NodeInterface[]
      */
     protected function createNodes(int $amount = 5): array
@@ -36,8 +34,6 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * @param int $amount
-     *
      * @return MarkInterface[]
      */
     protected function createMarks(int $amount = 5): array
