@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Contentful\Tests\RichText\Unit\Node;
 
 use Contentful\RichText\Node\EmbeddedEntryBlock;
+use Contentful\RichText\NodeMapper\Reference\StaticEntryReference;
 use Contentful\Tests\RichText\Implementation\Entry;
 use Contentful\Tests\RichText\TestCase;
 
@@ -23,7 +24,7 @@ class EmbeddedEntryBlockTest extends TestCase
 
         $nodes = $this->createNodes(5);
         $entry = new Entry('entryId');
-        $node = new EmbeddedEntryBlock($nodes, $entry);
+        $node = new EmbeddedEntryBlock($nodes, new StaticEntryReference($entry));
 
         $this->assertSame($nodes, $node->getContent());
         $this->assertSame($entry, $node->getEntry());

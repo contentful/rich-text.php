@@ -11,9 +11,10 @@ declare(strict_types=1);
 
 namespace Contentful\Tests\RichText\Unit\NodeRenderer;
 
+use Contentful\Core\Api\Link;
 use Contentful\RichText\Node\EmbeddedEntryBlock as NodeClass;
 use Contentful\RichText\NodeRenderer\EmbeddedEntryBlock;
-use Contentful\Tests\RichText\Implementation\Entry;
+use Contentful\Tests\RichText\Implementation\LinkResolver;
 use Contentful\Tests\RichText\Implementation\Node;
 use Contentful\Tests\RichText\Implementation\Renderer;
 use Contentful\Tests\RichText\TestCase;
@@ -24,7 +25,8 @@ class EmbeddedEntryBlockTest extends TestCase
     {
         $renderer = new Renderer();
         $nodeRenderer = new EmbeddedEntryBlock();
-        $node = new NodeClass([], new Entry('entryId'));
+
+        $node = new NodeClass([], new Link('entryId', 'Entry'), new LinkResolver());
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));

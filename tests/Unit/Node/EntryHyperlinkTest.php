@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Contentful\Tests\RichText\Unit\Node;
 
 use Contentful\RichText\Node\EntryHyperlink;
+use Contentful\RichText\NodeMapper\Reference\StaticEntryReference;
 use Contentful\Tests\RichText\Implementation\Entry;
 use Contentful\Tests\RichText\TestCase;
 
@@ -23,7 +24,7 @@ class EntryHyperlinkTest extends TestCase
 
         $nodes = $this->createNodes(1);
         $entry = new Entry('entryId');
-        $node = new EntryHyperlink($nodes, $entry, 'Entry link');
+        $node = new EntryHyperlink($nodes, 'Entry link', new StaticEntryReference($entry));
 
         $this->assertSame($nodes, $node->getContent());
         $this->assertSame($entry, $node->getEntry());

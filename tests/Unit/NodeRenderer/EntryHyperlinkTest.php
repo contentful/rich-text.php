@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Contentful\Tests\RichText\Unit\NodeRenderer;
 
 use Contentful\RichText\Node\EntryHyperlink as NodeClass;
+use Contentful\RichText\NodeMapper\Reference\StaticEntryReference;
 use Contentful\RichText\NodeRenderer\EntryHyperlink;
 use Contentful\Tests\RichText\Implementation\Entry;
 use Contentful\Tests\RichText\Implementation\Node;
@@ -25,7 +26,7 @@ class EntryHyperlinkTest extends TestCase
         $renderer = new Renderer();
         $nodeRenderer = new EntryHyperlink();
         $nodes = $this->createNodes(1);
-        $node = new NodeClass($nodes, new Entry('entryId'), 'Entry title');
+        $node = new NodeClass($nodes, 'Entry title', new StaticEntryReference(new Entry('entryId')));
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));

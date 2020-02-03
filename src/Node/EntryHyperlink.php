@@ -11,9 +11,8 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\Node;
 
-use Contentful\Core\Api\Link;
-use Contentful\Core\Api\LinkResolverInterface;
 use Contentful\Core\Resource\EntryInterface;
+use Contentful\RichText\NodeMapper\Reference\EntryReferenceInterface;
 
 class EntryHyperlink extends InlineNode
 {
@@ -23,35 +22,22 @@ class EntryHyperlink extends InlineNode
     protected $title;
 
     /**
-     * @var EntryInterface
+     * @var EntryReferenceInterface
      */
-    protected $entry;
-
-    /**
-     * @var \Contentful\Core\Api\Link
-     */
-    private $link;
-
-    /**
-     * @var \Contentful\Core\Api\LinkResolverInterface
-     */
-    private $linkResolver;
+    protected $reference;
 
     /**
      * AssetHyperlink constructor.
      *
      * @param NodeInterface[] $content
      * @param string $title
-     * @param \Contentful\Core\Api\Link $link
-     * @param \Contentful\Core\Api\LinkResolverInterface $linkResolver
+     * @param EntryReferenceInterface $reference
      */
-    public function __construct(array $content, string $title, Link $link, LinkResolverInterface $linkResolver)
+    public function __construct(array $content, string $title, EntryReferenceInterface $reference)
     {
         parent::__construct($content);
         $this->title = $title;
-        $this->entry = null;
-        $this->link = $link;
-        $this->linkResolver = $linkResolver;
+        $this->reference = $reference;
     }
 
     /**
@@ -59,10 +45,7 @@ class EntryHyperlink extends InlineNode
      */
     public function getEntry(): EntryInterface
     {
-        if (is_null($this->entry)) {
-            $this->entry = $this->linkResolver->resolveLink($this->link);
-        }
-        return $this->entry;
+        return $this->reference->getEntry();
     }
 
     public function getTitle(): string
@@ -87,7 +70,7 @@ class EntryHyperlink extends InlineNode
             'nodeType' => self::getType(),
             'data' => [
                 'title' => $this->title,
-                'target' => $this->link,
+                'target' => $this->reference,
             ],
             'content' => $this->content,
         ];

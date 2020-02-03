@@ -15,6 +15,7 @@ use Contentful\Core\Api\Link;
 use Contentful\Core\Api\LinkResolverInterface;
 use Contentful\RichText\Node\EntryHyperlink as NodeClass;
 use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\NodeMapper\Reference\EntryReference;
 use Contentful\RichText\ParserInterface;
 
 class EntryHyperlink implements NodeMapperInterface
@@ -29,8 +30,10 @@ class EntryHyperlink implements NodeMapperInterface
         return new NodeClass(
             $parser->parseCollection($data['content']),
             $data['data']['title'] ?? '',
-            new Link($linkData['id'], $linkData['linkType']),
-            $linkResolver
+            new EntryReference(
+                new Link($linkData['id'], $linkData['linkType']),
+                $linkResolver
+            )
         );
     }
 }
