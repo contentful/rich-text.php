@@ -13,8 +13,6 @@ namespace Contentful\RichText\NodeMapper;
 
 use Contentful\Core\Api\Link;
 use Contentful\Core\Api\LinkResolverInterface;
-use Contentful\Core\Resource\EntryInterface;
-use Contentful\RichText\Exception\MapperException;
 use Contentful\RichText\Node\EntryHyperlink as NodeClass;
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\ParserInterface;
@@ -28,19 +26,11 @@ class EntryHyperlink implements NodeMapperInterface
     {
         $linkData = $data['data']['target']['sys'];
 
-        try {
-            /** @var EntryInterface $entry */
-            $entry = $linkResolver->resolveLink(
-                new Link($linkData['id'], $linkData['linkType'])
-            );
-        } catch (\Throwable $exception) {
-            throw new MapperException($data);
-        }
-
         return new NodeClass(
             $parser->parseCollection($data['content']),
-            $entry,
-            $data['data']['title'] ?? ''
+            $data['data']['title'] ?? '',
+            new Link($linkData['id'], $linkData['linkType']),
+            $linkResolver
         );
     }
 }

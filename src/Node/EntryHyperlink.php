@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\Node;
 
+use Contentful\Core\Api\Link;
+use Contentful\Core\Api\LinkResolverInterface;
 use Contentful\Core\Resource\EntryInterface;
 
 class EntryHyperlink extends InlineNode
@@ -26,19 +28,40 @@ class EntryHyperlink extends InlineNode
     protected $entry;
 
     /**
+     * @var \Contentful\Core\Api\Link
+     */
+    private $link;
+
+    /**
+     * @var \Contentful\Core\Api\LinkResolverInterface
+     */
+    private $linkResolver;
+
+    /**
      * AssetHyperlink constructor.
      *
      * @param NodeInterface[] $content
+     * @param string $title
+     * @param \Contentful\Core\Api\Link $link
+     * @param \Contentful\Core\Api\LinkResolverInterface $linkResolver
      */
-    public function __construct(array $content, EntryInterface $entry, string $title)
+    public function __construct(array $content, string $title, Link $link, LinkResolverInterface $linkResolver)
     {
         parent::__construct($content);
-        $this->entry = $entry;
         $this->title = $title;
+        $this->entry = null;
+        $this->link = $link;
+        $this->linkResolver = $linkResolver;
     }
 
+    /**
+     * @return EntryInterface
+     */
     public function getEntry(): EntryInterface
     {
+        if (is_null($this->entry)) {
+            $this->entry = $this->linkResolver->resolveLink($this->link);
+        }
         return $this->entry;
     }
 
@@ -64,7 +87,7 @@ class EntryHyperlink extends InlineNode
             'nodeType' => self::getType(),
             'data' => [
                 'title' => $this->title,
-                'target' => $this->entry->asLink(),
+                'target' => $this->link,
             ],
             'content' => $this->content,
         ];
