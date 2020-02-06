@@ -34,7 +34,7 @@ class EntryHyperlink implements NodeMapperInterface
                 new Link($linkData['id'], $linkData['linkType'])
             );
         } catch (\Throwable $exception) {
-            throw new MapperException($data);
+            throw new MapperException($data, $exception->getMessage(), $exception->getCode(), $exception->getPrevious());
         }
 
         return new NodeClass(
