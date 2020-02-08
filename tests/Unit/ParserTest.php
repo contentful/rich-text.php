@@ -117,9 +117,6 @@ class ParserTest extends TestCase
             ['asset-hyperlink'],
             ['embedded-asset-block'],
             ['embedded-asset-inline'],
-            ['embedded-entry-block'],
-            ['embedded-entry-inline'],
-            ['entry-hyperlink'],
         ];
     }
 
