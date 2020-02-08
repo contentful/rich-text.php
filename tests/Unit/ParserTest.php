@@ -111,12 +111,39 @@ class ParserTest extends TestCase
         $this->assertJsonFixtureEqualsJsonObject($file.'.json', $node);
     }
 
+    /**
+     * @dataProvider provideInvalidDeferredResolvedLinkNodes
+     */
+    public function testMapperDeferredReferenceResolution(string $file, string $nodeClass)
+    {
+        $parser = new Parser(new FailingLinkResolver());
+
+        /** @var NodeClass\EntryHyperlink|NodeClass\EmbeddedEntryBlock|NodeClass\EmbeddedEntryInline $node */
+        $node = $parser->parse($this->getParsedFixture($file.'.json'));
+
+        $this->assertInstanceOf($nodeClass, $node);
+
+        /** @see FailingLinkResolver::resolveLink */
+        $this->expectException(\Exception::class);
+
+        $node->getEntry();
+    }
+
     public function provideInvalidLinkNodes(): array
     {
         return [
             ['asset-hyperlink'],
             ['embedded-asset-block'],
             ['embedded-asset-inline'],
+        ];
+    }
+
+    public function provideInvalidDeferredResolvedLinkNodes(): array
+    {
+        return [
+            ['embedded-entry-block', NodeClass\EmbeddedEntryBlock::class],
+            ['embedded-entry-inline', NodeClass\EmbeddedEntryInline::class],
+            ['entry-hyperlink', NodeClass\EntryHyperlink::class],
         ];
     }
 
