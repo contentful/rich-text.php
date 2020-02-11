@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * This file is part of the contentful/rich-text package.
+ *
+ * @copyright 2015-2020 Contentful GmbH
+ * @license   MIT
+ */
+
+declare(strict_types=1);
+
 namespace Contentful\RichText\NodeMapper\Reference;
 
 use Contentful\Core\Api\Link;
@@ -25,13 +35,10 @@ class EntryReference implements EntryReferenceInterface
 
     /**
      * EntryReference constructor.
-     *
-     * @param Link $link
-     * @param LinkResolverInterface $linkResolver
      */
     public function __construct(Link $link, LinkResolverInterface $linkResolver)
     {
-        if ($link->getLinkType() !== 'Entry') {
+        if ('Entry' !== $link->getLinkType()) {
             throw new InvalidArgumentException('Link is required to reference an Entry.');
         }
 
@@ -47,9 +54,10 @@ class EntryReference implements EntryReferenceInterface
 
     public function getEntry(): EntryInterface
     {
-        if (is_null($this->entry)) {
+        if (null === $this->entry) {
             $this->entry = $this->linkResolver->resolveLink($this->link);
         }
+
         return $this->entry;
     }
 

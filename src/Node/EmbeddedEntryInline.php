@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2019 Contentful GmbH
+ * @copyright 2015-2020 Contentful GmbH
  * @license   MIT
  */
 
@@ -16,7 +16,6 @@ use Contentful\RichText\NodeMapper\Reference\EntryReferenceInterface;
 
 class EmbeddedEntryInline extends InlineNode
 {
-
     /**
      * @var EntryReferenceInterface
      */
@@ -26,7 +25,6 @@ class EmbeddedEntryInline extends InlineNode
      * EmbeddedEntryInline constructor.
      *
      * @param NodeInterface[] $content
-     * @param EntryReferenceInterface $reference
      */
     public function __construct(array $content, EntryReferenceInterface $reference)
     {

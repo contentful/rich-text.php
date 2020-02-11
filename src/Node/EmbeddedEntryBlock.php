@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2019 Contentful GmbH
+ * @copyright 2015-2020 Contentful GmbH
  * @license   MIT
  */
 
@@ -25,7 +25,6 @@ class EmbeddedEntryBlock extends BlockNode
      * EmbeddedEntryBlock constructor.
      *
      * @param NodeInterface[] $content
-     * @param EntryReferenceInterface $reference
      */
     public function __construct(array $content, EntryReferenceInterface $reference)
     {

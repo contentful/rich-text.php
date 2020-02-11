@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2019 Contentful GmbH
+ * @copyright 2015-2020 Contentful GmbH
  * @license   MIT
  */
 
@@ -30,8 +30,6 @@ class EntryHyperlink extends InlineNode
      * AssetHyperlink constructor.
      *
      * @param NodeInterface[] $content
-     * @param string $title
-     * @param EntryReferenceInterface $reference
      */
     public function __construct(array $content, string $title, EntryReferenceInterface $reference)
     {
@@ -40,9 +38,6 @@ class EntryHyperlink extends InlineNode
         $this->reference = $reference;
     }
 
-    /**
-     * @return EntryInterface
-     */
     public function getEntry(): EntryInterface
     {
         return $this->reference->getEntry();
