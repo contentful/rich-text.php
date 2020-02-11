@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\Node;
 
-use Contentful\Core\Resource\EntryInterface;
+use Contentful\Core\Resource\ResourceInterface;
 use Contentful\RichText\NodeMapper\Reference\EntryReferenceInterface;
 
 class EntryHyperlink extends InlineNode
@@ -38,7 +38,7 @@ class EntryHyperlink extends InlineNode
         $this->reference = $reference;
     }
 
-    public function getEntry(): EntryInterface
+    public function getEntry(): ResourceInterface
     {
         return $this->reference->getEntry();
     }

@@ -13,7 +13,7 @@ namespace Contentful\RichText\NodeMapper\Reference;
 
 use Contentful\Core\Api\Link;
 use Contentful\Core\Api\LinkResolverInterface;
-use Contentful\Core\Resource\EntryInterface;
+use Contentful\Core\Resource\ResourceInterface;
 use InvalidArgumentException;
 
 class EntryReference implements EntryReferenceInterface
@@ -29,7 +29,7 @@ class EntryReference implements EntryReferenceInterface
     private $linkResolver;
 
     /**
-     * @var EntryInterface
+     * @var ResourceInterface|null
      */
     private $entry;
 
@@ -52,7 +52,7 @@ class EntryReference implements EntryReferenceInterface
         return $this->link;
     }
 
-    public function getEntry(): EntryInterface
+    public function getEntry(): ResourceInterface
     {
         if (null === $this->entry) {
             $this->entry = $this->linkResolver->resolveLink($this->link);

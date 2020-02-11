@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\NodeMapper\Reference;
 
-use Contentful\Core\Resource\EntryInterface;
+use Contentful\Core\Resource\ResourceInterface;
 use JsonSerializable;
 
 interface EntryReferenceInterface extends JsonSerializable
 {
-    public function getEntry(): EntryInterface;
+    public function getEntry(): ResourceInterface;
 }
