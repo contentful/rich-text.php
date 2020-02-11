@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Contentful\Tests\RichText\Unit;
 
+use Contentful\Core\Resource\EntryInterface;
 use Contentful\RichText\Node as NodeClass;
 use Contentful\RichText\Parser;
 use Contentful\Tests\RichText\Implementation\FailingLinkResolver;
@@ -158,5 +159,31 @@ class ParserTest extends TestCase
 
         $this->assertInstanceOf(Node::class, $node);
         $this->assertSame('Node value', $node->getValue());
+    }
+
+    public function testParseInvalidLinkType()
+    {
+        $parser = new Parser(new FailingLinkResolver());
+
+        $this->expectException(\InvalidArgumentException::class);
+        $parser->parse($this->getParsedFixture('embedded-invalid-link-type.json'));
+    }
+
+    public function testGettingResolvedEntry()
+    {
+        $parser = new Parser(new LinkResolver());
+
+        /** @var NodeClass\EntryHyperlink|NodeClass\EmbeddedEntryBlock|NodeClass\EmbeddedEntryInline $node */
+        $node = $parser->parse($this->getParsedFixture('embedded-entry-block.json'));
+
+        //$this->assertInstanceOf($nodeClass, $node);
+
+        /* @see FailingLinkResolver::resolveLink */
+        //$this->expectException(\Exception::class);
+
+        $entry = $node->getEntry();
+        $this->assertInstanceOf(EntryInterface::class, $entry);
+        $entry = $node->getEntry();
+        $this->assertInstanceOf(EntryInterface::class, $entry);
     }
 }

@@ -32,6 +32,7 @@ class EmbeddedEntryBlockTest extends TestCase
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));
+        $this->assertInstanceOf(Link::class, $reference->getLink());
 
         $this->assertSame('<div>Entry#entryId</div>', $nodeRenderer->render($renderer, $node));
     }

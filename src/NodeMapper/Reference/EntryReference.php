@@ -29,7 +29,7 @@ class EntryReference implements EntryReferenceInterface
     private $linkResolver;
 
     /**
-     * @var EntryInterface
+     * @var EntryInterface|null
      */
     private $entry;
 
@@ -55,7 +55,15 @@ class EntryReference implements EntryReferenceInterface
     public function getEntry(): EntryInterface
     {
         if (null === $this->entry) {
-            $this->entry = $this->linkResolver->resolveLink($this->link);
+            $resource = $this->linkResolver->resolveLink($this->link);
+
+            if ($resource instanceof EntryInterface) {
+                return $this->entry = $resource;
+            }
+
+            // @codeCoverageIgnoreStart
+            throw new \RuntimeException(\sprintf('A link has been resolved to an instance of %s, but %s is expected. This should never happen.', \get_class($resource), EntryInterface::class));
+            // @codeCoverageIgnoreEnd
         }
 
         return $this->entry;
