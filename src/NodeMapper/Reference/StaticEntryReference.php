@@ -13,7 +13,6 @@ namespace Contentful\RichText\NodeMapper\Reference;
 
 use Contentful\Core\Api\Link;
 use Contentful\Core\Resource\EntryInterface;
-use Contentful\Core\Resource\ResourceInterface;
 
 class StaticEntryReference implements EntryReferenceInterface
 {
@@ -33,7 +32,7 @@ class StaticEntryReference implements EntryReferenceInterface
         return $this->entry->asLink();
     }
 
-    public function getEntry(): ResourceInterface
+    public function getEntry(): EntryInterface
     {
         return $this->entry;
     }

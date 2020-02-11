@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\Node;
 
-use Contentful\Core\Resource\ResourceInterface;
+use Contentful\Core\Resource\EntryInterface;
 use Contentful\RichText\NodeMapper\Reference\EntryReferenceInterface;
 
 class EmbeddedEntryBlock extends BlockNode
@@ -32,7 +32,7 @@ class EmbeddedEntryBlock extends BlockNode
         $this->reference = $reference;
     }
 
-    public function getEntry(): ResourceInterface
+    public function getEntry(): EntryInterface
     {
         return $this->reference->getEntry();
     }
