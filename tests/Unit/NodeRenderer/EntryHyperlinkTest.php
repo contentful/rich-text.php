@@ -26,7 +26,7 @@ class EntryHyperlinkTest extends TestCase
         $renderer = new Renderer();
         $nodeRenderer = new EntryHyperlink();
         $nodes = $this->createNodes(1);
-        $node = new NodeClass($nodes, 'Entry title', new StaticEntryReference(new Entry('entryId')));
+        $node = new NodeClass($nodes, new StaticEntryReference(new Entry('entryId')), 'Entry title');
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));

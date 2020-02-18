@@ -29,11 +29,11 @@ class EntryHyperlink implements NodeMapperInterface
 
         return new NodeClass(
             $parser->parseCollection($data['content']),
-            $data['data']['title'] ?? '',
             new EntryReference(
                 new Link($linkData['id'], $linkData['linkType']),
                 $linkResolver
-            )
+            ),
+            $data['data']['title'] ?? ''
         );
     }
 }

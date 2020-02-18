@@ -24,7 +24,7 @@ class EntryHyperlinkTest extends TestCase
 
         $nodes = $this->createNodes(1);
         $entry = new Entry('entryId');
-        $node = new EntryHyperlink($nodes, 'Entry link', new StaticEntryReference($entry));
+        $node = new EntryHyperlink($nodes, new StaticEntryReference($entry), 'Entry link');
 
         $this->assertSame($nodes, $node->getContent());
         $this->assertSame($entry, $node->getEntry());
