@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2019 Contentful GmbH
+ * @copyright 2015-2020 Contentful GmbH
  * @license   MIT
  */
 
@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Contentful\Tests\RichText\Unit;
 
+use Contentful\Core\Resource\EntryInterface;
 use Contentful\RichText\Node as NodeClass;
 use Contentful\RichText\Parser;
 use Contentful\Tests\RichText\Implementation\FailingLinkResolver;
@@ -111,15 +112,39 @@ class ParserTest extends TestCase
         $this->assertJsonFixtureEqualsJsonObject($file.'.json', $node);
     }
 
+    /**
+     * @dataProvider provideInvalidDeferredResolvedLinkNodes
+     */
+    public function testMapperDeferredReferenceResolution(string $file, string $nodeClass)
+    {
+        $parser = new Parser(new FailingLinkResolver());
+
+        /** @var NodeClass\EntryHyperlink|NodeClass\EmbeddedEntryBlock|NodeClass\EmbeddedEntryInline $node */
+        $node = $parser->parse($this->getParsedFixture($file.'.json'));
+
+        $this->assertInstanceOf($nodeClass, $node);
+
+        /* @see FailingLinkResolver::resolveLink */
+        $this->expectException(\Exception::class);
+
+        $node->getEntry();
+    }
+
     public function provideInvalidLinkNodes(): array
     {
         return [
             ['asset-hyperlink'],
             ['embedded-asset-block'],
             ['embedded-asset-inline'],
-            ['embedded-entry-block'],
-            ['embedded-entry-inline'],
-            ['entry-hyperlink'],
+        ];
+    }
+
+    public function provideInvalidDeferredResolvedLinkNodes(): array
+    {
+        return [
+            ['embedded-entry-block', NodeClass\EmbeddedEntryBlock::class],
+            ['embedded-entry-inline', NodeClass\EmbeddedEntryInline::class],
+            ['entry-hyperlink', NodeClass\EntryHyperlink::class],
         ];
     }
 
@@ -134,5 +159,31 @@ class ParserTest extends TestCase
 
         $this->assertInstanceOf(Node::class, $node);
         $this->assertSame('Node value', $node->getValue());
+    }
+
+    public function testParseInvalidLinkType()
+    {
+        $parser = new Parser(new FailingLinkResolver());
+
+        $this->expectException(\InvalidArgumentException::class);
+        $parser->parse($this->getParsedFixture('embedded-invalid-link-type.json'));
+    }
+
+    public function testGettingResolvedEntry()
+    {
+        $parser = new Parser(new LinkResolver());
+
+        /** @var NodeClass\EntryHyperlink|NodeClass\EmbeddedEntryBlock|NodeClass\EmbeddedEntryInline $node */
+        $node = $parser->parse($this->getParsedFixture('embedded-entry-block.json'));
+
+        //$this->assertInstanceOf($nodeClass, $node);
+
+        /* @see FailingLinkResolver::resolveLink */
+        //$this->expectException(\Exception::class);
+
+        $entry = $node->getEntry();
+        $this->assertInstanceOf(EntryInterface::class, $entry);
+        $entry = $node->getEntry();
+        $this->assertInstanceOf(EntryInterface::class, $entry);
     }
 }

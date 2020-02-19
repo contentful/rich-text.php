@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2019 Contentful GmbH
+ * @copyright 2015-2020 Contentful GmbH
  * @license   MIT
  */
 
@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Contentful\Tests\RichText\Unit\Node;
 
 use Contentful\RichText\Node\EmbeddedEntryInline;
+use Contentful\RichText\NodeMapper\Reference\StaticEntryReference;
 use Contentful\Tests\RichText\Implementation\Entry;
 use Contentful\Tests\RichText\TestCase;
 
@@ -23,7 +24,7 @@ class EmbeddedEntryInlineTest extends TestCase
 
         $nodes = $this->createNodes(5);
         $entry = new Entry('entryId');
-        $node = new EmbeddedEntryInline($nodes, $entry);
+        $node = new EmbeddedEntryInline($nodes, new StaticEntryReference($entry));
 
         $this->assertSame($nodes, $node->getContent());
         $this->assertSame($entry, $node->getEntry());

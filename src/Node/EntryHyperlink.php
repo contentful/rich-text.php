@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2019 Contentful GmbH
+ * @copyright 2015-2020 Contentful GmbH
  * @license   MIT
  */
 
@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Contentful\RichText\Node;
 
 use Contentful\Core\Resource\EntryInterface;
+use Contentful\RichText\NodeMapper\Reference\EntryReferenceInterface;
 
 class EntryHyperlink extends InlineNode
 {
@@ -21,25 +22,25 @@ class EntryHyperlink extends InlineNode
     protected $title;
 
     /**
-     * @var EntryInterface
+     * @var EntryReferenceInterface
      */
-    protected $entry;
+    protected $reference;
 
     /**
      * AssetHyperlink constructor.
      *
      * @param NodeInterface[] $content
      */
-    public function __construct(array $content, EntryInterface $entry, string $title)
+    public function __construct(array $content, EntryReferenceInterface $reference, string $title)
     {
         parent::__construct($content);
-        $this->entry = $entry;
         $this->title = $title;
+        $this->reference = $reference;
     }
 
     public function getEntry(): EntryInterface
     {
-        return $this->entry;
+        return $this->reference->getEntry();
     }
 
     public function getTitle(): string
@@ -64,7 +65,7 @@ class EntryHyperlink extends InlineNode
             'nodeType' => self::getType(),
             'data' => [
                 'title' => $this->title,
-                'target' => $this->entry->asLink(),
+                'target' => $this->reference,
             ],
             'content' => $this->content,
         ];

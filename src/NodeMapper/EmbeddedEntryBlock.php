@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2019 Contentful GmbH
+ * @copyright 2015-2020 Contentful GmbH
  * @license   MIT
  */
 
@@ -13,10 +13,9 @@ namespace Contentful\RichText\NodeMapper;
 
 use Contentful\Core\Api\Link;
 use Contentful\Core\Api\LinkResolverInterface;
-use Contentful\Core\Resource\EntryInterface;
-use Contentful\RichText\Exception\MapperException;
 use Contentful\RichText\Node\EmbeddedEntryBlock as NodeClass;
 use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\NodeMapper\Reference\EntryReference;
 use Contentful\RichText\ParserInterface;
 
 class EmbeddedEntryBlock implements NodeMapperInterface
@@ -28,18 +27,12 @@ class EmbeddedEntryBlock implements NodeMapperInterface
     {
         $linkData = $data['data']['target']['sys'];
 
-        try {
-            /** @var EntryInterface $entry */
-            $entry = $linkResolver->resolveLink(
-                new Link($linkData['id'], $linkData['linkType'])
-            );
-        } catch (\Throwable $exception) {
-            throw new MapperException($data);
-        }
-
         return new NodeClass(
             $parser->parseCollection($data['content']),
-            $entry
+            new EntryReference(
+                new Link($linkData['id'], $linkData['linkType']),
+                $linkResolver
+            )
         );
     }
 }

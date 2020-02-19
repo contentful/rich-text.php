@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2019 Contentful GmbH
+ * @copyright 2015-2020 Contentful GmbH
  * @license   MIT
  */
 
@@ -11,9 +11,11 @@ declare(strict_types=1);
 
 namespace Contentful\Tests\RichText\Unit\NodeRenderer;
 
+use Contentful\Core\Api\Link;
 use Contentful\RichText\Node\EmbeddedEntryBlock as NodeClass;
+use Contentful\RichText\NodeMapper\Reference\EntryReference;
 use Contentful\RichText\NodeRenderer\EmbeddedEntryBlock;
-use Contentful\Tests\RichText\Implementation\Entry;
+use Contentful\Tests\RichText\Implementation\LinkResolver;
 use Contentful\Tests\RichText\Implementation\Node;
 use Contentful\Tests\RichText\Implementation\Renderer;
 use Contentful\Tests\RichText\TestCase;
@@ -24,10 +26,13 @@ class EmbeddedEntryBlockTest extends TestCase
     {
         $renderer = new Renderer();
         $nodeRenderer = new EmbeddedEntryBlock();
-        $node = new NodeClass([], new Entry('entryId'));
+
+        $reference = new EntryReference(new Link('entryId', 'Entry'), new LinkResolver());
+        $node = new NodeClass([], $reference);
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));
+        $this->assertInstanceOf(Link::class, $reference->getLink());
 
         $this->assertSame('<div>Entry#entryId</div>', $nodeRenderer->render($renderer, $node));
     }
