@@ -3,11 +3,20 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/1.2.1...HEAD)
+## [Unreleased](https://github.com/contentful/rich-text.php/compare/2.0.0...HEAD)
 
 <!-- PENDING-CHANGES -->
 > No meaningful changes since last release.
 <!-- /PENDING-CHANGES -->
+
+## [2.0.0](https://github.com/contentful/rich-text.php/tree/2.0.0) (2020-02-19)
+
+### Changed
+
+* Nested references are not fetched recursively upfront, they are now resolved dynamically when used
+* Changed parameters/signatures for EmbeddedEntryBlock, EmbeddedEntryInline, EntryHyperlink, 
+* Added EntryReferenceInterface and implementation
+* MapperException not thrown anymore
 
 ## [1.2.1](https://github.com/contentful/rich-text.php/tree/1.2.1) (2019-11-26)
 
