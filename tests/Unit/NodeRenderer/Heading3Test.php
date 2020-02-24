@@ -31,12 +31,11 @@ class Heading3Test extends TestCase
         $this->assertSame('<h3>Some text</h3>', $nodeRenderer->render($renderer, $node));
     }
 
-    /**
-     * @expectedException        \LogicException
-     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\Heading3" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
-     */
     public function testInvalidNodeRendered()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\Heading3\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");
+
         $renderer = new Renderer();
         $nodeRenderer = new Heading3();
 

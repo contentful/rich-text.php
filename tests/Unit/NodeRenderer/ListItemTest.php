@@ -31,12 +31,11 @@ class ListItemTest extends TestCase
         $this->assertSame('<li>Some text</li>', $nodeRenderer->render($renderer, $node));
     }
 
-    /**
-     * @expectedException        \LogicException
-     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\ListItem" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
-     */
     public function testInvalidNodeRendered()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\ListItem\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");
+
         $renderer = new Renderer();
         $nodeRenderer = new ListItem();
 

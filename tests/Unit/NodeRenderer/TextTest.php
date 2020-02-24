@@ -48,12 +48,11 @@ class TextTest extends TestCase
         $this->assertSame('<strong>Some test with &lt;table&gt;&lt;tr&gt;&lt;td&gt;TEST&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; HTML</strong>', $nodeRenderer->render($renderer, $node));
     }
 
-    /**
-     * @expectedException        \LogicException
-     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\Text" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
-     */
     public function testInvalidNodeRendered()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\Text\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");
+
         $renderer = new Renderer();
         $nodeRenderer = new Text();
 

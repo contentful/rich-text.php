@@ -31,12 +31,12 @@ class PlatesExtensionTest extends TestCase
             ->willReturnCallback(function (string $name, callable $callback) {
                 switch ($name) {
                     case 'richTextRender':
-                        $this->assertInternalType('array', $callback);
+                        $this->assertIsArray($callback);
                         $this->assertInstanceOf(RendererInterface::class, $callback[0]);
                         $this->assertSame('render', $callback[1]);
                         break;
                     case 'richTextRenderCollection':
-                        $this->assertInternalType('array', $callback);
+                        $this->assertIsArray($callback);
                         $this->assertInstanceOf(RendererInterface::class, $callback[0]);
                         $this->assertSame('renderCollection', $callback[1]);
                         break;

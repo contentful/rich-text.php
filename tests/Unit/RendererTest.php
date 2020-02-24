@@ -26,7 +26,7 @@ class RendererTest extends TestCase
      */
     private $defaultNodeRenderersCount;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->defaultNodeRenderersCount = \count((new Renderer())->getNodeRenderers());
     }
@@ -89,12 +89,11 @@ class RendererTest extends TestCase
         $this->assertSame('<p>First text</p><p>Second text</p>', $renderer->renderCollection($nodes));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Structured text renderer could not find NodeRenderer instance which supports node of class "Contentful\Tests\RichText\Implementation\Node".
-     */
     public function testUnsupportedNode()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Structured text renderer could not find NodeRenderer instance which supports node of class \"Contentful\Tests\RichText\Implementation\Node\".");
+
         $renderer = new Renderer();
         $node = new Node('Some value');
 
