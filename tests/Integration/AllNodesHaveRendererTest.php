@@ -31,7 +31,7 @@ class AllNodesHaveRendererTest extends TestCase
      */
     private $defaultNodeRenderers = [];
 
-    public function setUp()
+    protected function setUp(): void
     {
         // This loads all available node renderers
         $iterator = Finder::create()

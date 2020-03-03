@@ -31,12 +31,11 @@ class HrTest extends TestCase
         $this->assertSame('<hr />', $nodeRenderer->render($renderer, $node));
     }
 
-    /**
-     * @expectedException        \LogicException
-     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\Hr" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
-     */
     public function testInvalidNodeRendered()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\Hr\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");
+
         $renderer = new Renderer();
         $nodeRenderer = new Hr();
 

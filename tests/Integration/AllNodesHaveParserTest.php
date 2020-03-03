@@ -24,7 +24,7 @@ class AllNodesHaveParserTest extends TestCase
      */
     private $mappers;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $parser = new Parser(new LinkResolver());
 

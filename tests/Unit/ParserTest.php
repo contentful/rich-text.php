@@ -76,23 +76,21 @@ class ParserTest extends TestCase
         ];
     }
 
-    /**
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Unrecognized node type "invalid-node" when trying to parse rich text
-     */
     public function testInvalidNode()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Unrecognized node type "invalid-node" when trying to parse rich text');
+
         $parser = new Parser(new LinkResolver());
 
         $parser->parse($this->getParsedFixture('invalid-node.json'));
     }
 
-    /**
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Unrecognized mark type "invalid-mark" when trying to parse rich text
-     */
     public function testInvalidMark()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Unrecognized mark type "invalid-mark" when trying to parse rich text');
+
         $parser = new Parser(new LinkResolver());
 
         $parser->parse($this->getParsedFixture('invalid-mark.json'));

@@ -32,12 +32,11 @@ class HyperlinkTest extends TestCase
         $this->assertRegExp('/\<a href\=\"https\:\/\/www\.contentful\.com\" title\=\"Contentful\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
-    /**
-     * @expectedException        \LogicException
-     * @expectedExceptionMessage Trying to use node renderer "Contentful\RichText\NodeRenderer\Hyperlink" to render unsupported node of class "Contentful\Tests\RichText\Implementation\Node".
-     */
     public function testInvalidNodeRendered()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\Hyperlink\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");
+
         $renderer = new Renderer();
         $nodeRenderer = new Hyperlink();
 

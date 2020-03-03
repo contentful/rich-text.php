@@ -34,7 +34,7 @@ class TwigExtensionTest extends TestCase
         $function = $functions[0];
         $this->assertSame('rich_text_render', $function->getName());
         $callable = $function->getCallable();
-        $this->assertInternalType('array', $callable);
+        $this->assertIsArray($callable);
         $this->assertSame($renderer, $callable[0]);
         $this->assertSame('render', $callable[1]);
         $this->assertSame(['html'], $function->getSafe(new Node()));
@@ -43,7 +43,7 @@ class TwigExtensionTest extends TestCase
         $function = $functions[1];
         $this->assertSame('rich_text_render_collection', $function->getName());
         $callable = $function->getCallable();
-        $this->assertInternalType('array', $callable);
+        $this->assertIsArray($callable);
         $this->assertSame($renderer, $callable[0]);
         $this->assertSame('renderCollection', $callable[1]);
         $this->assertSame(['html'], $function->getSafe(new Node()));
