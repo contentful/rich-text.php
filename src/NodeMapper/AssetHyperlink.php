@@ -14,7 +14,6 @@ namespace Contentful\RichText\NodeMapper;
 use Contentful\Core\Api\Link;
 use Contentful\Core\Api\LinkResolverInterface;
 use Contentful\Core\Resource\AssetInterface;
-use Contentful\RichText\Exception\MapperException;
 use Contentful\RichText\Node\AssetHyperlink as NodeClass;
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\ParserInterface;

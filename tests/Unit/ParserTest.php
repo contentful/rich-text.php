@@ -103,12 +103,16 @@ class ParserTest extends TestCase
     {
         $parser = new Parser(new FailingLinkResolver());
 
+        $this->expectExceptionMessage("test exception");
+        $this->expectException(\Exception::class);
+        
         $node = $parser->parse($this->getParsedFixture($file.'.json'));
 
         $this->assertInstanceOf(NodeClass\Nothing::class, $node);
 
         $this->assertJsonFixtureEqualsJsonObject($file.'.json', $node);
     }
+    
 
     /**
      * @dataProvider provideInvalidDeferredResolvedLinkNodes

@@ -25,7 +25,7 @@ class FailingLinkResolver implements LinkResolverInterface
      */
     public function resolveLink(Link $link, array $parameters = []): ResourceInterface
     {
-        throw new \Exception();
+        throw new \Exception("test exception");
     }
 
     /**
@@ -33,6 +33,6 @@ class FailingLinkResolver implements LinkResolverInterface
      */
     public function resolveLinkCollection(array $links, array $parameters = []): array
     {
-        throw new \Exception();
+        throw new \Exception("test exception");
     }
 }
