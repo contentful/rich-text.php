@@ -28,14 +28,10 @@ class EmbeddedAssetBlock implements NodeMapperInterface
     {
         $linkData = $data['data']['target']['sys'];
 
-        try {
-            /** @var AssetInterface $asset */
-            $asset = $linkResolver->resolveLink(
-                new Link($linkData['id'], $linkData['linkType'])
-            );
-        } catch (\Throwable $exception) {
-            throw new MapperException($data);
-        }
+        /** @var AssetInterface $asset */
+        $asset = $linkResolver->resolveLink(
+            new Link($linkData['id'], $linkData['linkType'])
+        );
 
         return new NodeClass(
             $parser->parseCollection($data['content']),
