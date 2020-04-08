@@ -99,9 +99,12 @@ class ParserTest extends TestCase
     /**
      * @dataProvider provideInvalidLinkNodes
      */
-    public function testMapperException(string $file)
+    public function testInvalidLinkException(string $file)
     {
         $parser = new Parser(new FailingLinkResolver());
+
+        $this->expectExceptionMessage('test exception');
+        $this->expectException(\Exception::class);
 
         $node = $parser->parse($this->getParsedFixture($file.'.json'));
 
