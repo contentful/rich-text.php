@@ -3,11 +3,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/3.0.0...HEAD)
+## [Unreleased](https://github.com/contentful/rich-text.php/compare/3.1.0...HEAD)
 
 <!-- PENDING-CHANGES -->
 > No meaningful changes since last release.
 <!-- /PENDING-CHANGES -->
+
+## [3.1.0](https://github.com/contentful/rich-text.php/tree/3.1.0) (2020-04-08)
+
+### Changed
+
+> Drop MapperException and let the code simply throw the exception in the same form it was raised.
 
 ## [3.0.0](https://github.com/contentful/rich-text.php/tree/3.0.0) (2020-03-03)
 
