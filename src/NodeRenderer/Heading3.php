@@ -32,7 +32,7 @@ class Heading3 implements NodeRendererInterface
     {
         /* @var NodeClass $node */
         if (!$node instanceof NodeClass) {
-            throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', \get_class($this), \get_class($node)));
+            throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
         }
 
         return '<h3>'.$renderer->renderCollection($node->getContent()).'</h3>';
