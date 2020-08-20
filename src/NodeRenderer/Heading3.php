@@ -35,6 +35,6 @@ class Heading3 implements NodeRendererInterface
             throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
         }
 
-        return '<h3>'.$renderer->renderCollection($node->getContent()).'</h3>';
+        return '<h3>'.$renderer->renderCollection($node->getContent(), $context).'</h3>';
     }
 }

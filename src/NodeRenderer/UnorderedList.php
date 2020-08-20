@@ -35,6 +35,6 @@ class UnorderedList implements NodeRendererInterface
             throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
         }
 
-        return '<ul>'.$renderer->renderCollection($node->getContent()).'</ul>';
+        return '<ul>'.$renderer->renderCollection($node->getContent(), $context).'</ul>';
     }
 }

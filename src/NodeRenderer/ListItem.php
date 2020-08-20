@@ -35,6 +35,6 @@ class ListItem implements NodeRendererInterface
             throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
         }
 
-        return '<li>'.$renderer->renderCollection($node->getContent()).'</li>';
+        return '<li>'.$renderer->renderCollection($node->getContent(), $context).'</li>';
     }
 }
