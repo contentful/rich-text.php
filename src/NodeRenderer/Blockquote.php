@@ -35,6 +35,6 @@ class Blockquote implements NodeRendererInterface
             throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
         }
 
-        return '<blockquote>'.$renderer->renderCollection($node->getContent()).'</blockquote>';
+        return '<blockquote>'.$renderer->renderCollection($node->getContent(), $context).'</blockquote>';
     }
 }

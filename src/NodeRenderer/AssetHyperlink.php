@@ -39,7 +39,7 @@ class AssetHyperlink implements NodeRendererInterface
             '<a href="#Asset-%s" title="%s">%s</a>',
             $node->getAsset()->getId(),
             $node->getTitle(),
-            $renderer->renderCollection($node->getContent())
+            $renderer->renderCollection($node->getContent(), $context)
         );
     }
 }

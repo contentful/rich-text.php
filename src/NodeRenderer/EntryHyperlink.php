@@ -39,7 +39,7 @@ class EntryHyperlink implements NodeRendererInterface
             '<a href="#Entry-%s" title="%s">%s</a>',
             $node->getEntry()->getId(),
             $node->getTitle(),
-            $renderer->renderCollection($node->getContent())
+            $renderer->renderCollection($node->getContent(), $context)
         );
     }
 }

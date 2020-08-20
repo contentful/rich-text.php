@@ -39,7 +39,7 @@ class Hyperlink implements NodeRendererInterface
             '<a href="%s" title="%s">%s</a>',
             $node->getUri(),
             $node->getTitle(),
-            $renderer->renderCollection($node->getContent())
+            $renderer->renderCollection($node->getContent(), $context)
         );
     }
 }
