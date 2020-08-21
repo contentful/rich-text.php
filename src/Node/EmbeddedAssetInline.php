@@ -24,6 +24,7 @@ class EmbeddedAssetInline extends BlockNode
      * EmbeddedAssetInline constructor.
      *
      * @param NodeInterface[] $content
+     * @param AssetInterface $asset
      */
     public function __construct(array $content, AssetInterface $asset)
     {
@@ -31,6 +32,9 @@ class EmbeddedAssetInline extends BlockNode
         $this->asset = $asset;
     }
 
+    /**
+     * @return AssetInterface
+     */
     public function getAsset(): AssetInterface
     {
         return $this->asset;

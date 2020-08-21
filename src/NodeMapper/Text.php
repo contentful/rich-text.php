@@ -31,6 +31,10 @@ class Text implements NodeMapperInterface
         );
     }
 
+    /**
+     * @param array $data
+     * @return MarkInterface
+     */
     private function parseMark(array $data): MarkInterface
     {
         switch ($data['type']) {

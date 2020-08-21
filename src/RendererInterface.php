@@ -27,16 +27,20 @@ interface RendererInterface
      * Handles rendering of a node,
      * possibly delegating to a specific node renderer.
      *
-     * @param NodeInterface $node    The node that will be rendered
-     * @param array         $context Optionally, extra context variables which will be passed down to the node renderer
+     * @param NodeInterface $node The node that will be rendered
+     * @param array $context Optionally, extra context variables which will be passed down to the node renderer
+     *
+     * @return string
      */
     public function render(NodeInterface $node, array $context = []): string;
 
     /**
      * Shortcut for rendering a collection of nodes.
      *
-     * @param NodeInterface[] $nodes   The collection of nodes that will be rendered
-     * @param array           $context Optionally, extra context variables which will be passed down to the node renderer
+     * @param NodeInterface[] $nodes The collection of nodes that will be rendered
+     * @param array $context Optionally, extra context variables which will be passed down to the node renderer
+     *
+     * @return string
      */
     public function renderCollection(array $nodes, array $context = []): string;
 }

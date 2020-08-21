@@ -16,27 +16,40 @@ use Contentful\Core\Resource\EntryInterface;
 
 class StaticEntryReference implements EntryReferenceInterface
 {
-    /** @var EntryInterface */
+    /**
+     * @var EntryInterface
+     */
     private $entry;
 
     /**
      * StaticEntryReference constructor.
+     *
+     * @param EntryInterface $entry
      */
     public function __construct(EntryInterface $entry)
     {
         $this->entry = $entry;
     }
 
+    /**
+     * @return Link
+     */
     public function getLink(): Link
     {
         return $this->entry->asLink();
     }
 
+    /**
+     * @return EntryInterface
+     */
     public function getEntry(): EntryInterface
     {
         return $this->entry;
     }
 
+    /**
+     * @return array[]|mixed
+     */
     public function jsonSerialize()
     {
         return $this->entry->asLink()->jsonSerialize();

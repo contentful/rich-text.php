@@ -35,6 +35,9 @@ class EntryReference implements EntryReferenceInterface
 
     /**
      * EntryReference constructor.
+     *
+     * @param Link $link
+     * @param LinkResolverInterface $linkResolver
      */
     public function __construct(Link $link, LinkResolverInterface $linkResolver)
     {
@@ -42,16 +45,21 @@ class EntryReference implements EntryReferenceInterface
             throw new InvalidArgumentException('Link is required to reference an Entry.');
         }
 
-        $this->entry = null;
         $this->link = $link;
         $this->linkResolver = $linkResolver;
     }
 
+    /**
+     * @return Link
+     */
     public function getLink(): Link
     {
         return $this->link;
     }
 
+    /**
+     * @return EntryInterface
+     */
     public function getEntry(): EntryInterface
     {
         if (null === $this->entry) {
@@ -69,6 +77,9 @@ class EntryReference implements EntryReferenceInterface
         return $this->entry;
     }
 
+    /**
+     * @return array[]|mixed
+     */
     public function jsonSerialize()
     {
         return $this->link->jsonSerialize();
