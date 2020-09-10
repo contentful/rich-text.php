@@ -16,5 +16,8 @@ use JsonSerializable;
 
 interface EntryReferenceInterface extends JsonSerializable
 {
+    /**
+     * @return EntryInterface
+     */
     public function getEntry(): EntryInterface;
 }

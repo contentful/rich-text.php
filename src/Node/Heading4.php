@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Contentful\RichText\Node;
 
-class Heading4 extends BlockNode
+class Heading4 extends AbstractHeading
 {
     /**
      * {@inheritdoc}
@@ -19,17 +19,5 @@ class Heading4 extends BlockNode
     public static function getType(): string
     {
         return 'heading-4';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function jsonSerialize(): array
-    {
-        return [
-            'nodeType' => self::getType(),
-            'content' => $this->content,
-            'data' => new \stdClass(),
-        ];
     }
 }

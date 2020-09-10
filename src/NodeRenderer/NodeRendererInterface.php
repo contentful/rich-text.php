@@ -13,6 +13,7 @@ namespace Contentful\RichText\NodeRenderer;
 
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\RendererInterface;
+use InvalidArgumentException;
 
 /**
  * NodeRendererInterface.
@@ -34,6 +35,8 @@ interface NodeRendererInterface
      * supports rendering the given node.
      *
      * @param NodeInterface $node The node which will be tested
+     *
+     * @return bool
      */
     public function supports(NodeInterface $node): bool;
 
@@ -42,10 +45,12 @@ interface NodeRendererInterface
      *
      * @param RendererInterface $renderer The generic renderer object, which is used for
      *                                    delegating rendering of nested nodes (such as ListItem in lists)
-     * @param NodeInterface     $node     The node which must be rendered
-     * @param array             $context  Optionally, extra context variables (useful with custom node renderers)
+     * @param NodeInterface $node The node which must be rendered
+     * @param array $context Optionally, extra context variables (useful with custom node renderers)
      *
-     * @throws \InvalidArgumentException when the given $node is not supported
+     * @return string
+     *
+     * @throws InvalidArgumentException when the given $node is not supported
      */
     public function render(RendererInterface $renderer, NodeInterface $node, array $context = []): string;
 }

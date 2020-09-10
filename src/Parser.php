@@ -14,17 +14,13 @@ namespace Contentful\RichText;
 use Contentful\Core\Api\LinkResolverInterface;
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\NodeMapper\NodeMapperInterface;
+use Exception;
 
 /**
  * Parser class.
  */
 class Parser implements ParserInterface
 {
-    /**
-     * @var string
-     */
-    const NOTHING_NODE_TYPE = 'nothing';
-
     /**
      * @var LinkResolverInterface
      */
@@ -33,11 +29,12 @@ class Parser implements ParserInterface
     /**
      * @var NodeMapperInterface[]
      */
-    private $mappers = [];
+    private $mappers;
 
     /**
      * Parser constructor.
      *
+     * @param LinkResolverInterface $linkResolver
      * @param NodeMapperInterface[] $mappers
      */
     public function __construct(LinkResolverInterface $linkResolver, array $mappers = [])
@@ -48,19 +45,24 @@ class Parser implements ParserInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @throws Exception
      */
     public function parse(array $data): NodeInterface
     {
         $nodeType = $data['nodeType'];
         if (!isset($this->mappers[$nodeType])) {
-            throw new \InvalidArgumentException(\sprintf('Unrecognized node type "%s" when trying to parse rich text.', $data['nodeType']));
+            throw new \InvalidArgumentException(
+                \sprintf(
+                    'Unrecognized node type "%s" when trying to parse rich text.',
+                    $data['nodeType']
+                )
+            );
         }
 
         $mapper = $this->mappers[$nodeType];
 
-        $node = $mapper->map($this, $this->linkResolver, $data);
-
-        return $node;
+        return $mapper->map($this, $this->linkResolver, $data);
     }
 
     /**
@@ -104,6 +106,9 @@ class Parser implements ParserInterface
 
     /**
      * Add a custom mapper or replace a default one.
+     *
+     * @param string $nodeType
+     * @param NodeMapperInterface $nodeMapper
      */
     public function setNodeMapper(string $nodeType, NodeMapperInterface $nodeMapper)
     {

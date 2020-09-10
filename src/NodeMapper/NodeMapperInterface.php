@@ -14,11 +14,18 @@ namespace Contentful\RichText\NodeMapper;
 use Contentful\Core\Api\LinkResolverInterface;
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\ParserInterface;
+use Exception;
 
 interface NodeMapperInterface
 {
     /**
-     * @throws \Exception
+     * @param ParserInterface $parser
+     * @param LinkResolverInterface $linkResolver
+     * @param array $data
+     *
+     * @return NodeInterface
+     *
+     * @throws Exception
      */
     public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface;
 }

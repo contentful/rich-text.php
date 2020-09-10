@@ -29,6 +29,8 @@ class AssetHyperlink extends InlineNode
      * AssetHyperlink constructor.
      *
      * @param NodeInterface[] $content
+     * @param AssetInterface $asset
+     * @param string $title
      */
     public function __construct(array $content, AssetInterface $asset, string $title)
     {
@@ -37,11 +39,17 @@ class AssetHyperlink extends InlineNode
         $this->title = $title;
     }
 
+    /**
+     * @return AssetInterface
+     */
     public function getAsset(): AssetInterface
     {
         return $this->asset;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle(): string
     {
         return $this->title;

@@ -25,6 +25,8 @@ class PlatesExtension implements ExtensionInterface
 
     /**
      * PlatesExtension constructor.
+     *
+     * @param RendererInterface|null $renderer
      */
     public function __construct(RendererInterface $renderer = null)
     {

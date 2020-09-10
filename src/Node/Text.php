@@ -28,6 +28,7 @@ class Text extends InlineNode
     /**
      * Text constructor.
      *
+     * @param string $value
      * @param MarkInterface[] $marks
      */
     public function __construct(string $value, array $marks = [])
@@ -37,6 +38,9 @@ class Text extends InlineNode
         $this->marks = $marks;
     }
 
+    /**
+     * @return string
+     */
     public function getValue(): string
     {
         return $this->value;
