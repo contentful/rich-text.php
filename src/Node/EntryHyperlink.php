@@ -30,8 +30,6 @@ class EntryHyperlink extends InlineNode
      * AssetHyperlink constructor.
      *
      * @param NodeInterface[] $content
-     * @param EntryReferenceInterface $reference
-     * @param string $title
      */
     public function __construct(array $content, EntryReferenceInterface $reference, string $title)
     {
@@ -40,17 +38,11 @@ class EntryHyperlink extends InlineNode
         $this->reference = $reference;
     }
 
-    /**
-     * @return EntryInterface
-     */
     public function getEntry(): EntryInterface
     {
         return $this->reference->getEntry();
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;

@@ -34,7 +34,6 @@ class Parser implements ParserInterface
     /**
      * Parser constructor.
      *
-     * @param LinkResolverInterface $linkResolver
      * @param NodeMapperInterface[] $mappers
      */
     public function __construct(LinkResolverInterface $linkResolver, array $mappers = [])
@@ -52,12 +51,7 @@ class Parser implements ParserInterface
     {
         $nodeType = $data['nodeType'];
         if (!isset($this->mappers[$nodeType])) {
-            throw new \InvalidArgumentException(
-                \sprintf(
-                    'Unrecognized node type "%s" when trying to parse rich text.',
-                    $data['nodeType']
-                )
-            );
+            throw new \InvalidArgumentException(\sprintf('Unrecognized node type "%s" when trying to parse rich text.', $data['nodeType']));
         }
 
         $mapper = $this->mappers[$nodeType];
@@ -106,9 +100,6 @@ class Parser implements ParserInterface
 
     /**
      * Add a custom mapper or replace a default one.
-     *
-     * @param string $nodeType
-     * @param NodeMapperInterface $nodeMapper
      */
     public function setNodeMapper(string $nodeType, NodeMapperInterface $nodeMapper)
     {

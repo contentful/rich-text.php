@@ -35,8 +35,6 @@ interface NodeRendererInterface
      * supports rendering the given node.
      *
      * @param NodeInterface $node The node which will be tested
-     *
-     * @return bool
      */
     public function supports(NodeInterface $node): bool;
 
@@ -45,10 +43,8 @@ interface NodeRendererInterface
      *
      * @param RendererInterface $renderer The generic renderer object, which is used for
      *                                    delegating rendering of nested nodes (such as ListItem in lists)
-     * @param NodeInterface $node The node which must be rendered
-     * @param array $context Optionally, extra context variables (useful with custom node renderers)
-     *
-     * @return string
+     * @param NodeInterface     $node     The node which must be rendered
+     * @param array             $context  Optionally, extra context variables (useful with custom node renderers)
      *
      * @throws InvalidArgumentException when the given $node is not supported
      */

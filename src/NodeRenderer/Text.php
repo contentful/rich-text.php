@@ -43,10 +43,6 @@ class Text implements NodeRendererInterface
         }, \htmlentities($node->getValue()));
     }
 
-    /**
-     * @param MarkInterface $mark
-     * @return string
-     */
     private function getHtmlTagForMark(MarkInterface $mark): string
     {
         $type = $mark->getType();

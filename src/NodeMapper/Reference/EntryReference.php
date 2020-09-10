@@ -35,9 +35,6 @@ class EntryReference implements EntryReferenceInterface
 
     /**
      * EntryReference constructor.
-     *
-     * @param Link $link
-     * @param LinkResolverInterface $linkResolver
      */
     public function __construct(Link $link, LinkResolverInterface $linkResolver)
     {
@@ -49,17 +46,11 @@ class EntryReference implements EntryReferenceInterface
         $this->linkResolver = $linkResolver;
     }
 
-    /**
-     * @return Link
-     */
     public function getLink(): Link
     {
         return $this->link;
     }
 
-    /**
-     * @return EntryInterface
-     */
     public function getEntry(): EntryInterface
     {
         if (null === $this->entry) {

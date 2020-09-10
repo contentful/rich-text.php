@@ -64,8 +64,6 @@ class Renderer implements RendererInterface
      * The renderer will be added to the beginning of the list,
      * so those renderers added last will have higher priority over default ones.
      *
-     * @param NodeRendererInterface $renderer
-     *
      * @return $this
      */
     public function pushNodeRenderer(NodeRendererInterface $renderer)
@@ -78,8 +76,6 @@ class Renderer implements RendererInterface
     /**
      * Adds a custom node renderer to the current stack.
      * The renderer will be added to the end of the list.
-     *
-     * @param NodeRendererInterface $renderer
      *
      * @return $this
      */

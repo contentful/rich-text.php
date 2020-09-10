@@ -23,25 +23,17 @@ class StaticEntryReference implements EntryReferenceInterface
 
     /**
      * StaticEntryReference constructor.
-     *
-     * @param EntryInterface $entry
      */
     public function __construct(EntryInterface $entry)
     {
         $this->entry = $entry;
     }
 
-    /**
-     * @return Link
-     */
     public function getLink(): Link
     {
         return $this->entry->asLink();
     }
 
-    /**
-     * @return EntryInterface
-     */
     public function getEntry(): EntryInterface
     {
         return $this->entry;
