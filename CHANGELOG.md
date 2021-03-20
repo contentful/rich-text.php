@@ -3,11 +3,22 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/3.1.2...HEAD)
+## [Unreleased](https://github.com/contentful/rich-text.php/compare/3.2.0...HEAD)
 
 <!-- PENDING-CHANGES -->
 > No meaningful changes since last release.
 <!-- /PENDING-CHANGES -->
+
+## [3.2.0](https://github.com/contentful/rich-text.php/tree/3.2.0) (2021-03-20)
+
+### Added
+
+* Added support for PHP8
+
+### Internal
+
+* Small CI updates
+* Edited source for PHP sami
 
 ## [3.1.2](https://github.com/contentful/rich-text.php/tree/3.1.2) (2020-09-10)
 

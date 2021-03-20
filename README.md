@@ -5,7 +5,7 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/contentful/rich-text.php/master.svg?style=for-the-badge)](https://circleci.com/gh/contentful/rich-text.php)
 [![License](https://img.shields.io/github/license/contentful/rich-text.php.svg?style=for-the-badge)](https://packagist.org/packages/contentful/rich-text.php)
 
-> This library is built to help you with the parsing and rendering of the [rich text](https://www.contentful.com/developers/docs/concepts/rich-text/) field type in Contentful. It requires at least PHP 7.2.
+> This library is built to help you with the parsing and rendering of the [rich text](https://www.contentful.com/developers/docs/concepts/rich-text/) field type in Contentful. It requires PHP 7.2 and up or PHP 8.0 and up.
 
 ## Setup
 
