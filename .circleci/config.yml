@@ -11,12 +11,14 @@ workflows:
       - test72
       - test73
       - test74
+      - test80
       - docs_build:
           requires:
             - lint
             - test72
             - test73
             - test74
+            - test80
           filters:
             branches:
               only: master
@@ -24,7 +26,7 @@ workflows:
 jobs:
   lint:
     docker:
-      - image: circleci/php:7.2-cli
+      - image: circleci/php:7.4-cli
     steps:
       - checkout
       - run: { name: "Install dependencies", command: sudo composer self-update && composer install -n --prefer-dist }
@@ -36,12 +38,13 @@ jobs:
       - run:
           name: Static analysis
           command: |
-            wget https://github.com/phpstan/phpstan/releases/download/0.9.2/phpstan.phar -q -O phpstan.phar
+            wget https://github.com/phpstan/phpstan/releases/download/0.10.3/phpstan.phar -q -O phpstan.phar
             composer run lint-static-analysis
 
   test72:
       environment:
           CC_TEST_REPORTER_ID: 8feb70b07f601a8af99f8d07d8a3531350ffcf3d73fb448d7d8e593bc53c9771
+          XDEBUG_MODE: coverage
       docker:
       - image: circleci/php:7.2-cli
       steps:
@@ -75,8 +78,16 @@ jobs:
       - checkout
       - run: { name: "Install dependencies", command: "sudo composer self-update && composer install -n --prefer-dist" }
       - run: { name: "Test suite", command: "composer test-quick-fail" }
-        
-        
+
+  test80:
+    docker:
+      - image: circleci/php:8.0-cli
+    steps:
+      - checkout
+      - run: { name: "Install dependencies", command: "sudo composer self-update && composer install -n --prefer-dist" }
+      - run: { name: "Test suite", command: "composer test-quick-fail" }
+
+
   docs_build:
     environment:
       TRAVIS_REPO_SLUG: contentful/rich-text.php
