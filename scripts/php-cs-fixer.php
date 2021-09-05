@@ -77,7 +77,7 @@ COMMENT;
 
     $cache = \tempnam(\sys_get_temp_dir(), $packageName).'-php_cs.cache';
 
-    return new Config()
+    return (new Config())
         ->setFinder($finder)
         ->setRiskyAllowed(true)
         ->setCacheFile($cache)
