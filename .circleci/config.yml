@@ -29,12 +29,11 @@ jobs:
       - image: circleci/php:7.4-cli
     steps:
       - checkout
-      - run: { name: "Install dependencies", command: sudo composer self-update && composer install -n --prefer-dist }
+      - run: { name: "Install dependencies", command: sudo composer self-update && composer install -n --prefer-dist && mkdir --parents tools/php-cs-fixer && composer require --working-dir=tools/php-cs-fixer friendsofphp/php-cs-fixer }
       - run:
           name: Syntax tests
           command: |
-            wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -q -O php-cs-fixer.phar
-            composer run lint-syntax
+             tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation -v
       - run:
           name: Static analysis
           command: |
