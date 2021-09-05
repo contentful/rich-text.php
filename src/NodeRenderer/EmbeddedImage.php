@@ -75,9 +75,9 @@ class EmbeddedImage implements NodeRendererInterface
      * This method takes an embedded image and outputs the HTML code to embed it. If you need to implement a custom
      * image renderer, override this method.
      *
-     * @param AssetInterface     $asset    The asset itself. Must implement the getTitle-method. If the method is called
-     *                                      by the correct class method, this will be verified above.
-     * @param ImageFile          $image    The image file contained in the asset
+     * @param AssetInterface $asset The asset itself. Must implement the getTitle-method. If the method is called
+     *                              by the correct class method, this will be verified above.
+     * @param ImageFile      $image The image file contained in the asset
      *
      * @return string a HTML string representing the image
      */
