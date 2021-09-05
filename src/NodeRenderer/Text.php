@@ -33,14 +33,14 @@ class Text implements NodeRendererInterface
     {
         /* @var NodeClass $node */
         if (!$node instanceof NodeClass) {
-            throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
+            throw new \LogicException(sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
         }
 
-        return \array_reduce($node->getMarks(), function (string $value, MarkInterface $mark) {
+        return array_reduce($node->getMarks(), function (string $value, MarkInterface $mark) {
             $tag = $this->getHtmlTagForMark($mark);
 
-            return \sprintf('<%s>%s</%s>', $tag, $value, $tag);
-        }, \htmlentities($node->getValue()));
+            return sprintf('<%s>%s</%s>', $tag, $value, $tag);
+        }, htmlentities($node->getValue()));
     }
 
     private function getHtmlTagForMark(MarkInterface $mark): string

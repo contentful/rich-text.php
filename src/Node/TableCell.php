@@ -29,7 +29,7 @@ class TableCell extends BlockNode
         return [
             'nodeType' => self::getType(),
             'content' => $this->content,
-            'data' => new \stdClass()
+            'data' => new \stdClass(),
         ];
     }
 }

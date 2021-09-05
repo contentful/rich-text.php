@@ -32,7 +32,7 @@ class OrderedList implements NodeRendererInterface
     {
         /* @var NodeClass $node */
         if (!$node instanceof NodeClass) {
-            throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
+            throw new \LogicException(sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
         }
 
         return '<ol>'.$renderer->renderCollection($node->getContent(), $context).'</ol>';

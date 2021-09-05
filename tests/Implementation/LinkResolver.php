@@ -40,7 +40,7 @@ class LinkResolver implements LinkResolverInterface
      */
     public function resolveLinkCollection(array $links, array $parameters = []): array
     {
-        return \array_map(function (Link $link) use ($parameters): ResourceInterface {
+        return array_map(function (Link $link) use ($parameters): ResourceInterface {
             return $this->resolveLink($link, $parameters);
         }, $links);
     }

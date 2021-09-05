@@ -61,7 +61,7 @@ class EntryReference implements EntryReferenceInterface
             }
 
             // @codeCoverageIgnoreStart
-            throw new \RuntimeException(\sprintf('A link has been resolved to an instance of %s, but %s is expected. This should never happen.', \get_class($resource), EntryInterface::class));
+            throw new \RuntimeException(sprintf('A link has been resolved to an instance of %s, but %s is expected. This should never happen.', \get_class($resource), EntryInterface::class));
             // @codeCoverageIgnoreEnd
         }
 

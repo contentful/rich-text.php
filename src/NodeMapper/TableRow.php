@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Contentful\RichText\NodeMapper;
 
 use Contentful\Core\Api\LinkResolverInterface;
-use Contentful\RichText\Node\TableRow as NodeClass;
 use Contentful\RichText\Node\NodeInterface;
+use Contentful\RichText\Node\TableRow as NodeClass;
 use Contentful\RichText\ParserInterface;
 
 class TableRow implements NodeMapperInterface
@@ -26,4 +26,3 @@ class TableRow implements NodeMapperInterface
         return new NodeClass($parser->parseCollection($data['content']));
     }
 }
-

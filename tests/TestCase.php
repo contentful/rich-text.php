@@ -26,7 +26,7 @@ class TestCase extends BaseTestCase
     {
         $nodes = [];
         while ($amount) {
-            $nodes[] = new Node(\bin2hex(\random_bytes(5)));
+            $nodes[] = new Node(bin2hex(random_bytes(5)));
             --$amount;
         }
 
