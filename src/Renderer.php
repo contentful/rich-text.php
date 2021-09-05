@@ -60,13 +60,31 @@ class Renderer implements RendererInterface
     }
 
     /**
+     * This method enables the internal image renderer. When an image is embedded in a rich text block, it will generate
+     * an image tag instead of creating an asset string. This is breaking behaviour and therefore needs to be
+     * explicitly enabled.
+     * @param bool $active Whether the embedded image renderer should be activated.
+     */
+    public function enableEmbeddedImageRenderer(bool $active) {
+        if ($active) {
+            $this->pushNodeRenderer(new NodeRenderer\EmbeddedImage());
+        }
+        else {
+            $this->nodeRenderers = array_filter($this->nodeRenderers, function ($renderer) {
+                return !($renderer instanceof NodeRenderer\EmbeddedImage);
+            });
+        }
+    }
+
+    /**
      * Adds a custom node renderer to the current stack.
      * The renderer will be added to the beginning of the list,
      * so those renderers added last will have higher priority over default ones.
      *
+     * @param NodeRendererInterface $renderer The new renderer to append.
      * @return $this
      */
-    public function pushNodeRenderer(NodeRendererInterface $renderer)
+    public function pushNodeRenderer(NodeRendererInterface $renderer): Renderer
     {
         array_unshift($this->nodeRenderers, $renderer);
 
@@ -77,9 +95,10 @@ class Renderer implements RendererInterface
      * Adds a custom node renderer to the current stack.
      * The renderer will be added to the end of the list.
      *
+     * @param NodeRendererInterface $renderer The new renderer.
      * @return $this
      */
-    public function appendNodeRenderer(NodeRendererInterface $renderer)
+    public function appendNodeRenderer(NodeRendererInterface $renderer): Renderer
     {
         $this->nodeRenderers[] = $renderer;
 
