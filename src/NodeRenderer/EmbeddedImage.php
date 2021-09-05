@@ -58,7 +58,7 @@ class EmbeddedImage implements NodeRendererInterface
         $embeddedAssetBlock = $node;
         $asset = $embeddedAssetBlock->getAsset();
         /** @var ImageFile $file */
-        $file = $asset->getFile();
+        $file = $asset->getFile(); // @phpstan-ignore-line
 
         return $this->renderImage($asset, $file);
     }
@@ -77,8 +77,7 @@ class EmbeddedImage implements NodeRendererInterface
     {
         // we know this method exists (we checked above), but PHPStan doesn't. So we
         // need to tell it to ignore this call.
-        /** @phpstan-ignore-next-line */
-        $title = $asset->getTitle();
+        $title = $asset->getTitle(); // @phpstan-ignore-line
 
         return '<img src="'.$image->getUrl().'" alt="'.htmlspecialchars($title, \ENT_QUOTES).'">';
     }

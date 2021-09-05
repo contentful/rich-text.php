@@ -1,0 +1,4 @@
+parameters:
+	ignoreErrors:
+		- '#Call to an undefined method Contentful\\Core\\Resource\\AssetInterface::get(File|Title)\(\)#'
+
