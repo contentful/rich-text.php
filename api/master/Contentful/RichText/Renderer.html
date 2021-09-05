@@ -147,6 +147,18 @@ possibly delegating to a specific node renderer.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_enableEmbeddedImageRenderer">enableEmbeddedImageRenderer</a>(bool $active)
+        
+                                            <p>This method enables the internal image renderer. When an image is embedded in a rich text block, it will generate
+an image tag instead of creating an asset string. This is breaking behaviour and therefore needs to be
+explicitly enabled.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <abbr title="Contentful\RichText\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
@@ -287,8 +299,41 @@ possibly delegating to a specific node renderer.</p>                            
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_pushNodeRenderer">
+                    <h3 id="method_enableEmbeddedImageRenderer">
         <div class="location">at         line 69</div>
+        <code>                    
+    <strong>enableEmbeddedImageRenderer</strong>(bool $active)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>This method enables the internal image renderer. When an image is embedded in a rich text block, it will generate
+an image tag instead of creating an asset string. This is breaking behaviour and therefore needs to be
+explicitly enabled.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$active</td>
+                <td>whether the embedded image renderer should be activated</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pushNodeRenderer">
+        <div class="location">at         line 89</div>
         <code>                    <abbr title="Contentful\RichText\$this">$this</abbr>
     <strong>pushNodeRenderer</strong>(<a href="../../Contentful/RichText/NodeRenderer/NodeRendererInterface.html"><abbr title="Contentful\RichText\NodeRenderer\NodeRendererInterface">NodeRendererInterface</abbr></a> $renderer)
         </code>
@@ -307,7 +352,7 @@ so those renderers added last will have higher priority over default ones.</p>  
                     <tr>
                 <td><a href="../../Contentful/RichText/NodeRenderer/NodeRendererInterface.html"><abbr title="Contentful\RichText\NodeRenderer\NodeRendererInterface">NodeRendererInterface</abbr></a></td>
                 <td>$renderer</td>
-                <td></td>
+                <td>the new renderer to append</td>
             </tr>
             </table>
 
@@ -329,7 +374,7 @@ so those renderers added last will have higher priority over default ones.</p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_appendNodeRenderer">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 104</div>
         <code>                    <abbr title="Contentful\RichText\$this">$this</abbr>
     <strong>appendNodeRenderer</strong>(<a href="../../Contentful/RichText/NodeRenderer/NodeRendererInterface.html"><abbr title="Contentful\RichText\NodeRenderer\NodeRendererInterface">NodeRendererInterface</abbr></a> $renderer)
         </code>
@@ -347,7 +392,7 @@ so those renderers added last will have higher priority over default ones.</p>  
                     <tr>
                 <td><a href="../../Contentful/RichText/NodeRenderer/NodeRendererInterface.html"><abbr title="Contentful\RichText\NodeRenderer\NodeRendererInterface">NodeRendererInterface</abbr></a></td>
                 <td>$renderer</td>
-                <td></td>
+                <td>the new renderer</td>
             </tr>
             </table>
 
@@ -369,7 +414,7 @@ so those renderers added last will have higher priority over default ones.</p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_getNodeRenderers">
-        <div class="location">at         line 92</div>
+        <div class="location">at         line 114</div>
         <code>                    <a href="../../Contentful/RichText/NodeRenderer/NodeRendererInterface.html"><abbr title="Contentful\RichText\NodeRenderer\NodeRendererInterface">NodeRendererInterface</abbr></a>[]
     <strong>getNodeRenderers</strong>()
         </code>
