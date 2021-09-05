@@ -26,9 +26,7 @@ class EmbeddedImage implements NodeRendererInterface
     public function supports(NodeInterface $node): bool
     {
         if ($node instanceof EmbeddedAssetBlock) {
-            /**
-             * @var $asset EmbeddedAssetBlock
-             */
+            /** @var EmbeddedAssetBlock $asset */
             $asset = $node->getAsset();
 
             // Checking whether the methods exist is not the most beautiful option.
@@ -40,9 +38,7 @@ class EmbeddedImage implements NodeRendererInterface
                 return false;
             }
 
-            /**
-             * @var $file FileInterface
-             */
+            /** @var FileInterface $file */
             $file = $asset->getFile();
             $contentType = $file->getContentType();
 
@@ -58,14 +54,10 @@ class EmbeddedImage implements NodeRendererInterface
     public function render(RendererInterface $renderer, NodeInterface $node, array $context = []): string
     {
         // we verified that these "casts" succeeds above
-        /**
-         * @var $embeddedAssetBlock EmbeddedAssetBlock
-         */
+        /** @var EmbeddedAssetBlock $embeddedAssetBlock */
         $embeddedAssetBlock = $node;
         $asset = $embeddedAssetBlock->getAsset();
-        /**
-         * @var $file ImageFile
-         */
+        /** @var ImageFile $file */
         $file = $asset->getFile();
 
         return $this->renderImage($asset, $file);
@@ -83,6 +75,11 @@ class EmbeddedImage implements NodeRendererInterface
      */
     protected function renderImage(AssetInterface $asset, ImageFile $image): string
     {
-        return '<img src="'.$image->getUrl().'" alt="'.htmlspecialchars($asset->getTitle(), \ENT_QUOTES).'">';
+        // we know this method exists (we checked above), but PHPStan doesn't. So we
+        // need to tell it to ignore this call.
+        /** @phpstan-ignore-next-line */
+        $title = $asset->getTitle();
+
+        return '<img src="'.$image->getUrl().'" alt="'.htmlspecialchars($title, \ENT_QUOTES).'">';
     }
 }
