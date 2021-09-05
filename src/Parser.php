@@ -93,6 +93,9 @@ class Parser implements ParserInterface
             Node\Nothing::getType() => new NodeMapper\Nothing(),
             Node\OrderedList::getType() => new NodeMapper\OrderedList(),
             Node\Paragraph::getType() => new NodeMapper\Paragraph(),
+            Node\Table::getType() => new NodeMapper\Table(),
+            Node\TableCell::getType() => new NodeMapper\TableCell(),
+            Node\TableRow::getType() => new NodeMapper\TableRow(),
             Node\Text::getType() => new NodeMapper\Text(),
             Node\UnorderedList::getType() => new NodeMapper\UnorderedList(),
         ];
