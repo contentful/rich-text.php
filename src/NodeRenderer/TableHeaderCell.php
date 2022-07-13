@@ -22,7 +22,6 @@ class TableHeaderCell implements NodeRendererInterface
      */
     public function supports(NodeInterface $node): bool
     {
-//        dd($node);
         return $node instanceof NodeClass;
     }
 
