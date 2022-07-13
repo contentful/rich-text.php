@@ -146,6 +146,7 @@ class Renderer implements RendererInterface
             new NodeRenderer\Paragraph(),
             new NodeRenderer\Table(),
             new NodeRenderer\TableCell(),
+            new NodeRenderer\TableHeaderCell(),
             new NodeRenderer\TableRow(),
             new NodeRenderer\Text(),
             new NodeRenderer\UnorderedList(),
