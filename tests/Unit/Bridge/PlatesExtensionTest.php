@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2021 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -41,7 +41,7 @@ class PlatesExtensionTest extends TestCase
                         $this->assertSame('renderCollection', $callback[1]);
                         break;
                     default:
-                        $this->fail(sprintf(
+                        $this->fail(\sprintf(
                             'Unrecognized extension name "%s"',
                             $name
                         ));

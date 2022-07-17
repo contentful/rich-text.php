@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2021 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -34,7 +34,7 @@ class EmbeddedImage implements NodeRendererInterface
             // the getFile method and introducing it would break backwards
             // compatibility. The client libraries implement these methods on the
             // relevant classes, though.
-            if (!method_exists($asset, 'getFile') || !method_exists($asset, 'getTitle')) {
+            if (!\method_exists($asset, 'getFile') || !\method_exists($asset, 'getTitle')) {
                 return false;
             }
 
@@ -42,7 +42,7 @@ class EmbeddedImage implements NodeRendererInterface
             $file = $asset->getFile();
             $contentType = $file->getContentType();
 
-            return 'image/' === mb_substr($contentType, 0, 6) && $file instanceof ImageFile;
+            return 'image/' === \mb_substr($contentType, 0, 6) && $file instanceof ImageFile;
         }
 
         return false;
@@ -79,6 +79,6 @@ class EmbeddedImage implements NodeRendererInterface
         // need to tell it to ignore this call.
         $title = $asset->getTitle(); // @phpstan-ignore-line
 
-        return '<img src="'.$image->getUrl().'" alt="'.htmlspecialchars($title, \ENT_QUOTES).'">';
+        return '<img src="'.$image->getUrl().'" alt="'.\htmlspecialchars($title, \ENT_QUOTES).'">';
     }
 }

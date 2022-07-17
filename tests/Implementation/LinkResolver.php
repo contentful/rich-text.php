@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2021 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -40,7 +40,7 @@ class LinkResolver implements LinkResolverInterface
      */
     public function resolveLinkCollection(array $links, array $parameters = []): array
     {
-        return array_map(function (Link $link) use ($parameters): ResourceInterface {
+        return \array_map(function (Link $link) use ($parameters): ResourceInterface {
             return $this->resolveLink($link, $parameters);
         }, $links);
     }

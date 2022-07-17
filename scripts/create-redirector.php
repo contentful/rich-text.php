@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This file is part of the contentful/contentful-management package.
+ * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2020 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -34,8 +34,8 @@ $repoParts = \explode('/', $travisRepoSlug);
 $repoOwner = $repoParts[0];
 $repoName = $repoParts[1];
 
-$html = '<meta http-equiv="refresh" content="0; url=https://' . $repoOwner . '.github.io/' . $repoName . '/api/' . $newestTag . '/" />';
+$html = '<meta http-equiv="refresh" content="0; url=https://'.$repoOwner.'.github.io/'.$repoName.'/api/'.$newestTag.'/" />';
 
 \file_put_contents($indexFile, $html);
 
-echo 'Created index file redirecting to ' . $newestTag . '.' . "\n";
+echo 'Created index file redirecting to '.$newestTag.'.'."\n";

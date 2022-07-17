@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This file is part of the contentful/contentful-core package.
+ * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2020 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -16,11 +16,11 @@ return function (string $packageName, bool $usePhp7, array $directories, array $
     $year = \date('Y');
 
     $fileHeaderComment = <<<COMMENT
-This file is part of the contentful/$packageName package.
+        This file is part of the contentful/$packageName package.
 
-@copyright 2015-$year Contentful GmbH
-@license   MIT
-COMMENT;
+        @copyright 2015-$year Contentful GmbH
+        @license   MIT
+        COMMENT;
 
     $finder = Finder::create();
     foreach ($directories as $directory) {
@@ -34,6 +34,7 @@ COMMENT;
     $rules = [
         '@Symfony' => true,
         '@Symfony:risky' => true,
+        '@PHP80Migration' => true,
         'array_syntax' => [
             'syntax' => 'short',
         ],
@@ -77,7 +78,7 @@ COMMENT;
 
     $cache = \tempnam(\sys_get_temp_dir(), $packageName).'-php_cs.cache';
 
-    return (new Config())
+    return Config::create()
         ->setFinder($finder)
         ->setRiskyAllowed(true)
         ->setCacheFile($cache)

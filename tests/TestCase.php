@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2021 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -26,7 +26,7 @@ class TestCase extends BaseTestCase
     {
         $nodes = [];
         while ($amount) {
-            $nodes[] = new Node(bin2hex(random_bytes(5)));
+            $nodes[] = new Node(\bin2hex(\random_bytes(5)));
             --$amount;
         }
 

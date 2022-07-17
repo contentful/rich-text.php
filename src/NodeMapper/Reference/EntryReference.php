@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2021 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -61,7 +61,7 @@ class EntryReference implements EntryReferenceInterface
             }
 
             // @codeCoverageIgnoreStart
-            throw new \RuntimeException(sprintf('A link has been resolved to an instance of %s, but %s is expected. This should never happen.', \get_class($resource), EntryInterface::class));
+            throw new \RuntimeException(\sprintf('A link has been resolved to an instance of %s, but %s is expected. This should never happen.', \get_class($resource), EntryInterface::class));
             // @codeCoverageIgnoreEnd
         }
 

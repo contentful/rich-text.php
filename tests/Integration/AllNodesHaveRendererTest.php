@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2021 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -41,11 +41,11 @@ class AllNodesHaveRendererTest extends TestCase
         ;
 
         foreach ($iterator as $file) {
-            if ('Interface.php' === mb_substr($file->getFilename(), -13)) {
+            if ('Interface.php' === \mb_substr($file->getFilename(), -13)) {
                 continue;
             }
 
-            $nodeRendererClass = str_replace('.php', '', $file->getRelativePathname());
+            $nodeRendererClass = \str_replace('.php', '', $file->getRelativePathname());
             $fqcn = '\\Contentful\\RichText\\NodeRenderer\\'.$nodeRendererClass;
 
             $this->allNodeRenderers[$nodeRendererClass] = new $fqcn();
@@ -71,8 +71,8 @@ class AllNodesHaveRendererTest extends TestCase
             return;
         }
 
-        if (!class_exists($nodeRendererClass)) {
-            $this->fail(sprintf(
+        if (!\class_exists($nodeRendererClass)) {
+            $this->fail(\sprintf(
                 'Node renderer "%s" does not exists',
                 $nodeRendererClass
             ));
@@ -89,7 +89,7 @@ class AllNodesHaveRendererTest extends TestCase
             }
         }
 
-        $this->fail(sprintf(
+        $this->fail(\sprintf(
             'No node renderer which supports node of class "%s" was found.',
             $nodeClass
         ));
@@ -120,7 +120,7 @@ class AllNodesHaveRendererTest extends TestCase
             }
         }
 
-        $this->fail(sprintf(
+        $this->fail(\sprintf(
             'No default node renderer which supports node of class "%s" was found.',
             $nodeClass
         ));
@@ -135,11 +135,11 @@ class AllNodesHaveRendererTest extends TestCase
         ;
 
         foreach ($iterator as $file) {
-            if ('Interface.php' === mb_substr($file->getFilename(), -13)) {
+            if ('Interface.php' === \mb_substr($file->getFilename(), -13)) {
                 continue;
             }
 
-            yield $file->getFilename() => [str_replace('.php', '', $file->getRelativePathname())];
+            yield $file->getFilename() => [\str_replace('.php', '', $file->getRelativePathname())];
         }
     }
 }

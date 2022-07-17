@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2021 Contentful GmbH
+ * @copyright 2015-2022 Contentful GmbH
  * @license   MIT
  */
 
@@ -36,7 +36,7 @@ class Renderer implements RendererInterface
      */
     public function renderCollection(array $nodes, array $context = []): string
     {
-        return implode('-', array_map(function (NodeInterface $node) use ($context): string {
+        return \implode('-', \array_map(function (NodeInterface $node) use ($context): string {
             return $this->render($node, $context);
         }, $nodes));
     }
