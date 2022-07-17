@@ -22,7 +22,7 @@ return function (string $packageName, bool $usePhp7, array $directories, array $
         @license   MIT
         COMMENT;
 
-    $finder = Finder::create();
+    $finder = new Finder();
     foreach ($directories as $directory) {
         $finder = $finder->in($directory);
     }
