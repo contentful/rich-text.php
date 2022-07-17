@@ -12,6 +12,7 @@ workflows:
       - test73
       - test74
       - test80
+      - test81
       - docs_build:
           requires:
             - lint
@@ -19,6 +20,7 @@ workflows:
             - test73
             - test74
             - test80
+            - test81
           filters:
             branches:
               only: master
@@ -26,7 +28,7 @@ workflows:
 jobs:
   lint:
     docker:
-      - image: circleci/php:7.4-cli
+      - image: cimg/php:7.4
     steps:
       - checkout
       - run: { name: "Install dependencies", command: sudo composer self-update && composer install -n --prefer-dist && mkdir --parents tools/php-cs-fixer && composer require --working-dir=tools/php-cs-fixer friendsofphp/php-cs-fixer }
@@ -64,7 +66,7 @@ jobs:
 
   test73:
       docker:
-          - image: circleci/php:7.3-cli
+          - image: cimg/php:7.3
       steps:
           - checkout
           - run: { name: "Install dependencies", command: "sudo composer self-update && composer install -n --prefer-dist" }
@@ -72,7 +74,7 @@ jobs:
             
   test74:
     docker:
-      - image: circleci/php:7.4-cli
+      - image: cimg/php:7.4
     steps:
       - checkout
       - run: { name: "Install dependencies", command: "sudo composer self-update && composer install -n --prefer-dist" }
@@ -80,7 +82,15 @@ jobs:
 
   test80:
     docker:
-      - image: circleci/php:8.0-cli
+      - image: cimg/php:8.0
+    steps:
+      - checkout
+      - run: { name: "Install dependencies", command: "sudo composer self-update && composer install -n --prefer-dist" }
+      - run: { name: "Test suite", command: "composer test-quick-fail" }
+
+  test81:
+    docker:
+      - image: cimg/php:8.1
     steps:
       - checkout
       - run: { name: "Install dependencies", command: "sudo composer self-update && composer install -n --prefer-dist" }
