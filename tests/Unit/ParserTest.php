@@ -177,10 +177,10 @@ class ParserTest extends TestCase
         /** @var NodeClass\EntryHyperlink|NodeClass\EmbeddedEntryBlock|NodeClass\EmbeddedEntryInline $node */
         $node = $parser->parse($this->getParsedFixture('embedded-entry-block.json'));
 
-        //$this->assertInstanceOf($nodeClass, $node);
+        // $this->assertInstanceOf($nodeClass, $node);
 
         /* @see FailingLinkResolver::resolveLink */
-        //$this->expectException(\Exception::class);
+        // $this->expectException(\Exception::class);
 
         $entry = $node->getEntry();
         $this->assertInstanceOf(EntryInterface::class, $entry);

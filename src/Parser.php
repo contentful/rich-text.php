@@ -39,7 +39,7 @@ class Parser implements ParserInterface
     public function __construct(LinkResolverInterface $linkResolver, array $mappers = [])
     {
         $this->linkResolver = $linkResolver;
-        $this->mappers = \array_merge($this->createMappers(), $mappers);
+        $this->mappers = array_merge($this->createMappers(), $mappers);
     }
 
     /**
@@ -51,7 +51,7 @@ class Parser implements ParserInterface
     {
         $nodeType = $data['nodeType'];
         if (!isset($this->mappers[$nodeType])) {
-            throw new \InvalidArgumentException(\sprintf('Unrecognized node type "%s" when trying to parse rich text.', $data['nodeType']));
+            throw new \InvalidArgumentException(sprintf('Unrecognized node type "%s" when trying to parse rich text.', $data['nodeType']));
         }
 
         $mapper = $this->mappers[$nodeType];
@@ -64,7 +64,7 @@ class Parser implements ParserInterface
      */
     public function parseCollection(array $data): array
     {
-        return \array_map([$this, 'parse'], $data);
+        return array_map([$this, 'parse'], $data);
     }
 
     /**

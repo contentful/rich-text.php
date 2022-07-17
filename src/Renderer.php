@@ -46,7 +46,7 @@ class Renderer implements RendererInterface
             }
         }
 
-        throw new \InvalidArgumentException(\sprintf('Structured text renderer could not find NodeRenderer instance which supports node of class "%s".', \get_class($node)));
+        throw new \InvalidArgumentException(sprintf('Structured text renderer could not find NodeRenderer instance which supports node of class "%s".', \get_class($node)));
     }
 
     /**
@@ -54,7 +54,7 @@ class Renderer implements RendererInterface
      */
     public function renderCollection(array $nodes, array $context = []): string
     {
-        return \implode('', \array_map(function (NodeInterface $node) use ($context): string {
+        return implode('', array_map(function (NodeInterface $node) use ($context): string {
             return $this->render($node, $context);
         }, $nodes));
     }
@@ -71,7 +71,7 @@ class Renderer implements RendererInterface
         if ($active) {
             $this->pushNodeRenderer(new NodeRenderer\EmbeddedImage());
         } else {
-            $this->nodeRenderers = \array_filter($this->nodeRenderers, function ($renderer) {
+            $this->nodeRenderers = array_filter($this->nodeRenderers, function ($renderer) {
                 return !($renderer instanceof NodeRenderer\EmbeddedImage);
             });
         }
@@ -88,7 +88,7 @@ class Renderer implements RendererInterface
      */
     public function pushNodeRenderer(NodeRendererInterface $renderer): self
     {
-        \array_unshift($this->nodeRenderers, $renderer);
+        array_unshift($this->nodeRenderers, $renderer);
 
         return $this;
     }

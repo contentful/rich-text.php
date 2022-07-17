@@ -36,7 +36,7 @@ class Renderer implements RendererInterface
      */
     public function renderCollection(array $nodes, array $context = []): string
     {
-        return \implode('-', \array_map(function (NodeInterface $node) use ($context): string {
+        return implode('-', array_map(function (NodeInterface $node) use ($context): string {
             return $this->render($node, $context);
         }, $nodes));
     }

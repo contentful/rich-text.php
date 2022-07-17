@@ -40,7 +40,7 @@ class AllNodesHaveParserTest extends TestCase
      */
     public function testAllNodesHaveParser(string $file)
     {
-        $file = \str_replace('.php', '', $file);
+        $file = str_replace('.php', '', $file);
         $nodeClass = '\\Contentful\\RichText\\Node\\'.$file;
         $nodeMapperClass = '\\Contentful\\RichText\\NodeMapper\\'.$file;
 
@@ -51,8 +51,8 @@ class AllNodesHaveParserTest extends TestCase
             return;
         }
 
-        if (!\class_exists($nodeMapperClass)) {
-            $this->fail(\sprintf(
+        if (!class_exists($nodeMapperClass)) {
+            $this->fail(sprintf(
                 'Node mapper "%s" does not exists',
                 $nodeMapperClass
             ));

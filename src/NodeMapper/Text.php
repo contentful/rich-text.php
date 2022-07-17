@@ -27,7 +27,7 @@ class Text implements NodeMapperInterface
     {
         return new NodeClass(
             $data['value'],
-            \array_map([$this, 'parseMark'], $data['marks'])
+            array_map([$this, 'parseMark'], $data['marks'])
         );
     }
 
@@ -43,7 +43,7 @@ class Text implements NodeMapperInterface
             case Mark\Underline::getType():
                 return new Mark\Underline();
             default:
-                throw new \InvalidArgumentException(\sprintf('Unrecognized mark type "%s" when trying to parse rich text.', $data['type']));
+                throw new \InvalidArgumentException(sprintf('Unrecognized mark type "%s" when trying to parse rich text.', $data['type']));
         }
     }
 }

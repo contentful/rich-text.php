@@ -41,7 +41,7 @@ class PlatesExtensionTest extends TestCase
                         $this->assertSame('renderCollection', $callback[1]);
                         break;
                     default:
-                        $this->fail(\sprintf(
+                        $this->fail(sprintf(
                             'Unrecognized extension name "%s"',
                             $name
                         ));
