@@ -3,11 +3,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/3.3.0...HEAD)
+## [Unreleased](https://github.com/contentful/rich-text.php/compare/3.4.0...HEAD)
 
 <!-- PENDING-CHANGES -->
 > No meaningful changes since last release.
 <!-- /PENDING-CHANGES -->
+
+## [3.4.0](https://github.com/contentful/rich-text.php/tree/3.4.0) (2022-07-17)
+
+### Added
+
+* Added support for table-header-cell
+
+### Internal
+
+* Updated header comments
+* Added CI tests for PHP8.1
+
 
 ## [3.3.0](https://github.com/contentful/rich-text.php/tree/3.3.0) (2022-04-25)
 
