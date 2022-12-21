@@ -1,4 +1,10 @@
 {
+    "asset": {
+        "sys": {
+            "id": "resourceId",
+            "type": "Asset"
+        }
+    },
     "nodeType": "embedded-asset-block",
     "data": {
         "target": {

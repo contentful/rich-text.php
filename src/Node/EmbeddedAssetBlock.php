@@ -55,6 +55,7 @@ class EmbeddedAssetBlock extends BlockNode
                 'target' => $this->asset->asLink(),
             ],
             'content' => $this->content,
+            'asset' => $this->asset,
         ];
     }
 }
