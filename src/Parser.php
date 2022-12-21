@@ -14,7 +14,6 @@ namespace Contentful\RichText;
 use Contentful\Core\Api\LinkResolverInterface;
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\NodeMapper\NodeMapperInterface;
-use Exception;
 
 /**
  * Parser class.
@@ -45,7 +44,7 @@ class Parser implements ParserInterface
     /**
      * {@inheritdoc}
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function parse(array $data): NodeInterface
     {

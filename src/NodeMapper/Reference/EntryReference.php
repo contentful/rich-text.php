@@ -14,7 +14,6 @@ namespace Contentful\RichText\NodeMapper\Reference;
 use Contentful\Core\Api\Link;
 use Contentful\Core\Api\LinkResolverInterface;
 use Contentful\Core\Resource\EntryInterface;
-use InvalidArgumentException;
 
 class EntryReference implements EntryReferenceInterface
 {
@@ -39,7 +38,7 @@ class EntryReference implements EntryReferenceInterface
     public function __construct(Link $link, LinkResolverInterface $linkResolver)
     {
         if ('Entry' !== $link->getLinkType()) {
-            throw new InvalidArgumentException('Link is required to reference an Entry.');
+            throw new \InvalidArgumentException('Link is required to reference an Entry.');
         }
 
         $this->link = $link;

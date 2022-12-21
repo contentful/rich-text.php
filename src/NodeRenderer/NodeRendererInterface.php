@@ -13,7 +13,6 @@ namespace Contentful\RichText\NodeRenderer;
 
 use Contentful\RichText\Node\NodeInterface;
 use Contentful\RichText\RendererInterface;
-use InvalidArgumentException;
 
 /**
  * NodeRendererInterface.
@@ -46,7 +45,7 @@ interface NodeRendererInterface
      * @param NodeInterface     $node     The node which must be rendered
      * @param array             $context  Optionally, extra context variables (useful with custom node renderers)
      *
-     * @throws InvalidArgumentException when the given $node is not supported
+     * @throws \InvalidArgumentException when the given $node is not supported
      */
     public function render(RendererInterface $renderer, NodeInterface $node, array $context = []): string;
 }
