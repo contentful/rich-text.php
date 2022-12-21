@@ -36,19 +36,16 @@ class PlatesExtension implements ExtensionInterface
      */
     public function register(Engine $engine)
     {
-        // The type annotations here make no sense.
-        // But they are needed to trick static analysis with PHPStan,
-        // as Plates wrongly defines the PHPDoc type of the second
+        // We need to ignore two of the following lines in PHPStan.
+        // Plates wrongly defines the PHPDoc type of the second
         // parameter of Engine::registerFunction() as "callback" (instead of callable),
         // which does not exist and is resolved as the non-existent
-        // League\Plates\callback class ¯\_(ツ)_/¯
+        // League\Plates\callback class in PHPStan ¯\_(ツ)_/¯
 
-        /** @var \League\Plates\callback $callback */
         $callback = [$this->renderer, 'render'];
-        $engine->registerFunction('richTextRender', $callback);
+        $engine->registerFunction('richTextRender', $callback); // @phpstan-ignore-line
 
-        /** @var \League\Plates\callback $callback */
         $callback = [$this->renderer, 'renderCollection'];
-        $engine->registerFunction('richTextRenderCollection', $callback);
+        $engine->registerFunction('richTextRenderCollection', $callback); // @phpstan-ignore-line
     }
 }

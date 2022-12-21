@@ -67,10 +67,7 @@ class EntryReference implements EntryReferenceInterface
         return $this->entry;
     }
 
-    /**
-     * @return array[]|mixed
-     */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->link->jsonSerialize();
     }

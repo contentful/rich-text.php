@@ -39,10 +39,7 @@ class StaticEntryReference implements EntryReferenceInterface
         return $this->entry;
     }
 
-    /**
-     * @return array[]|mixed
-     */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->entry->asLink()->jsonSerialize();
     }
