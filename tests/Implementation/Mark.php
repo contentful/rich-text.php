@@ -37,7 +37,7 @@ class Mark implements MarkInterface
     /**
      * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize() : mixed
     {
         return [
             'object' => 'mark',
