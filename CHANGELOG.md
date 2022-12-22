@@ -3,7 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/4.0.0...HEAD)
+## [Unreleased](https://github.com/contentful/rich-text.php/compare/4.0.1...HEAD)
+
+## [4.0.1](https://github.com/contentful/rich-text.php/tree/4.0.1) (2022-12-22)
+
+### Added
+
+* Support for Contentful/Core v4.0.0
 
 ## [4.0.0](https://github.com/contentful/rich-text.php/tree/4.0.0) (2022-12-22)
 
