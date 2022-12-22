@@ -23,16 +23,19 @@ require_once 'vendor/autoload.php';
 
 ### Parsing
 
-The method `Contentful\RichText\Parser::parse(array $data)` accepts a valid, unserialized rich text data structure, and returns an object which implements `Contentful\RichText\Node\NodeInterface`.
+The method `Contentful\RichText\Parser::parseLocalized(array $data, string|null $locale)` accepts a valid, unserialized rich text data structure, and returns an object which implements `Contentful\RichText\Node\NodeInterface`.
+You will also need a link resolver to instanciate the parser.
 
 ``` php
-$parser = new Contentful\RichText\Parser();
+$parser = new Contentful\RichText\Parser($linkResolver);
 
 // Fetch some data from an entry field from Contentful
 
 /** @var Contentful\RichText\Node\NodeInterface $node */
-$node = $parser->parse($data);
+$node = $parser->parseLocalized($data, $locale);
 ```
+
+The parser will also automatically resolve any linked assets and entries. To do this correctly, you will need to supply the current locale - otherwise, the parser will resolve the links in the default locale for the given space.
 
 Depending of which type of node it actually is, the hierarchy can be navigated using getter methods. Please refer to the [full list of available nodes](https://github.com/contentful/rich-text.php/tree/master/src/Node) for a complete reference.
 
