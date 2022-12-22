@@ -51,6 +51,8 @@ class Text implements NodeRendererInterface
             'code' => 'code',
             'italic' => 'em',
             'underline' => 'u',
+            'superscript' => 'sup',
+            'subscript' => 'sub',
         ];
 
         return $tags[$type] ?? 'span';

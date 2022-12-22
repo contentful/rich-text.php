@@ -42,6 +42,10 @@ class Text implements NodeMapperInterface
                 return new Mark\Italic();
             case Mark\Underline::getType():
                 return new Mark\Underline();
+            case Mark\Superscript::getType():
+                return new Mark\Superscript();
+            case Mark\Subscript::getType():
+                return new Mark\Subscript();
             default:
                 throw new \InvalidArgumentException(sprintf('Unrecognized mark type "%s" when trying to parse rich text.', $data['type']));
         }
