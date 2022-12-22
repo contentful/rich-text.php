@@ -3,7 +3,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/3.4.0...HEAD)
+## [Unreleased](https://github.com/contentful/rich-text.php/compare/4.0.0...HEAD)
+
+## [4.0.0](https://github.com/contentful/rich-text.php/tree/4.0.0) (2022-12-22)
+
+### Changed
+
+* **Breaking change:** Added locale support to the richtext parser. This avoids bugs when parsing embedded fields using a different locale (see [#65](https://github.com/contentful/rich-text.php/issues/65)). This change changes the `ParserInterface` and `NodeMapperInterface` - any implementation using a custom parser or NodeMapper will need to update the entries accordingly. Additionally, the `ParserInterface::parse()` and `ParserInterface::parseCollection()` methods have been deprecated in favor of their localized version (`ParserInterface::parseLocalized()` and `ParserInterface::parseCollectionLocalized()`, respectively).
+* **Breaking change:** Dropped support for PHP7.
+* Added the embedded asset to the serialized version of `EmbeddedAssetBlock` and `EmbeddedAssetInline` (see [#61](https://github.com/contentful/rich-text.php/issues/61)).
+* Added support for superscript and subscript.
+
+### Internal
+
+* Overall CI cleanup
+* Added CI tests for PHP8.2
+
+
 
 <!-- PENDING-CHANGES -->
 > No meaningful changes since last release.
