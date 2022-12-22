@@ -48,6 +48,16 @@ class Parser implements ParserInterface
      */
     public function parse(array $data): NodeInterface
     {
+        return $this->parseLocalized($data, null);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Exception
+     */
+    public function parseLocalized(array $data, string|null $locale): NodeInterface
+    {
         $nodeType = $data['nodeType'];
         if (!isset($this->mappers[$nodeType])) {
             throw new \InvalidArgumentException(sprintf('Unrecognized node type "%s" when trying to parse rich text.', $data['nodeType']));
@@ -55,15 +65,27 @@ class Parser implements ParserInterface
 
         $mapper = $this->mappers[$nodeType];
 
-        return $mapper->map($this, $this->linkResolver, $data);
+        return $mapper->map($this, $this->linkResolver, $data, $locale);
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @throws \Exception
      */
     public function parseCollection(array $data): array
     {
-        return array_map([$this, 'parse'], $data);
+        return $this->parseCollectionLocalized($data, null);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Exception
+     */
+    public function parseCollectionLocalized(array $data, string|null $locale): array
+    {
+        return array_map(function ($data) use ($locale) { return $this->parseLocalized($data, $locale); }, $data);
     }
 
     /**

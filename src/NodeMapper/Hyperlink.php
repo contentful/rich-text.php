@@ -21,10 +21,10 @@ class Hyperlink implements NodeMapperInterface
     /**
      * {@inheritdoc}
      */
-    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface
+    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data, string|null $locale): NodeInterface
     {
         return new NodeClass(
-            $parser->parseCollection($data['content']),
+            $parser->parseCollectionLocalized($data['content'], $locale),
             $data['data']['uri'],
             $data['data']['title'] ?? ''
         );

@@ -20,5 +20,5 @@ interface NodeMapperInterface
     /**
      * @throws \Exception
      */
-    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface;
+    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data, string|null $locale): NodeInterface;
 }

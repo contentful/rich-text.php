@@ -23,7 +23,7 @@ class EmbeddedEntryBlock implements NodeMapperInterface
     /**
      * {@inheritdoc}
      */
-    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface
+    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data, string|null $locale): NodeInterface
     {
         $linkData = $data['data']['target']['sys'];
 
@@ -31,7 +31,8 @@ class EmbeddedEntryBlock implements NodeMapperInterface
             $parser->parseCollection($data['content']),
             new EntryReference(
                 new Link($linkData['id'], $linkData['linkType']),
-                $linkResolver
+                $linkResolver,
+                $locale
             )
         );
     }

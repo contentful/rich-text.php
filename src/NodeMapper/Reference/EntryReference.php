@@ -33,9 +33,14 @@ class EntryReference implements EntryReferenceInterface
     private $entry;
 
     /**
+     * @var string|null
+     */
+    private $locale;
+
+    /**
      * EntryReference constructor.
      */
-    public function __construct(Link $link, LinkResolverInterface $linkResolver)
+    public function __construct(Link $link, LinkResolverInterface $linkResolver, string|null $locale)
     {
         if ('Entry' !== $link->getLinkType()) {
             throw new \InvalidArgumentException('Link is required to reference an Entry.');
@@ -43,6 +48,7 @@ class EntryReference implements EntryReferenceInterface
 
         $this->link = $link;
         $this->linkResolver = $linkResolver;
+        $this->locale = $locale;
     }
 
     public function getLink(): Link
@@ -53,7 +59,8 @@ class EntryReference implements EntryReferenceInterface
     public function getEntry(): EntryInterface
     {
         if (null === $this->entry) {
-            $resource = $this->linkResolver->resolveLink($this->link);
+            $params = null === $this->locale ? [] : ['locale' => $this->locale];
+            $resource = $this->linkResolver->resolveLink($this->link, $params);
 
             if ($resource instanceof EntryInterface) {
                 return $this->entry = $resource;

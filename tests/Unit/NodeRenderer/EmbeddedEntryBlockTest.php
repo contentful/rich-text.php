@@ -27,7 +27,7 @@ class EmbeddedEntryBlockTest extends TestCase
         $renderer = new Renderer();
         $nodeRenderer = new EmbeddedEntryBlock();
 
-        $reference = new EntryReference(new Link('entryId', 'Entry'), new LinkResolver());
+        $reference = new EntryReference(new Link('entryId', 'Entry'), new LinkResolver(), null);
         $node = new NodeClass([], $reference);
 
         $this->assertTrue($nodeRenderer->supports($node));

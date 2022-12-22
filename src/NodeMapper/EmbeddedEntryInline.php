@@ -23,15 +23,16 @@ class EmbeddedEntryInline implements NodeMapperInterface
     /**
      * {@inheritdoc}
      */
-    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface
+    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data, string|null $locale): NodeInterface
     {
         $linkData = $data['data']['target']['sys'];
 
         return new NodeClass(
-            $parser->parseCollection($data['content']),
+            $parser->parseCollectionLocalized($data['content'], $locale),
             new EntryReference(
                 new Link($linkData['id'], $linkData['linkType']),
-                $linkResolver
+                $linkResolver,
+                $locale
             )
         );
     }

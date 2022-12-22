@@ -23,17 +23,19 @@ class EmbeddedAssetInline implements NodeMapperInterface
     /**
      * {@inheritdoc}
      */
-    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface
+    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data, string|null $locale): NodeInterface
     {
         $linkData = $data['data']['target']['sys'];
+        $params = null === $locale ? [] : ['locale' => $locale];
 
         /** @var AssetInterface $asset */
         $asset = $linkResolver->resolveLink(
-            new Link($linkData['id'], $linkData['linkType'])
+            new Link($linkData['id'], $linkData['linkType']),
+            $params
         );
 
         return new NodeClass(
-            $parser->parseCollection($data['content']),
+            $parser->parseCollectionLocalized($data['content'], $locale),
             $asset
         );
     }

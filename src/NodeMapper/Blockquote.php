@@ -22,10 +22,10 @@ class Blockquote implements NodeMapperInterface
     /**
      * {@inheritdoc}
      */
-    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data): NodeInterface
+    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data, string|null $locale): NodeInterface
     {
         /** @var Paragraph[] $content */
-        $content = $parser->parseCollection($data['content']);
+        $content = $parser->parseCollectionLocalized($data['content'], $locale);
 
         return new NodeClass($content);
     }
