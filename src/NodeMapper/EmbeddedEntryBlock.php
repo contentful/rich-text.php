@@ -28,7 +28,7 @@ class EmbeddedEntryBlock implements NodeMapperInterface
         $linkData = $data['data']['target']['sys'];
 
         return new NodeClass(
-            $parser->parseCollection($data['content']),
+            $parser->parseCollectionLocalized($data['content'], $locale),
             new EntryReference(
                 new Link($linkData['id'], $linkData['linkType']),
                 $linkResolver,

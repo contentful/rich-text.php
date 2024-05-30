@@ -35,7 +35,7 @@ class EmbeddedAssetBlock implements NodeMapperInterface
         );
 
         return new NodeClass(
-            $parser->parseCollection($data['content']),
+            $parser->parseCollectionLocalized($data['content'], $locale),
             $asset
         );
     }
