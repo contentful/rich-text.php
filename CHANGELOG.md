@@ -3,7 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/4.0.1...HEAD)
+## [Unreleased](https://github.com/contentful/rich-text.php/compare/4.0.2...HEAD)
+
+## [4.0.2](https://github.com/contentful/rich-text.php/tree/4.0.2) (2024-06-03)
+
+* Fixed a bug where localization was lost on Embedded{Asset,Entry}Block
+* Updated for PHP8.3
 
 ## [4.0.1](https://github.com/contentful/rich-text.php/tree/4.0.1) (2022-12-22)
 
