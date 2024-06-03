@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -33,9 +33,6 @@ class Node implements NodeInterface
         return $this->value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getType(): string
     {
         return 'node';
@@ -46,9 +43,6 @@ class Node implements NodeInterface
         return 'block';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

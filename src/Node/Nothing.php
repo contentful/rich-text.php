@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -31,17 +31,11 @@ class Nothing implements NodeInterface
         return $this->data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getType(): string
     {
         return 'nothing';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return $this->data;

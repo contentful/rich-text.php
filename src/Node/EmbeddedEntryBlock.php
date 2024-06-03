@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -37,17 +37,11 @@ class EmbeddedEntryBlock extends BlockNode
         return $this->reference->getEntry();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getType(): string
     {
         return 'embedded-entry-block';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

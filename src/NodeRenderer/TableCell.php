@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -17,22 +17,16 @@ use Contentful\RichText\RendererInterface;
 
 class TableCell implements NodeRendererInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function supports(NodeInterface $node): bool
     {
         return $node instanceof NodeClass;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function render(RendererInterface $renderer, NodeInterface $node, array $context = []): string
     {
         /* @var NodeClass $node */
         if (!$node instanceof NodeClass) {
-            throw new \LogicException(sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, \get_class($node)));
+            throw new \LogicException(sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
         }
 
         return '<td>'.$renderer->renderCollection($node->getContent(), $context).'</td>';

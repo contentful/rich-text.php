@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -27,7 +27,7 @@ abstract class InlineNode implements NodeInterface
     {
         foreach ($content as $node) {
             if ($node instanceof BlockNode) {
-                throw new \InvalidArgumentException(sprintf('Node of class "%s" can not be set as child of class "%s", as it can not contain block nodes.', \get_class($node), static::class));
+                throw new \InvalidArgumentException(sprintf('Node of class "%s" can not be set as child of class "%s", as it can not contain block nodes.', $node::class, static::class));
             }
         }
 

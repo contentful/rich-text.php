@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -20,10 +20,7 @@ use Contentful\RichText\ParserInterface;
 
 class AssetHyperlink implements NodeMapperInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data, string|null $locale): NodeInterface
+    public function map(ParserInterface $parser, LinkResolverInterface $linkResolver, array $data, ?string $locale): NodeInterface
     {
         $linkData = $data['data']['target']['sys'];
         $params = null === $locale ? [] : ['locale' => $locale];

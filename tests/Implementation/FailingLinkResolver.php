@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -20,17 +20,11 @@ use Contentful\Core\Resource\ResourceInterface;
  */
 class FailingLinkResolver implements LinkResolverInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function resolveLink(Link $link, array $parameters = []): ResourceInterface
     {
         throw new \Exception('test exception');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function resolveLinkCollection(array $links, array $parameters = []): array
     {
         throw new \Exception('test exception');

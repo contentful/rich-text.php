@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -40,7 +40,7 @@ class EntryReference implements EntryReferenceInterface
     /**
      * EntryReference constructor.
      */
-    public function __construct(Link $link, LinkResolverInterface $linkResolver, string|null $locale)
+    public function __construct(Link $link, LinkResolverInterface $linkResolver, ?string $locale)
     {
         if ('Entry' !== $link->getLinkType()) {
             throw new \InvalidArgumentException('Link is required to reference an Entry.');
@@ -67,7 +67,7 @@ class EntryReference implements EntryReferenceInterface
             }
 
             // @codeCoverageIgnoreStart
-            throw new \RuntimeException(sprintf('A link has been resolved to an instance of %s, but %s is expected. This should never happen.', \get_class($resource), EntryInterface::class));
+            throw new \RuntimeException(sprintf('A link has been resolved to an instance of %s, but %s is expected. This should never happen.', $resource::class, EntryInterface::class));
             // @codeCoverageIgnoreEnd
         }
 

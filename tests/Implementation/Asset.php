@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -33,25 +33,16 @@ class Asset implements AssetInterface
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): string
     {
         return $this->sys->getId();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return $this->sys->getType();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function asLink(): Link
     {
         return new Link(
@@ -60,17 +51,11 @@ class Asset implements AssetInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSystemProperties(): SystemPropertiesInterface
     {
         return $this->sys;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

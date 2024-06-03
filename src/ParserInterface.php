@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -37,7 +37,7 @@ interface ParserInterface
      *
      * @param array $data The unserialized JSON rich text
      */
-    public function parseLocalized(array $data, string|null $locale): NodeInterface;
+    public function parseLocalized(array $data, ?string $locale): NodeInterface;
 
     /**
      * Transforms an array of rich text into node objects.
@@ -54,5 +54,5 @@ interface ParserInterface
      *
      * @return NodeInterface[]
      */
-    public function parseCollectionLocalized(array $data, string|null $locale): array;
+    public function parseCollectionLocalized(array $data, ?string $locale): array;
 }

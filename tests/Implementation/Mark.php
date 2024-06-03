@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -18,25 +18,16 @@ use Contentful\RichText\Mark\MarkInterface;
  */
 class Mark implements MarkInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function getType(): string
     {
         return 'mark';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function render(string $text): string
     {
         return '<mark>'.$text.'</mark>';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): mixed
     {
         return [

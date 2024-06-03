@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -34,17 +34,11 @@ class TwigNodeRenderer implements NodeRendererInterface
         $this->twig = $twig;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supports(NodeInterface $node): bool
     {
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function render(RendererInterface $renderer, NodeInterface $node, array $context = []): string
     {
         $template = $this->twig

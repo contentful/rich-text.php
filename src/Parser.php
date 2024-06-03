@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -42,8 +42,6 @@ class Parser implements ParserInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Exception
      */
     public function parse(array $data): NodeInterface
@@ -52,11 +50,9 @@ class Parser implements ParserInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Exception
      */
-    public function parseLocalized(array $data, string|null $locale): NodeInterface
+    public function parseLocalized(array $data, ?string $locale): NodeInterface
     {
         $nodeType = $data['nodeType'];
         if (!isset($this->mappers[$nodeType])) {
@@ -69,8 +65,6 @@ class Parser implements ParserInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Exception
      */
     public function parseCollection(array $data): array
@@ -79,11 +73,9 @@ class Parser implements ParserInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Exception
      */
-    public function parseCollectionLocalized(array $data, string|null $locale): array
+    public function parseCollectionLocalized(array $data, ?string $locale): array
     {
         return array_map(function ($data) use ($locale) { return $this->parseLocalized($data, $locale); }, $data);
     }

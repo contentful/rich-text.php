@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -26,14 +26,11 @@ class TwigExtension extends AbstractExtension
     /**
      * TwigExtension constructor.
      */
-    public function __construct(RendererInterface $renderer = null)
+    public function __construct(?RendererInterface $renderer = null)
     {
         $this->renderer = $renderer ?: new Renderer();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions()
     {
         return [

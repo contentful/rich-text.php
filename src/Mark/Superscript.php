@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -13,17 +13,11 @@ namespace Contentful\RichText\Mark;
 
 class Superscript implements MarkInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function getType(): string
     {
         return 'superscript';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

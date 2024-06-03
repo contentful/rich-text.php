@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -34,25 +34,16 @@ class SystemProperties implements SystemPropertiesInterface
         $this->type = $data['type'];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): array
     {
         return [

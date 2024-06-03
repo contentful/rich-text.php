@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2022 Contentful GmbH
+ * @copyright 2015-2024 Contentful GmbH
  * @license   MIT
  */
 
@@ -35,9 +35,6 @@ class Renderer implements RendererInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function render(NodeInterface $node, array $context = []): string
     {
         foreach ($this->nodeRenderers as $renderer) {
@@ -46,12 +43,9 @@ class Renderer implements RendererInterface
             }
         }
 
-        throw new \InvalidArgumentException(sprintf('Structured text renderer could not find NodeRenderer instance which supports node of class "%s".', \get_class($node)));
+        throw new \InvalidArgumentException(sprintf('Structured text renderer could not find NodeRenderer instance which supports node of class "%s".', $node::class));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function renderCollection(array $nodes, array $context = []): string
     {
         return implode('', array_map(function (NodeInterface $node) use ($context): string {
