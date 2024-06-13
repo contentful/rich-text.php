@@ -30,8 +30,8 @@ class AssetHyperlink implements NodeRendererInterface
         }
 
         return sprintf(
-            '<a href="#Asset-%s" title="%s">%s</a>',
-            $node->getAsset()->getId(),
+            '<a href="%s" title="%s">%s</a>',
+            $node->getAsset()->getFile()->getUrl(),
             $node->getTitle(),
             $renderer->renderCollection($node->getContent(), $context)
         );
