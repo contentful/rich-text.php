@@ -52,7 +52,7 @@ class AllNodesHaveParserTest extends TestCase
         }
 
         if (!class_exists($nodeMapperClass)) {
-            $this->fail(sprintf(
+            $this->fail(\sprintf(
                 'Node mapper "%s" does not exists',
                 $nodeMapperClass
             ));

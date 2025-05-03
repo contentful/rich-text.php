@@ -56,7 +56,7 @@ class Parser implements ParserInterface
     {
         $nodeType = $data['nodeType'];
         if (!isset($this->mappers[$nodeType])) {
-            throw new \InvalidArgumentException(sprintf('Unrecognized node type "%s" when trying to parse rich text.', $data['nodeType']));
+            throw new \InvalidArgumentException(\sprintf('Unrecognized node type "%s" when trying to parse rich text.', $data['nodeType']));
         }
 
         $mapper = $this->mappers[$nodeType];

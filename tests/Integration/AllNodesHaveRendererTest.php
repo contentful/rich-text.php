@@ -72,7 +72,7 @@ class AllNodesHaveRendererTest extends TestCase
         }
 
         if (!class_exists($nodeRendererClass)) {
-            $this->fail(sprintf(
+            $this->fail(\sprintf(
                 'Node renderer "%s" does not exists',
                 $nodeRendererClass
             ));
@@ -89,7 +89,7 @@ class AllNodesHaveRendererTest extends TestCase
             }
         }
 
-        $this->fail(sprintf(
+        $this->fail(\sprintf(
             'No node renderer which supports node of class "%s" was found.',
             $nodeClass
         ));
@@ -120,7 +120,7 @@ class AllNodesHaveRendererTest extends TestCase
             }
         }
 
-        $this->fail(sprintf(
+        $this->fail(\sprintf(
             'No default node renderer which supports node of class "%s" was found.',
             $nodeClass
         ));

@@ -43,7 +43,7 @@ class Renderer implements RendererInterface
             }
         }
 
-        throw new \InvalidArgumentException(sprintf('Structured text renderer could not find NodeRenderer instance which supports node of class "%s".', $node::class));
+        throw new \InvalidArgumentException(\sprintf('Structured text renderer could not find NodeRenderer instance which supports node of class "%s".', $node::class));
     }
 
     public function renderCollection(array $nodes, array $context = []): string

@@ -27,7 +27,7 @@ abstract class InlineNode implements NodeInterface
     {
         foreach ($content as $node) {
             if ($node instanceof BlockNode) {
-                throw new \InvalidArgumentException(sprintf('Node of class "%s" can not be set as child of class "%s", as it can not contain block nodes.', $node::class, static::class));
+                throw new \InvalidArgumentException(\sprintf('Node of class "%s" can not be set as child of class "%s", as it can not contain block nodes.', $node::class, static::class));
             }
         }
 

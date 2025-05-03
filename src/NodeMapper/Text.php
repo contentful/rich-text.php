@@ -44,7 +44,7 @@ class Text implements NodeMapperInterface
             case Mark\Subscript::getType():
                 return new Mark\Subscript();
             default:
-                throw new \InvalidArgumentException(sprintf('Unrecognized mark type "%s" when trying to parse rich text.', $data['type']));
+                throw new \InvalidArgumentException(\sprintf('Unrecognized mark type "%s" when trying to parse rich text.', $data['type']));
         }
     }
 }

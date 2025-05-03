@@ -26,10 +26,10 @@ class EntryHyperlink implements NodeRendererInterface
     {
         /* @var NodeClass $node */
         if (!$node instanceof NodeClass) {
-            throw new \LogicException(sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
+            throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
         }
 
-        return sprintf(
+        return \sprintf(
             '<a href="#Entry-%s" title="%s">%s</a>',
             $node->getEntry()->getId(),
             $node->getTitle(),

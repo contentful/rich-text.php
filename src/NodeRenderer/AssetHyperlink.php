@@ -26,10 +26,10 @@ class AssetHyperlink implements NodeRendererInterface
     {
         /* @var NodeClass $node */
         if (!$node instanceof NodeClass) {
-            throw new \LogicException(sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
+            throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
         }
 
-        return sprintf(
+        return \sprintf(
             '<a href="#Asset-%s" title="%s">%s</a>',
             $node->getAsset()->getId(),
             $node->getTitle(),

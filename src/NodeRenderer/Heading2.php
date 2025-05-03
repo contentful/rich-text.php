@@ -26,7 +26,7 @@ class Heading2 implements NodeRendererInterface
     {
         /* @var NodeClass $node */
         if (!$node instanceof NodeClass) {
-            throw new \LogicException(sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
+            throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
         }
 
         return '<h2>'.$renderer->renderCollection($node->getContent(), $context).'</h2>';
