@@ -28,13 +28,14 @@ class TextTest extends TestCase
             new Mark\Bold(),
             new Mark\Code(),
             new Mark\Italic(),
+            new Mark\Strikethrough(),
             new Mark\Underline(),
         ]);
 
         $this->assertTrue($nodeRenderer->supports($node));
         $this->assertFalse($nodeRenderer->supports(new Node('Some value')));
 
-        $this->assertSame('<u><em><code><strong>Some text</strong></code></em></u>', $nodeRenderer->render($renderer, $node));
+        $this->assertSame('<u><s><em><code><strong>Some text</strong></code></em></s></u>', $nodeRenderer->render($renderer, $node));
     }
 
     public function testEscapingHtml()
