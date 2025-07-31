@@ -45,6 +45,7 @@ class Text implements NodeRendererInterface
             'code' => 'code',
             'italic' => 'em',
             'underline' => 'u',
+            'strikethrough' => 's',
             'superscript' => 'sup',
             'subscript' => 'sub',
         ];

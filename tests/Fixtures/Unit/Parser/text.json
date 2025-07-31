@@ -16,6 +16,10 @@
         },
         {
             "object": "mark",
+            "type": "strikethrough"
+        },
+        {
+            "object": "mark",
             "type": "underline"
         }
     ],
