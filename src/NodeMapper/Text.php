@@ -39,6 +39,8 @@ class Text implements NodeMapperInterface
                 return new Mark\Italic();
             case Mark\Underline::getType():
                 return new Mark\Underline();
+            case Mark\Strikethrough::getType():
+                return new Mark\Strikethrough();
             case Mark\Superscript::getType():
                 return new Mark\Superscript();
             case Mark\Subscript::getType():
