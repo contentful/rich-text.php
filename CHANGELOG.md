@@ -3,7 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/contentful/rich-text.php/compare/4.0.2...HEAD)
+## [Unreleased](https://github.com/contentful/rich-text.php/compare/4.0.3...HEAD)
+
+## [4.0.3](https://github.com/contentful/rich-text.php/tree/4.0.3) (2025-11-18)
+
+* Added support for strikethrough mark
 
 ## [4.0.2](https://github.com/contentful/rich-text.php/tree/4.0.2) (2024-06-03)
 
