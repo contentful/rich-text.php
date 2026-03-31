@@ -3,7 +3,7 @@
 /**
  * This file is part of the contentful/rich-text package.
  *
- * @copyright 2015-2025 Contentful GmbH
+ * @copyright 2015-2026 Contentful GmbH
  * @license   MIT
  */
 
@@ -65,8 +65,8 @@ class Renderer implements RendererInterface
         if ($active) {
             $this->pushNodeRenderer(new NodeRenderer\EmbeddedImage());
         } else {
-            $this->nodeRenderers = array_filter($this->nodeRenderers, function ($renderer) {
-                return !($renderer instanceof NodeRenderer\EmbeddedImage);
+            $this->nodeRenderers = array_filter($this->nodeRenderers, static function ($renderer) {
+                return !$renderer instanceof NodeRenderer\EmbeddedImage;
             });
         }
     }
