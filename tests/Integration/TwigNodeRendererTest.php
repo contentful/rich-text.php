@@ -22,7 +22,7 @@ use Twig\Loader\ArrayLoader;
 
 class TwigNodeRendererTest extends TestCase
 {
-    public function testTwigNodeRenderer()
+    public function testTwigNodeRenderer(): void
     {
         // Create a Twig environment
         $loader = new ArrayLoader([]);
@@ -39,7 +39,7 @@ class TwigNodeRendererTest extends TestCase
         $this->assertSame('This is a node with type "node" with context var set to "contextValue".', $rendered);
     }
 
-    public function testTwigExtension()
+    public function testTwigExtension(): void
     {
         // Create a Twig environment
         $loader = new ArrayLoader([]);

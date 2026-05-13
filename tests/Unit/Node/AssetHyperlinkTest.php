@@ -17,7 +17,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class AssetHyperlinkTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('asset-hyperlink', AssetHyperlink::getType());
 

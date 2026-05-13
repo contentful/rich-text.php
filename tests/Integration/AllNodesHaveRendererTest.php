@@ -59,7 +59,7 @@ class AllNodesHaveRendererTest extends TestCase
     /**
      * @dataProvider classFileProvider
      */
-    public function testAllNodesHaveRenderer(string $class)
+    public function testAllNodesHaveRenderer(string $class): void
     {
         $nodeClass = '\\Contentful\\RichText\\Node\\'.$class;
         $nodeRendererClass = '\\Contentful\\RichText\\NodeRenderer\\'.$class;
@@ -98,7 +98,7 @@ class AllNodesHaveRendererTest extends TestCase
     /**
      * @dataProvider classFileProvider
      */
-    public function testMainRendererCreatesAllNodeRenderers(string $class)
+    public function testMainRendererCreatesAllNodeRenderers(string $class): void
     {
         $nodeClass = '\\Contentful\\RichText\\Node\\'.$class;
 
@@ -126,7 +126,7 @@ class AllNodesHaveRendererTest extends TestCase
         ));
     }
 
-    public function classFileProvider()
+    public function classFileProvider(): \Generator
     {
         $iterator = Finder::create()
             ->files()

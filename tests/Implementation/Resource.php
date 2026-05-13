@@ -25,7 +25,7 @@ class Resource implements ResourceInterface
      */
     private $sys;
 
-    public function __construct(string $id, string $type)
+    public function __construct(string $id, string $type): void
     {
         $this->sys = new SystemProperties([
             'id' => $id,

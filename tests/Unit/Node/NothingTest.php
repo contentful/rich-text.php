@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class NothingTest extends TestCase
 {
-    public function testGetData()
+    public function testGetData(): void
     {
         $data = [
             'nodeType' => 'invalid-node',

@@ -26,7 +26,7 @@ class Renderer implements RendererInterface
      *
      * @param NodeRendererInterface[] $nodeRenderers
      */
-    public function __construct(array $nodeRenderers = [])
+    public function __construct(array $nodeRenderers = []): void
     {
         $this->nodeRenderers = $this->createNodeRenderers();
 
@@ -60,7 +60,7 @@ class Renderer implements RendererInterface
      *
      * @param bool $active whether the embedded image renderer should be activated
      */
-    public function enableEmbeddedImageRenderer(bool $active)
+    public function enableEmbeddedImageRenderer(bool $active): void
     {
         if ($active) {
             $this->pushNodeRenderer(new NodeRenderer\EmbeddedImage());

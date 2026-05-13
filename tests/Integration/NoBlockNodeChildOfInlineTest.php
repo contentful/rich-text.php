@@ -17,7 +17,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class NoBlockNodeChildOfInlineTest extends TestCase
 {
-    public function testInlineNodesCanNotHaveBlockAsChildren()
+    public function testInlineNodesCanNotHaveBlockAsChildren(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage("Node of class \"Contentful\RichText\Node\Heading1\" can not be set as child of class \"Contentful\RichText\Node\Hyperlink\", as it can not contain block nodes.");

@@ -19,7 +19,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class DocumentTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new Document();
@@ -31,7 +31,7 @@ class DocumentTest extends TestCase
         $this->assertSame('Some text', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testInvalidNodeRendered()
+    public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\Document\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");

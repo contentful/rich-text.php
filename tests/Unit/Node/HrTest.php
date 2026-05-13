@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class HrTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('hr', Hr::getType());
         $node = new Hr();

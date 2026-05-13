@@ -28,7 +28,7 @@ class SystemProperties implements SystemPropertiesInterface
      */
     private $type;
 
-    public function __construct(array $data)
+    public function __construct(array $data): void
     {
         $this->id = $data['id'];
         $this->type = $data['type'];

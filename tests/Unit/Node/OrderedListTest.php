@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class OrderedListTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('ordered-list', OrderedList::getType());
         $nodes = $this->createNodes(5);

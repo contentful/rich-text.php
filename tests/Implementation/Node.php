@@ -23,7 +23,7 @@ class Node implements NodeInterface
      */
     private $value;
 
-    public function __construct(string $value)
+    public function __construct(string $value): void
     {
         $this->value = $value;
     }

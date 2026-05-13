@@ -26,7 +26,7 @@ class EmbeddedEntryInline extends InlineNode
      *
      * @param NodeInterface[] $content
      */
-    public function __construct(array $content, EntryReferenceInterface $reference)
+    public function __construct(array $content, EntryReferenceInterface $reference): void
     {
         parent::__construct($content);
         $this->reference = $reference;

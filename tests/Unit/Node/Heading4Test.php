@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class Heading4Test extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('heading-4', Heading4::getType());
         $nodes = $this->createNodes(5);

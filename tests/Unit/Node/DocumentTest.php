@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class DocumentTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('document', Document::getType());
         $nodes = $this->createNodes(5);

@@ -20,7 +20,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class TextTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new Text();
@@ -38,7 +38,7 @@ class TextTest extends TestCase
         $this->assertSame('<u><s><em><code><strong>Some text</strong></code></em></s></u>', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testEscapingHtml()
+    public function testEscapingHtml(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new Text();
@@ -49,7 +49,7 @@ class TextTest extends TestCase
         $this->assertSame('<strong>Some test with &lt;table&gt;&lt;tr&gt;&lt;td&gt;TEST&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; HTML</strong>', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testInvalidNodeRendered()
+    public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\Text\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");

@@ -40,7 +40,7 @@ class EntryReference implements EntryReferenceInterface
     /**
      * EntryReference constructor.
      */
-    public function __construct(Link $link, LinkResolverInterface $linkResolver, ?string $locale)
+    public function __construct(Link $link, LinkResolverInterface $linkResolver, ?string $locale): void
     {
         if ('Entry' !== $link->getLinkType()) {
             throw new \InvalidArgumentException('Link is required to reference an Entry.');

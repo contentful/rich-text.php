@@ -21,7 +21,7 @@ class Nothing implements NodeInterface
     /**
      * Nothing constructor.
      */
-    public function __construct(array $data = [])
+    public function __construct(array $data = []): void
     {
         $this->data = $data;
     }

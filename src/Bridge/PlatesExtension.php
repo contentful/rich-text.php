@@ -26,12 +26,12 @@ class PlatesExtension implements ExtensionInterface
     /**
      * PlatesExtension constructor.
      */
-    public function __construct(?RendererInterface $renderer = null)
+    public function __construct(?RendererInterface $renderer = null): void
     {
         $this->renderer = $renderer ?: new Renderer();
     }
 
-    public function register(Engine $engine)
+    public function register(Engine $engine): void
     {
         $callback = [$this->renderer, 'render'];
         $engine->registerFunction('richTextRender', $callback);

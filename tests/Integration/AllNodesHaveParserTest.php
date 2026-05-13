@@ -38,7 +38,7 @@ class AllNodesHaveParserTest extends TestCase
     /**
      * @dataProvider classFileProvider
      */
-    public function testAllNodesHaveParser(string $file)
+    public function testAllNodesHaveParser(string $file): void
     {
         $file = str_replace('.php', '', $file);
         $nodeClass = '\\Contentful\\RichText\\Node\\'.$file;
@@ -63,7 +63,7 @@ class AllNodesHaveParserTest extends TestCase
         $this->assertInstanceOf($nodeMapperClass, $this->mappers[$nodeType]);
     }
 
-    public function classFileProvider()
+    public function classFileProvider(): \Generator
     {
         $iterator = Finder::create()
             ->files()

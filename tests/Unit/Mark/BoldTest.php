@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class BoldTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('bold', Bold::getType());
 

@@ -19,7 +19,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class HyperlinkTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new Hyperlink();
@@ -32,7 +32,7 @@ class HyperlinkTest extends TestCase
         $this->assertRegExp('/\<a href\=\"https\:\/\/www\.contentful\.com\" title\=\"Contentful\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testInvalidNodeRendered()
+    public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\Hyperlink\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");

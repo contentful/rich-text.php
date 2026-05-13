@@ -23,7 +23,7 @@ abstract class BlockNode implements NodeInterface
      *
      * @param NodeInterface[] $content
      */
-    public function __construct(array $content)
+    public function __construct(array $content): void
     {
         $this->content = $content;
     }
