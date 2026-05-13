@@ -35,7 +35,7 @@ class Parser implements ParserInterface
      *
      * @param NodeMapperInterface[] $mappers
      */
-    public function __construct(LinkResolverInterface $linkResolver, array $mappers = []): void
+    public function __construct(LinkResolverInterface $linkResolver, array $mappers = [])
     {
         $this->linkResolver = $linkResolver;
         $this->mappers = array_merge($this->createMappers(), $mappers);

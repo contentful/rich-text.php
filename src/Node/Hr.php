@@ -16,7 +16,7 @@ class Hr extends BlockNode
     /**
      * Hr constructor.
      */
-    public function __construct(): void
+    public function __construct()
     {
         parent::__construct([]);
     }

@@ -29,7 +29,7 @@ class PlatesNodeRenderer implements NodeRendererInterface
      */
     private $plates;
 
-    public function __construct(Engine $plates): void
+    public function __construct(Engine $plates)
     {
         $this->plates = $plates;
     }

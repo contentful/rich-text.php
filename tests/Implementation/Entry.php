@@ -25,7 +25,7 @@ class Entry implements EntryInterface
      */
     private $sys;
 
-    public function __construct(string $id): void
+    public function __construct(string $id)
     {
         $this->sys = new SystemProperties([
             'id' => $id,

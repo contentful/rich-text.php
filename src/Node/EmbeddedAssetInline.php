@@ -25,7 +25,7 @@ class EmbeddedAssetInline extends BlockNode
      *
      * @param NodeInterface[] $content
      */
-    public function __construct(array $content, AssetInterface $asset): void
+    public function __construct(array $content, AssetInterface $asset)
     {
         parent::__construct($content);
         $this->asset = $asset;

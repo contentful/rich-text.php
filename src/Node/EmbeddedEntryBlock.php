@@ -26,7 +26,7 @@ class EmbeddedEntryBlock extends BlockNode
      *
      * @param NodeInterface[] $content
      */
-    public function __construct(array $content, EntryReferenceInterface $reference): void
+    public function __construct(array $content, EntryReferenceInterface $reference)
     {
         parent::__construct($content);
         $this->reference = $reference;

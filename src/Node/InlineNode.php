@@ -23,7 +23,7 @@ abstract class InlineNode implements NodeInterface
      *
      * @param NodeInterface[] $content
      */
-    public function __construct(array $content): void
+    public function __construct(array $content)
     {
         foreach ($content as $node) {
             if ($node instanceof BlockNode) {

@@ -26,7 +26,7 @@ class TwigExtension extends AbstractExtension
     /**
      * TwigExtension constructor.
      */
-    public function __construct(?RendererInterface $renderer = null): void
+    public function __construct(?RendererInterface $renderer = null)
     {
         $this->renderer = $renderer ?: new Renderer();
     }

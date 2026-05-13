@@ -30,7 +30,7 @@ class AssetHyperlink extends InlineNode
      *
      * @param NodeInterface[] $content
      */
-    public function __construct(array $content, AssetInterface $asset, string $title): void
+    public function __construct(array $content, AssetInterface $asset, string $title)
     {
         parent::__construct($content);
         $this->asset = $asset;

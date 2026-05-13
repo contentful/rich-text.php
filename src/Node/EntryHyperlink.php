@@ -31,7 +31,7 @@ class EntryHyperlink extends InlineNode
      *
      * @param NodeInterface[] $content
      */
-    public function __construct(array $content, EntryReferenceInterface $reference, string $title): void
+    public function __construct(array $content, EntryReferenceInterface $reference, string $title)
     {
         parent::__construct($content);
         $this->title = $title;

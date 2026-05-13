@@ -30,7 +30,7 @@ class Text extends InlineNode
      *
      * @param MarkInterface[] $marks
      */
-    public function __construct(string $value, array $marks = []): void
+    public function __construct(string $value, array $marks = [])
     {
         parent::__construct([]);
         $this->value = $value;

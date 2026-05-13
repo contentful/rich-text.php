@@ -26,7 +26,7 @@ class Renderer implements RendererInterface
      *
      * @param NodeRendererInterface[] $nodeRenderers
      */
-    public function __construct(array $nodeRenderers = []): void
+    public function __construct(array $nodeRenderers = [])
     {
         $this->nodeRenderers = $this->createNodeRenderers();
 
