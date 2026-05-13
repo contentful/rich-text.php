@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class HyperlinkTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $nodes = $this->createNodes(1);
         $this->assertSame('hyperlink', Hyperlink::getType());

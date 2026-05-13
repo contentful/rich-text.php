@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class CodeTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('code', Code::getType());
 

@@ -19,7 +19,7 @@ use League\Plates\Engine;
 
 class PlatesExtensionTest extends TestCase
 {
-    public function testPlatesExtension()
+    public function testPlatesExtension(): void
     {
         $renderer = new Renderer();
         $extension = new PlatesExtension($renderer);

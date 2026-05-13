@@ -31,7 +31,7 @@ class TwigExtension extends AbstractExtension
         $this->renderer = $renderer ?: new Renderer();
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction(

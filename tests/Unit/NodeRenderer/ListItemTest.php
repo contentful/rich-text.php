@@ -19,7 +19,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class ListItemTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new ListItem();
@@ -31,7 +31,7 @@ class ListItemTest extends TestCase
         $this->assertSame('<li>Some text</li>', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testInvalidNodeRendered()
+    public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\ListItem\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");

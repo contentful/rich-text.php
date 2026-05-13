@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class TableRowTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('table-row', TableRow::getType());
         $nodes = $this->createNodes(5);

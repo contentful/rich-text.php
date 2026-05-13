@@ -20,7 +20,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class AssetHyperlinkTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new AssetHyperlink();
@@ -33,7 +33,7 @@ class AssetHyperlinkTest extends TestCase
         $this->assertRegExp('/\<a href\=\"\#Asset-assetId\" title\=\"Asset title\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testInvalidNodeRendered()
+    public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\AssetHyperlink\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");

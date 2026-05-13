@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class ItalicTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('italic', Italic::getType());
 

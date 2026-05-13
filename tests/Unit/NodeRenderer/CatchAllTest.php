@@ -18,7 +18,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class CatchAllTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new CatchAll();

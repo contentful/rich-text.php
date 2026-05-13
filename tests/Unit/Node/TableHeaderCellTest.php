@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class TableHeaderCellTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('table-header-cell', TableHeaderCell::getType());
         $nodes = $this->createNodes(5);

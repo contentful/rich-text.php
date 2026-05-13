@@ -18,7 +18,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class FallbackNodeRendererTest extends TestCase
 {
-    public function testRendererReturnsEmptyStringOnUnsupportedNode()
+    public function testRendererReturnsEmptyStringOnUnsupportedNode(): void
     {
         $renderer = new Renderer();
         $renderer->appendNodeRenderer(new CatchAll());

@@ -21,7 +21,7 @@ use League\Plates\Engine;
 
 class PlatesNodeRendererTest extends TestCase
 {
-    public function testPlatesNodeRenderer()
+    public function testPlatesNodeRenderer(): void
     {
         $path = $this->getTestFixturesPath();
         // Create a Plates engine
@@ -38,7 +38,7 @@ class PlatesNodeRendererTest extends TestCase
         $this->assertSame('This is a node with type "node" with context var set to "contextValue".'."\n", $rendered);
     }
 
-    public function testPlatesExtension()
+    public function testPlatesExtension(): void
     {
         $path = $this->convertClassToFixturePath(static::class);
         // Create a Plates engine

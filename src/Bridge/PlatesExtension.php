@@ -31,7 +31,7 @@ class PlatesExtension implements ExtensionInterface
         $this->renderer = $renderer ?: new Renderer();
     }
 
-    public function register(Engine $engine)
+    public function register(Engine $engine): void
     {
         $callback = [$this->renderer, 'render'];
         $engine->registerFunction('richTextRender', $callback);

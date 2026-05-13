@@ -17,7 +17,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class EmbeddedAssetBlockTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('embedded-asset-block', EmbeddedAssetBlock::getType());
 

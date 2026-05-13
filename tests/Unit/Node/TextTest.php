@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class TextTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('text', Text::getType());
         $marks = $this->createMarks(5);

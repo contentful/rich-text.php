@@ -19,7 +19,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class OrderedListTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new OrderedList();
@@ -31,7 +31,7 @@ class OrderedListTest extends TestCase
         $this->assertSame('<ol>Some text</ol>', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testInvalidNodeRendered()
+    public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\OrderedList\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");

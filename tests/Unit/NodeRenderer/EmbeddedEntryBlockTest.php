@@ -22,7 +22,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class EmbeddedEntryBlockTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new EmbeddedEntryBlock();
@@ -37,7 +37,7 @@ class EmbeddedEntryBlockTest extends TestCase
         $this->assertSame('<div>Entry#entryId</div>', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testInvalidNodeRendered()
+    public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\EmbeddedEntryBlock\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");

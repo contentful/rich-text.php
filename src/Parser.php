@@ -118,7 +118,7 @@ class Parser implements ParserInterface
     /**
      * Add a custom mapper or replace a default one.
      */
-    public function setNodeMapper(string $nodeType, NodeMapperInterface $nodeMapper)
+    public function setNodeMapper(string $nodeType, NodeMapperInterface $nodeMapper): void
     {
         $this->mappers[$nodeType] = $nodeMapper;
     }

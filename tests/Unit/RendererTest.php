@@ -31,7 +31,7 @@ class RendererTest extends TestCase
         $this->defaultNodeRenderersCount = \count((new Renderer())->getNodeRenderers());
     }
 
-    public function testDefaultNodeRenders()
+    public function testDefaultNodeRenders(): void
     {
         $renderer = new Renderer();
 
@@ -40,7 +40,7 @@ class RendererTest extends TestCase
         $this->assertContainsOnlyInstancesOf(NodeRendererNamespace\NodeRendererInterface::class, $nodeRenderers);
     }
 
-    public function testAddCustomNodeRendererOnConstruct()
+    public function testAddCustomNodeRendererOnConstruct(): void
     {
         $nodeRenderer = new NodeRenderer();
         $renderer = new Renderer([$nodeRenderer]);
@@ -52,7 +52,7 @@ class RendererTest extends TestCase
         $this->assertContainsOnlyInstancesOf(NodeRendererNamespace\NodeRendererInterface::class, $nodeRenderers);
     }
 
-    public function testAddCustomNodeRendererAfterConstruct()
+    public function testAddCustomNodeRendererAfterConstruct(): void
     {
         $renderer = new Renderer();
 
@@ -70,7 +70,7 @@ class RendererTest extends TestCase
         $this->assertInstanceOf(NodeRendererNamespace\AssetHyperlink::class, $nodeRenderers[1]);
     }
 
-    public function testRenderSingleNode()
+    public function testRenderSingleNode(): void
     {
         $renderer = new Renderer();
         $node = new Text('Some text');
@@ -78,7 +78,7 @@ class RendererTest extends TestCase
         $this->assertSame('Some text', $renderer->render($node));
     }
 
-    public function testRenderNodeCollection()
+    public function testRenderNodeCollection(): void
     {
         $renderer = new Renderer();
         $nodes = [
@@ -89,7 +89,7 @@ class RendererTest extends TestCase
         $this->assertSame('<p>First text</p><p>Second text</p>', $renderer->renderCollection($nodes));
     }
 
-    public function testUnsupportedNode()
+    public function testUnsupportedNode(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage("Structured text renderer could not find NodeRenderer instance which supports node of class \"Contentful\Tests\RichText\Implementation\Node\".");

@@ -18,7 +18,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class EmbeddedEntryInlineTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('embedded-entry-inline', EmbeddedEntryInline::getType());
 

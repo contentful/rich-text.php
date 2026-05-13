@@ -20,7 +20,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class EmbeddedAssetBlockTest extends TestCase
 {
-    public function testRendering()
+    public function testRendering(): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new EmbeddedAssetBlock();
@@ -32,7 +32,7 @@ class EmbeddedAssetBlockTest extends TestCase
         $this->assertSame('<div>Asset#assetId</div>', $nodeRenderer->render($renderer, $node));
     }
 
-    public function testInvalidNodeRendered()
+    public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage("Trying to use node renderer \"Contentful\RichText\NodeRenderer\EmbeddedAssetBlock\" to render unsupported node of class \"Contentful\Tests\RichText\Implementation\Node\".");

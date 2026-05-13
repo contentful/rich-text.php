@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class ListItemTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('list-item', ListItem::getType());
         $nodes = $this->createNodes(5);

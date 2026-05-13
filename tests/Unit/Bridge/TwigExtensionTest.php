@@ -19,7 +19,7 @@ use Twig\TwigFunction;
 
 class TwigExtensionTest extends TestCase
 {
-    public function testTwigExtension()
+    public function testTwigExtension(): void
     {
         $renderer = new Renderer();
         $extension = new TwigExtension($renderer);

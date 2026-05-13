@@ -22,7 +22,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class ParserTest extends TestCase
 {
-    public function testParserOutput()
+    public function testParserOutput(): void
     {
         $parser = new Parser(new LinkResolver(), [
             'custom-node' => new NodeMapper(),
@@ -38,7 +38,7 @@ class ParserTest extends TestCase
     /**
      * @dataProvider provideNodes
      */
-    public function testParseNode(string $file, string $class)
+    public function testParseNode(string $file, string $class): void
     {
         $parser = new Parser(new LinkResolver());
 
@@ -76,7 +76,7 @@ class ParserTest extends TestCase
         ];
     }
 
-    public function testInvalidNode()
+    public function testInvalidNode(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Unrecognized node type "invalid-node" when trying to parse rich text');
@@ -86,7 +86,7 @@ class ParserTest extends TestCase
         $parser->parse($this->getParsedFixture('invalid-node.json'));
     }
 
-    public function testInvalidMark()
+    public function testInvalidMark(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Unrecognized mark type "invalid-mark" when trying to parse rich text');
@@ -99,7 +99,7 @@ class ParserTest extends TestCase
     /**
      * @dataProvider provideInvalidLinkNodes
      */
-    public function testInvalidLinkException(string $file)
+    public function testInvalidLinkException(string $file): void
     {
         $parser = new Parser(new FailingLinkResolver());
 
@@ -116,7 +116,7 @@ class ParserTest extends TestCase
     /**
      * @dataProvider provideInvalidDeferredResolvedLinkNodes
      */
-    public function testMapperDeferredReferenceResolution(string $file, string $nodeClass)
+    public function testMapperDeferredReferenceResolution(string $file, string $nodeClass): void
     {
         $parser = new Parser(new FailingLinkResolver());
 
@@ -149,7 +149,7 @@ class ParserTest extends TestCase
         ];
     }
 
-    public function testCustomMapper()
+    public function testCustomMapper(): void
     {
         $parser = new Parser(new LinkResolver());
 
@@ -162,7 +162,7 @@ class ParserTest extends TestCase
         $this->assertSame('Node value', $node->getValue());
     }
 
-    public function testParseInvalidLinkType()
+    public function testParseInvalidLinkType(): void
     {
         $parser = new Parser(new FailingLinkResolver());
 
@@ -170,7 +170,7 @@ class ParserTest extends TestCase
         $parser->parse($this->getParsedFixture('embedded-invalid-link-type.json'));
     }
 
-    public function testGettingResolvedEntry()
+    public function testGettingResolvedEntry(): void
     {
         $parser = new Parser(new LinkResolver());
 

@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class BlockquoteTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('blockquote', Blockquote::getType());
         $nodes = $this->createNodes(5);

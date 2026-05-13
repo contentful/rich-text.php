@@ -16,7 +16,7 @@ use Contentful\Tests\RichText\TestCase;
 
 class StrikethroughTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $this->assertSame('strikethrough', Strikethrough::getType());
 
