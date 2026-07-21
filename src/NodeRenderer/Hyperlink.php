@@ -32,7 +32,7 @@ class Hyperlink implements NodeRendererInterface
         return \sprintf(
             '<a href="%s" title="%s">%s</a>',
             $this->sanitizeUri($node->getUri()),
-            \htmlspecialchars($node->getTitle(), \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
+            htmlspecialchars($node->getTitle(), \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
             $renderer->renderCollection($node->getContent(), $context)
         );
     }
@@ -47,13 +47,13 @@ class Hyperlink implements NodeRendererInterface
      */
     private function sanitizeUri(string $uri): string
     {
-        $normalized = \preg_replace('/[\x00-\x20\x7f]+/', '', $uri) ?? '';
-        $scheme = \strtolower((string) \parse_url($normalized, \PHP_URL_SCHEME));
+        $normalized = preg_replace('/[\x00-\x20\x7f]+/', '', $uri) ?? '';
+        $scheme = mb_strtolower((string) parse_url($normalized, \PHP_URL_SCHEME));
 
         if (!\in_array($scheme, ['https', 'http', ''], true)) {
             return '#';
         }
 
-        return \htmlspecialchars($normalized, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8');
+        return htmlspecialchars($normalized, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8');
     }
 }

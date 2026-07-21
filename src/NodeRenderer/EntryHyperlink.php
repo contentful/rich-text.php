@@ -31,8 +31,8 @@ class EntryHyperlink implements NodeRendererInterface
 
         return \sprintf(
             '<a href="#Entry-%s" title="%s">%s</a>',
-            \htmlspecialchars($node->getEntry()->getId(), \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
-            \htmlspecialchars($node->getTitle(), \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
+            htmlspecialchars($node->getEntry()->getId(), \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
+            htmlspecialchars($node->getTitle(), \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
             $renderer->renderCollection($node->getContent(), $context)
         );
     }
