@@ -29,10 +29,16 @@ class Hyperlink implements NodeRendererInterface
             throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
         }
 
+        $uri = $node->getUri();
+        $scheme = \strtolower((string) \parse_url($uri, \PHP_URL_SCHEME));
+        $safeUri = \in_array($scheme, ['https', 'http', ''], true)
+            ? \htmlspecialchars($uri, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8')
+            : '#';
+
         return \sprintf(
             '<a href="%s" title="%s">%s</a>',
-            $node->getUri(),
-            $node->getTitle(),
+            $safeUri,
+            \htmlspecialchars($node->getTitle(), \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
             $renderer->renderCollection($node->getContent(), $context)
         );
     }
