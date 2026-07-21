@@ -34,6 +34,20 @@ class EntryHyperlinkTest extends TestCase
         $this->assertRegExp('/\<a href\=\"\#Entry-entryId\" title\=\"Entry title\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
+    public function testTitleAndEntryIdAreEscaped(): void
+    {
+        $renderer = new Renderer();
+        $nodeRenderer = new EntryHyperlink();
+        $node = new NodeClass($this->createNodes(1), new StaticEntryReference(new Entry('"><script>alert(1)</script>')), '" onmouseover="alert(1)');
+
+        $rendered = $nodeRenderer->render($renderer, $node);
+
+        $this->assertStringContainsString('title="&quot; onmouseover=&quot;alert(1)"', $rendered);
+        $this->assertStringContainsString('#Entry-&quot;&gt;&lt;script&gt;', $rendered);
+        $this->assertStringNotContainsString('<script>', $rendered);
+        $this->assertStringNotContainsString('onmouseover="alert', $rendered);
+    }
+
     public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);

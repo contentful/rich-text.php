@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/contentful/rich-text.php/compare/4.0.3...HEAD)
 
+### Security
+
+* Fixed stored XSS in the `Hyperlink`, `AssetHyperlink`, and `EntryHyperlink` renderers: attribute values (href, title, asset/entry IDs) are now HTML-encoded, and `Hyperlink` hrefs are restricted to an allow-list of URI schemes (`http`, `https`, `mailto`, `tel`). Any other scheme — as well as protocol-relative (`//host`) URIs — now renders as `href="#"`. **Behavior change:** hyperlinks using schemes outside this allow-list (e.g. `ftp:`) will no longer render their original href.
+
 ## [4.0.3](https://github.com/contentful/rich-text.php/tree/4.0.3) (2025-11-18)
 
 * Added support for strikethrough mark

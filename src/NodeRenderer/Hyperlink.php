@@ -38,19 +38,35 @@ class Hyperlink implements NodeRendererInterface
     }
 
     /**
-     * Returns an HTML-safe href value, blocking any scheme other than http(s).
+     * Allow-list of URI schemes safe to emit as an href. Relative and
+     * fragment-only URIs (which carry no scheme) are also permitted.
+     */
+    private const ALLOWED_SCHEMES = ['https', 'http', 'mailto', 'tel'];
+
+    /**
+     * Returns an HTML-safe href value, blocking any scheme outside the
+     * allow-list as well as protocol-relative URIs.
      *
      * Control characters and whitespace are stripped before scheme detection
      * because browsers ignore them when resolving a URL (e.g. "java\tscript:"),
-     * so leaving them in would let \parse_url() report an empty scheme and wave
-     * a dangerous URI through.
+     * so leaving them in would let a dangerous URI slip through.
      */
     private function sanitizeUri(string $uri): string
     {
         $normalized = preg_replace('/[\x00-\x20\x7f]+/', '', $uri) ?? '';
-        $scheme = mb_strtolower((string) parse_url($normalized, \PHP_URL_SCHEME));
 
-        if (!\in_array($scheme, ['https', 'http', ''], true)) {
+        // Reject protocol-relative URIs ("//evil.com/..."). They carry no
+        // scheme, so they'd otherwise pass the allow-list as a scheme-less
+        // relative URI, giving an open-redirect / phishing vector.
+        if (str_starts_with($normalized, '//')) {
+            return '#';
+        }
+
+        // Match the scheme directly rather than delegating to parse_url(),
+        // which returns false/null on malformed input — both coerce to an
+        // empty ("safe") scheme and would wave a crafted URI through.
+        if (preg_match('/^([a-zA-Z][a-zA-Z0-9+.\-]*):/', $normalized, $matches)
+            && !\in_array(mb_strtolower($matches[1]), self::ALLOWED_SCHEMES, true)) {
             return '#';
         }
 

@@ -59,6 +59,8 @@ class HyperlinkTest extends TestCase
             'leading control char' => ["\x01javascript:alert(1)"],
             'data uri' => ['data:text/html,<script>alert(1)</script>'],
             'vbscript' => ['vbscript:msgbox(1)'],
+            'protocol-relative' => ['//attacker.com/phish'],
+            'protocol-relative with control char' => ["/\t/attacker.com/phish"],
         ];
     }
 
@@ -82,6 +84,8 @@ class HyperlinkTest extends TestCase
             'relative path' => ['/some/path', '/some/path'],
             'fragment' => ['#anchor', '#anchor'],
             'query preserved and escaped' => ['https://example.com/?a=1&b=2', 'https://example.com/?a=1&amp;b=2'],
+            'mailto' => ['mailto:hello@contentful.com', 'mailto:hello@contentful.com'],
+            'tel' => ['tel:+1-555-0100', 'tel:+1-555-0100'],
         ];
     }
 
