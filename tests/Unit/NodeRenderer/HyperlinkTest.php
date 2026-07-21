@@ -35,7 +35,7 @@ class HyperlinkTest extends TestCase
     /**
      * @dataProvider dangerousUriProvider
      */
-    public function testDangerousSchemesAreNeutralized(string $uri)
+    public function testDangerousSchemesAreNeutralized(string $uri): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new Hyperlink();
@@ -65,7 +65,7 @@ class HyperlinkTest extends TestCase
     /**
      * @dataProvider safeUriProvider
      */
-    public function testSafeSchemesArePreserved(string $uri, string $expectedHref)
+    public function testSafeSchemesArePreserved(string $uri, string $expectedHref): void
     {
         $renderer = new Renderer();
         $nodeRenderer = new Hyperlink();
