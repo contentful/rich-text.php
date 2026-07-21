@@ -33,6 +33,20 @@ class AssetHyperlinkTest extends TestCase
         $this->assertRegExp('/\<a href\=\"\#Asset-assetId\" title\=\"Asset title\"\>([a-zA-Z0-9]{10})\<\/a\>/', $nodeRenderer->render($renderer, $node));
     }
 
+    public function testTitleAndAssetIdAreEscaped(): void
+    {
+        $renderer = new Renderer();
+        $nodeRenderer = new AssetHyperlink();
+        $node = new NodeClass($this->createNodes(1), new Asset('"><script>alert(1)</script>'), '" onmouseover="alert(1)');
+
+        $rendered = $nodeRenderer->render($renderer, $node);
+
+        $this->assertStringContainsString('title="&quot; onmouseover=&quot;alert(1)"', $rendered);
+        $this->assertStringContainsString('#Asset-&quot;&gt;&lt;script&gt;', $rendered);
+        $this->assertStringNotContainsString('<script>', $rendered);
+        $this->assertStringNotContainsString('onmouseover="alert', $rendered);
+    }
+
     public function testInvalidNodeRendered(): void
     {
         $this->expectException(\LogicException::class);
