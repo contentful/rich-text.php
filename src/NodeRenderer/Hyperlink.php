@@ -29,17 +29,31 @@ class Hyperlink implements NodeRendererInterface
             throw new \LogicException(\sprintf('Trying to use node renderer "%s" to render unsupported node of class "%s".', static::class, $node::class));
         }
 
-        $uri = $node->getUri();
-        $scheme = \strtolower((string) \parse_url($uri, \PHP_URL_SCHEME));
-        $safeUri = \in_array($scheme, ['https', 'http', ''], true)
-            ? \htmlspecialchars($uri, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8')
-            : '#';
-
         return \sprintf(
             '<a href="%s" title="%s">%s</a>',
-            $safeUri,
+            $this->sanitizeUri($node->getUri()),
             \htmlspecialchars($node->getTitle(), \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
             $renderer->renderCollection($node->getContent(), $context)
         );
+    }
+
+    /**
+     * Returns an HTML-safe href value, blocking any scheme other than http(s).
+     *
+     * Control characters and whitespace are stripped before scheme detection
+     * because browsers ignore them when resolving a URL (e.g. "java\tscript:"),
+     * so leaving them in would let \parse_url() report an empty scheme and wave
+     * a dangerous URI through.
+     */
+    private function sanitizeUri(string $uri): string
+    {
+        $normalized = \preg_replace('/[\x00-\x20\x7f]+/', '', $uri) ?? '';
+        $scheme = \strtolower((string) \parse_url($normalized, \PHP_URL_SCHEME));
+
+        if (!\in_array($scheme, ['https', 'http', ''], true)) {
+            return '#';
+        }
+
+        return \htmlspecialchars($normalized, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8');
     }
 }
